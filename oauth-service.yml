@@ -8,3 +8,7 @@ mgb:
     usersMap:
         9980663789: panand,ADMIN,anandu,1
         7353207901: pmounesh,ADMIN,mounesh,2
+       
+sc:
+  oauth:
+    redirectURi: http://localhost:8083
