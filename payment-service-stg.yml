@@ -2,7 +2,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: https://smartcableapp-211915.appspot.com/eureka/
-    enabled: false
+    enabled: true
   instance:
     prefer-ip-address: true
 
