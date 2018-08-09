@@ -11,4 +11,4 @@ mgb:
        
 sc:
   oauth:
-    redirectURi: http://localhost:8083
+    redirectURI: http://localhost:8083
