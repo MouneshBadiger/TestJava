@@ -12,5 +12,5 @@ mgb:
 sc:
   oauth:
     redirectURI: http://localhost:8083
-    aTokenValidity: 3600
+    aTokenValidity: 60
     rTokenValidity: 2592000
