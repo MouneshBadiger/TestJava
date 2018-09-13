@@ -6,8 +6,8 @@ mgb:
         - listValue1
         - listValue2
     usersMap:
-        9980663789: panand,ADMIN,anandu,1
-        9164261146: gmb,ADMIN,anandu,1
+        9980663789: agb,ADMIN,Anand Badiger,1
+        9164261146: gmb,ADMIN,Gurunath Badiger,1
         7353207901: pmounesh,ADMIN,mounesh,2
        
 sc:
