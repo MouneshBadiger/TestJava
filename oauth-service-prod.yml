@@ -1,0 +1,22 @@
+mgb:
+    stringProp1: propValue1
+    stringProp2: propValue2
+    intProp1: 10
+    listProp:
+        - listValue1
+        - listValue2
+    usersMap:
+        9980663789: panand,ADMIN,anandu,1
+        7353207901: pmounesh,ADMIN,mounesh,2
+       
+sc:
+  oauth:
+    redirectURI: http://localhost:8083
+    aTokenValidity: 604800
+    rTokenValidity: 2592000
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
