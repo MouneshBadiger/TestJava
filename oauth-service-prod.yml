@@ -21,3 +21,12 @@ security:
 management:
   security:
     enabled: false
+spring:
+  datasource:
+      url: jdbc:mysql://google/kng_prod?cloudSqlInstance=smartcableapp-211915:asia-south1:smartcable&socketFactory=com.google.cloud.sql.mysql.SocketFactory&useSSL=false
+      username: root
+      password: mgbKng123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
