@@ -13,7 +13,7 @@ sc:
   oauth:
     redirectURI: http://localhost:8083
     aTokenValidity: 60000
-    rTokenValidity: 2592000
+    rTokenValidity: 60000
 security:
   basic:
     enabled: false
