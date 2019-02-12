@@ -12,8 +12,8 @@ mgb:
 sc:
   oauth:
     redirectURI: http://localhost:8083
-    aTokenValidity: 60
-    rTokenValidity: 60
+    aTokenValidity: 604800
+    rTokenValidity: 2592000
 security:
   basic:
     enabled: false
