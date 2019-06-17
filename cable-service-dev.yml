@@ -1,11 +1,16 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-    enabled: true
-  instance:
-    prefer-ip-address: true
-
+spring:
+  application:
+    name: cable-service
+  zipkin:
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      probability: 1
+  data:
+    mongodb:
+       uri: mongodb://root:mgbKng123@cluster0-shard-00-00-fpm8c.gcp.mongodb.net:27017,cluster0-shard-00-01-fpm8c.gcp.mongodb.net:27017,cluster0-shard-00-02-fpm8c.gcp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true
+       database: trendfly_db
+       
 management:
   endpoints:
     web:
