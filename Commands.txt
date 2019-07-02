@@ -1,0 +1,140 @@
+
+Linux Commands
+---------------------------
+1.top-------> memory usage
+2.ps    process details
+3.ps -A |grep java    ----java processes running
+4.kill -9 PID   ------Kill process with pid
+5.set environment variable: set NAME=VALUE
+6.print envrionment variable: echo %VARIABLE_NAME%
+
+GIT Commands
+----------------------
+git remote rm origin
+ git remote add origin https://github.com/user/repo.git
+ git branch --set-upstream-to=origin/<branch> master
+ git remote -v
+
+Docker commands
+--------------------
+
+apk add curl
+1.docker pull quay.io/python-devs/ci-image
+2.docker image ls
+3.docker container ls --all
+4.docker container run--detach --name mydb -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:latest
+
+docker container run -d -p 8080:8082 -e GOOGLE_APPLICATION_CREDENTIALS=/app/smartcableapp-211915-af70f90f4962.json -e SPRING_PROFILES_ACTIVE=dev,jpa -it 7353207901/cable-service:1.1 sh
+
+5.docker container logs mydb
+
+6.docker exec -it [CONTAINER_NAME] mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+7.docker exec -it a4b176be9e36 sh
+
+8.docker image build --tag $DOCKERID/linux_tweet_app:1.0 .
+ (Build using Maven plugin)Make sure Docker settting is changed to allow insecure TCP
+  1.mvn package
+  2.mvn install dockerfile:build
+
+9.docker login
+10.docker image push $DOCKERID/linux_tweet_app:1.0
+  (Using Maven Plugin) 
+   mvn dockerfile:push .
+
+11.docker container rm --force linux_tweet_app
+  docker rm -f a4b176be9e36
+  docker rm -f $(docker ps -aq) ---------(remove all containers)
+
+docker network ls
+
+docker network create <nameof nw>
+
+docker volume ls
+
+docker volumen create --driver=local --name=volume1
+
+
+//swarm//
+docker swarm init
+
+docker stack deploy -c trendfly-compose.yml trendfly
+
+docker service ls/docker stack ps/
+
+docker stack rm getstartedlab
+
+docker swarm leave --force
+
+docker container prune
+
+
+Angular commands
+-----------------------------
+
+1.Install node.js
+2.Install npm
+3.Install angular cli: npm i -g @angular/cli
+4.Start dev server:ng serve
+5.new project: ng new PROJECT_NAME
+6.npm update
+7.Create build:ng build --prod
+8.Genereate component: ng g c ComponentName <path optional >
+9.Genereate service: ng g s Service <path optional >
+--------------------------------------------
+Maven Commands
+
+mvn dependency:tree
+mvn tomcat7:run -Dspring.profiles.active=dev
+
+---------------------------------
+AWS Commands
+
+ssh -i mgb_aws1.pem ubuntu@13.59.194.156
+---------------------------------------------
+Spring Conventions
+Spring property presidence
+1.application.properties
+2.application-dev.properties
+3.Environemnt variables
+4.System variable(-D)
+5.Program variables (--)
+
+------------------------------------
+Majar Issues
+1.Eureka client not registering with eureka only inside docker container, works fine outside
+	-Configured eureka connection only in bootstrap
+	-Do not use localhost, use docker compose service name
+2.Zuul not forwording requests (only docker clustor)
+  Solved by adding ribbon timeout configuration(configuration file may show warning, which is safe to be ignored)
+3.Zipkin not working inside docker-compose
+  Solved by giving service name and overrding by below evnironment variable
+  1.spring.zipkin.base-url=http://zipkin:9411/
+  2.spring.sleuth.sampler.probability=1
+4.Config server issue
+
+
+minikube start --vm-driver hyperv --hyperv-virtual-switch "Primary Virtual Switch"
+
+java -jar -Dcec.migration.flag=3 -Dencryptright.apikey=zlXCCgDIojUAKRQMPuvRyADXvcEADiJF -Dencryptright_log4j=C:\Users\BHN3JKC\Desktop\cpc_ext\encryptright_log4j.properties -Dencryptright_properties=C:\Users\BHN3JKC\Desktop\cpc_ext\er_config.properties CECERTest.jar KeyClass10 e Mounesh
+java -jar -Dcec.migration.flag=3 -Dencryptright.apikey=zlXCCgDIojUAKRQMPuvRyADXvcEADiJF -Dencryptright_log4j=encryptright_log4j.properties -Dencryptright_properties=er_config.properties CECERTest.jar KeyClass10 e teststring
+
+-------------------------------------------------------
+Kubernates
+gcloud config set project [PROJECT_ID]
+gcloud config set compute/zone us-central1-b
+gcloud container clusters create trendfly-cluster--num-nodes=2
+gcloud container clusters list
+gcloud compute instances list
+gcloud container clusters describe guestbook
+kubectl create -f redis-master-deployment.yaml
+kubectl get pods
+kubectl logs -f [POD_NAME]
+kubectl exec -it [POD_NAME] sh
+kubectl create -f redis-master-service.yaml
+kubectl get service
+
+kubectl scale deployment frontend --replicas=5
+
+kubectl delete service frontend
+gcloud compute forwarding-rules list
+gcloud container clusters delete guestbook

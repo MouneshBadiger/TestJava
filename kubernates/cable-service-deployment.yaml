@@ -20,10 +20,12 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: dev,jpa
         - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
-          value: "http://10.67.10.1:8761/eureka"
+          value: "http://eureka-service/eureka"
         - name: EUREKA_CLIENT_ENABLED
           value: "true"
         - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
           value: "true"
+        - name: SPRING_CLOUD_CONFIG_URI
+          value: http://config-service:9999
         ports:
         - containerPort: 8082
