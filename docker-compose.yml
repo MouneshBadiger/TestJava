@@ -68,6 +68,28 @@ services:
     depends_on:
       - "config1"
       
+  oauth:
+    env_file:
+      - env_file.env
+    image: 7353207901/oauth-service:1.0
+    ports:
+      - 8088:8088
+    networks:
+      - webnet
+    depends_on:
+      - "config1" 
+
+  smartangapp:
+    env_file:
+      - env_file.env
+    image: 7353207901/smart-ang-app:1.1
+    ports:
+      - 8080:80
+    networks:
+      - webnet
+    depends_on:
+      - "config1"   
+      
   
     
 networks:

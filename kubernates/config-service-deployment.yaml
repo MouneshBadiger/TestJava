@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: config-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: config-service
+        role: api
+        tier: backend
+    spec:
+      containers:
+      - name: master
+        image: docker.io/7353207901/config-service:1.0  # or just image: redis
+        env:
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: "http://eureka-service/eureka"
+        - name: EUREKA_CLIENT_ENABLED
+          value: "true"
+        - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+          value: "true"
+        ports:
+        - containerPort: 9999

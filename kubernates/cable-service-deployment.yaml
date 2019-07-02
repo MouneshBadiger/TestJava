@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cable-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cable-service
+        role: api
+        tier: backend
+    spec:
+      containers:
+      - name: master
+        image: docker.io/7353207901/cable-service:1.1  # or just image: redis
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /app/smartcableapp-211915-af70f90f4962.json
+        - name: SPRING_PROFILES_ACTIVE
+          value: dev,jpa
+        - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+          value: "http://10.67.10.1:8761/eureka"
+        - name: EUREKA_CLIENT_ENABLED
+          value: "true"
+        - name: EUREKA_INSTANCE_PREFER_IP_ADDRESS
+          value: "true"
+        ports:
+        - containerPort: 8082
