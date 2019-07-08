@@ -1,0 +1,805 @@
+-- MySQL dump 10.13  Distrib 5.7.14, for Linux (x86_64)
+--
+-- Host: localhost    Database: mgb_kng
+-- ------------------------------------------------------
+-- Server version	5.7.14-google
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `mgb_kng`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `mgb_kng` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */;
+
+USE `mgb_kng`;
+
+--
+-- Table structure for table `area_master`
+--
+
+DROP TABLE IF EXISTS `area_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `area_master` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `is_active` bit(1) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_modified_by` varchar(255) DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKrifjsa42u3h0xf448ia8vy182` (`tenant_id`),
+  CONSTRAINT `FKrifjsa42u3h0xf448ia8vy182` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `area_master`
+--
+
+LOCK TABLES `area_master` WRITE;
+/*!40000 ALTER TABLE `area_master` DISABLE KEYS */;
+INSERT INTO `area_master` VALUES (1,0x01,'bhovi street',1,NULL,NULL,NULL,NULL),(2,0x01,'kenganur',1,NULL,NULL,NULL,NULL),(3,0x00,'bhovi “Mad Dog”',1,'','2018-10-06 14:15:38','','2018-10-06 14:16:25'),(4,0x00,'bhovi ',1,'','2018-10-06 14:18:37','','2018-10-06 14:20:24'),(5,0x00,'bhovi 1',1,'','2018-10-06 14:23:00','','2018-10-06 14:23:32'),(6,0x00,'bhovi 12',1,'1','2018-10-06 15:42:46','1','2018-10-06 15:42:46'),(7,0x01,'Kajagr street',1,'4','2018-10-11 15:40:06','4','2018-10-11 15:40:06'),(8,0x00,'test',1,'1','2018-10-11 22:58:22','1','2018-10-11 22:58:22'),(9,0x01,'area 1',1,'1','2018-10-11 22:58:50','1','2018-10-11 22:58:50'),(10,0x00,'area2',1,'1','2018-10-11 22:58:38','1','2018-10-11 22:58:38'),(11,0x01,'area 2',1,'1','2018-10-11 22:59:03','1','2018-10-11 22:59:03'),(12,0x01,'bhovi123',1,'5','2018-11-22 15:54:57','5','2018-11-22 15:54:57'),(13,0x01,'bhovi321',1,'5','2018-11-22 16:38:40','5','2018-11-22 16:38:40'),(15,0x01,'bhovi “Mad Dog”',1,'34','2019-02-05 12:53:39','34','2019-02-05 12:53:39'),(16,0x01,'mangotest',1,'34','2019-02-05 12:58:30','34','2019-02-05 12:58:30'),(17,0x01,'Thavarekere 1st cross',1,'34','2019-05-31 14:02:30','34','2019-05-31 14:02:30');
+/*!40000 ALTER TABLE `area_master` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `channel`
+--
+
+DROP TABLE IF EXISTS `channel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `channel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `channel_name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `channel_pack_id` int(11) NOT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `rate` float DEFAULT NULL,
+  `channel_pack` int(11) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `ch_pack_id` int(11) DEFAULT NULL,
+  `is_selected` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK59vbshuh3od01xgq1lghvnxuy` (`channel_pack`),
+  KEY `FKa3gcxcs45rkce6af8bswx6kd3` (`tenant_id`),
+  KEY `FKhsmvyjow1n9ppputy2dvsjbq0` (`ch_pack_id`),
+  CONSTRAINT `FK59vbshuh3od01xgq1lghvnxuy` FOREIGN KEY (`channel_pack`) REFERENCES `channel_pack` (`id`),
+  CONSTRAINT `FKa3gcxcs45rkce6af8bswx6kd3` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`),
+  CONSTRAINT `FKhsmvyjow1n9ppputy2dvsjbq0` FOREIGN KEY (`ch_pack_id`) REFERENCES `channel_pack` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `channel`
+--
+
+LOCK TABLES `channel` WRITE;
+/*!40000 ALTER TABLE `channel` DISABLE KEYS */;
+INSERT INTO `channel` VALUES (2,'Zee TV',0,'34','2019-01-10 23:25:01',0x00,'35','2019-01-11 18:11:41',0,2,1,NULL,NULL),(3,'MMMMM',0,'34','2019-01-10 23:25:46',0x00,'34','2019-02-20 09:48:25',78.9,3,1,NULL,NULL),(4,'Zee Telagu',0,'34','2019-01-10 23:26:23',0x00,'34','2019-01-10 23:26:23',0,2,1,NULL,NULL),(5,'Zee Marati',0,'34','2019-01-10 23:26:34',0x00,'34','2019-01-10 23:26:34',0,2,1,NULL,NULL),(6,'Zee Urdu',0,'34','2019-01-10 23:26:58',0x00,'34','2019-01-10 23:26:58',0,2,1,NULL,NULL),(7,'jzeee',0,'34','2019-01-10 23:29:01',0x00,'34','2019-01-10 23:46:06',0,2,1,NULL,NULL),(8,'suh tv',0,'35','2019-01-12 02:04:14',0x00,'35','2019-01-12 02:04:14',0,3,1,NULL,NULL),(9,'Test Channel1',0,'35','2019-01-12 17:17:50',0x00,'35','2019-01-12 17:17:50',0,5,1,NULL,NULL),(10,'Star plus',0,'35','2019-01-13 20:40:48',0x00,'35','2019-01-13 20:40:48',0,4,1,NULL,NULL),(11,'Basic',0,'35','2019-01-15 15:05:46',0x00,'35','2019-01-15 15:05:46',0,10,1,NULL,NULL),(12,'Star sports 1',0,'35','2019-01-16 20:04:53',0x00,'35','2019-01-16 20:04:53',0,4,1,NULL,NULL),(13,'STAR SPORTS 1 KANNAD',0,'35','2019-01-16 20:05:23',0x01,'35','2019-01-16 20:05:23',0,4,1,NULL,NULL),(14,'UDAY TV',0,'35','2019-01-16 21:29:37',0x01,'34','2019-02-19 19:33:20',10,3,1,NULL,NULL),(15,'UDAY MOVIES',0,'35','2019-01-16 21:29:45',0x01,'35','2019-01-16 21:29:45',0,3,1,NULL,NULL),(16,'UDAY COMEDY',0,'35','2019-01-16 21:29:50',0x01,'35','2019-01-16 21:29:50',0,3,1,NULL,NULL),(17,'UDAY MUSIC',0,'35','2019-01-16 21:30:18',0x01,'34','2019-03-10 02:19:07',10,3,1,NULL,NULL),(18,'CHINTU TV',0,'35','2019-01-16 21:30:25',0x00,'35','2019-01-16 21:30:25',0,3,1,NULL,NULL),(19,'UDAY NEWS',0,'35','2019-01-16 21:30:38',0x01,'34','2019-02-19 19:33:30',123,3,1,NULL,NULL),(20,'ZEE ACTION',0,'35','2019-01-16 21:32:49',0x01,'35','2019-01-16 21:32:49',0,2,1,NULL,NULL),(21,'ZEE NEWS',0,'35','2019-01-16 21:32:55',0x01,'35','2019-01-16 21:32:55',0,2,1,NULL,NULL),(22,'ZEE HINDUSTAN',0,'35','2019-01-16 21:33:05',0x01,'35','2019-01-16 21:33:05',0,2,1,NULL,NULL),(23,'LIVING FOODZ',0,'35','2019-01-16 21:33:18',0x01,'35','2019-01-16 21:33:18',0,2,1,NULL,NULL),(24,'ZEE ETC',0,'35','2019-01-16 21:33:30',0x01,'35','2019-01-16 21:33:30',0,2,1,NULL,NULL),(25,'WION',0,'35','2019-01-16 21:33:43',0x01,'35','2019-01-16 21:33:43',0,2,1,NULL,NULL),(26,'ZEE KERALAM',0,'35','2019-01-16 21:33:56',0x01,'35','2019-01-16 21:33:56',0,2,1,NULL,NULL),(27,'STAR PLUS',0,'34','2019-01-17 00:51:19',0x01,'34','2019-01-17 00:51:19',0,4,1,NULL,NULL),(28,'STAR GOLD',0,'34','2019-01-22 14:48:23',0x01,'34','2019-01-22 14:48:23',NULL,4,1,NULL,NULL),(29,'STAR MARATI',0,'34','2019-01-25 21:20:28',0x01,'34','2019-01-25 21:20:28',NULL,4,1,NULL,NULL),(30,'SUN TV',0,'43','2019-01-27 00:53:44',0x01,'43','2019-01-27 00:53:44',NULL,11,2,NULL,NULL),(31,'UDAY TV',0,'43','2019-01-27 00:53:51',0x01,'43','2019-01-27 00:53:51',NULL,11,2,NULL,NULL),(32,'USE TV',0,'43','2019-01-27 00:53:57',0x01,'43','2019-01-27 00:53:57',NULL,11,2,NULL,NULL),(33,'UDAYA NEWS',0,'43','2019-01-27 00:54:06',0x01,'43','2019-01-27 00:54:06',NULL,11,2,NULL,NULL),(34,'STAR PLUS',0,'43','2019-01-27 00:54:52',0x01,'43','2019-01-27 00:54:52',NULL,12,2,NULL,NULL),(35,'STAR MOVIES',0,'43','2019-01-27 00:54:59',0x01,'43','2019-01-27 00:54:59',NULL,12,2,NULL,NULL),(36,'STAR GOLD',0,'43','2019-01-27 01:13:17',0x01,'43','2019-01-27 01:13:17',NULL,12,2,NULL,NULL),(37,'DD1',0,'34','2019-02-20 15:59:04',0x01,'34','2019-02-20 15:59:04',0,10,1,NULL,NULL),(38,'DD URDU',0,'34','2019-03-17 12:47:15',0x01,'34','2019-03-17 12:48:31',200,10,1,NULL,NULL);
+/*!40000 ALTER TABLE `channel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `channel_pack`
+--
+
+DROP TABLE IF EXISTS `channel_pack`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `channel_pack` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `package_name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `rate` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKqm19bkanlh6if592x6r6udr20` (`tenant_id`),
+  CONSTRAINT `FKqm19bkanlh6if592x6r6udr20` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `channel_pack`
+--
+
+LOCK TABLES `channel_pack` WRITE;
+/*!40000 ALTER TABLE `channel_pack` DISABLE KEYS */;
+INSERT INTO `channel_pack` VALUES (1,'34','2019-01-10 09:04:51',0x00,'34','2019-01-10 09:04:53','Vtu',1,NULL),(2,'34','2019-01-10 09:05:51',0x00,'35','2019-01-12 17:20:09','Zee Package',1,NULL),(3,'34','2019-01-10 15:41:57',0x01,'34','2019-02-20 15:58:49','SUN PACKAGE',1,12),(4,'34','2019-01-10 15:42:41',0x00,'34','2019-01-10 16:26:25','Star Package',1,NULL),(5,'34','2019-01-10 15:45:25',0x00,'35','2019-01-12 17:17:18','Test Package',1,NULL),(6,'34','2019-01-10 15:46:28',0x00,'34','2019-01-10 15:46:28','',1,NULL),(7,'34','2019-01-10 15:46:37',0x00,'34','2019-01-10 15:46:37','Test',1,NULL),(8,'34','2019-01-10 16:27:52',0x00,'34','2019-01-10 16:41:10','mounesh',1,NULL),(9,'34','2019-01-10 16:50:40',0x00,'34','2019-01-10 16:50:50','delete me',1,NULL),(10,'35','2019-01-15 15:05:03',0x01,'34','2019-02-20 15:59:25','BASIC PACKAGE',1,0),(11,'43','2019-01-27 00:53:30',0x01,'43','2019-01-27 00:53:30','SUN PACKAGE',2,NULL),(12,'43','2019-01-27 00:54:41',0x01,'43','2019-01-27 00:54:41','STAR PACKAGE',2,NULL),(13,'43','2019-01-27 01:08:06',0x01,'43','2019-01-27 01:08:06','BASIC PACKAGE',2,NULL),(14,'36','2019-02-03 04:12:56',0x01,'34','2019-02-19 19:34:02','SILVER PACK KANNADA',1,11),(15,'36','2019-02-03 04:13:13',0x01,'34','2019-02-19 19:33:52','GOLD PACK KANNADA',1,11.4),(16,'34','2019-02-19 13:54:10',0x01,'34','2019-02-19 13:54:11','TEST PACK',1,100),(17,'34','2019-03-01 17:40:22',0x01,'34','2019-03-01 17:40:22','MONGO1',1,120),(18,'34','2019-03-01 17:42:10',0x01,'34','2019-03-01 17:42:10','MONGO2',1,120);
+/*!40000 ALTER TABLE `channel_pack` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `channel_rate`
+--
+
+DROP TABLE IF EXISTS `channel_rate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `channel_rate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `rate` double DEFAULT NULL,
+  `channel_id` int(11) DEFAULT NULL,
+  `package_rate_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK7tec177ltdoaockwpqhu4dd75` (`channel_id`),
+  KEY `FKfqoimehokt3wjqq76m2nx9xtv` (`package_rate_id`),
+  CONSTRAINT `FK7tec177ltdoaockwpqhu4dd75` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`),
+  CONSTRAINT `FKfqoimehokt3wjqq76m2nx9xtv` FOREIGN KEY (`package_rate_id`) REFERENCES `package_rate` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `channel_rate`
+--
+
+LOCK TABLES `channel_rate` WRITE;
+/*!40000 ALTER TABLE `channel_rate` DISABLE KEYS */;
+/*!40000 ALTER TABLE `channel_rate` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `complaints`
+--
+
+DROP TABLE IF EXISTS `complaints`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `complaints` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `complaint_date` datetime DEFAULT NULL,
+  `complaint_desc` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `complaint_status` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `img_url` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `subscriber_id` int(11) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `is_closed` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK7cjlqqw1k85tw7yddak1dc1h1` (`subscriber_id`),
+  KEY `FKl4b8xmbsctksl9700l89srrhd` (`tenant_id`),
+  CONSTRAINT `FK7cjlqqw1k85tw7yddak1dc1h1` FOREIGN KEY (`subscriber_id`) REFERENCES `subscriber` (`id`),
+  CONSTRAINT `FKl4b8xmbsctksl9700l89srrhd` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `complaints`
+--
+
+LOCK TABLES `complaints` WRITE;
+/*!40000 ALTER TABLE `complaints` DISABLE KEYS */;
+INSERT INTO `complaints` VALUES (63,'2019-02-20 10:10:40','No data available in my mobile','pending','44','2019-02-20 10:10:40',NULL,0x01,'44','2019-02-20 10:10:40',670,1,0x00),(64,'2019-02-20 15:53:46','Uday TV is working','pending','46','2019-02-20 15:53:46','https://storage.googleapis.com/smartcableapp-211915.appspot.com/Complaints/compl_1550678026825',0x01,'46','2019-02-20 15:53:46',856,1,0x00),(65,'2019-03-15 23:10:53','my mouse issue','pending','44','2019-03-15 23:10:53',NULL,0x00,'44','2019-03-15 23:10:53',670,1,0x00);
+/*!40000 ALTER TABLE `complaints` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `discontinuity`
+--
+
+DROP TABLE IF EXISTS `discontinuity`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `discontinuity` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `last_modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `subscriber_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `discontinuity`
+--
+
+LOCK TABLES `discontinuity` WRITE;
+/*!40000 ALTER TABLE `discontinuity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `discontinuity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `distributor_pack`
+--
+
+DROP TABLE IF EXISTS `distributor_pack`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `distributor_pack` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `pack_img_url` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `pack_name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `pack_price_wgst` double DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK7b2lxd43gjfc8q78s28kr9q78` (`tenant_id`),
+  CONSTRAINT `FK7b2lxd43gjfc8q78s28kr9q78` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `distributor_pack`
+--
+
+LOCK TABLES `distributor_pack` WRITE;
+/*!40000 ALTER TABLE `distributor_pack` DISABLE KEYS */;
+INSERT INTO `distributor_pack` VALUES (1,'34','2019-02-04 16:57:44',0x01,'34','2019-03-14 22:26:41',NULL,'SILVER PACK - KANNAD',199,1),(2,'34','2019-02-04 19:11:54',0x01,'34','2019-03-27 00:36:34','https://smartcableapp-211915.appspot.com/DistrubPackImages/pack_1549778561494','GOLD PACK - KANNAD',275,1),(3,'34','2019-02-04 19:16:36',0x01,'34','2019-02-06 13:49:43',NULL,'CUSTOM PACK',300,1),(4,'34','2019-02-09 19:42:37',0x01,'34','2019-03-27 00:37:30','https://smartcableapp-211915.appspot.com/DistrubPackImages/pack_1549741357831','TEST',124,1),(5,'34','2019-03-01 17:37:25',0x00,'34','2019-03-01 17:37:25',NULL,'MONGO',100,1),(6,'34','2019-03-17 12:45:53',0x01,'34','2019-03-17 12:46:17',NULL,'TEST1',127,1);
+/*!40000 ALTER TABLE `distributor_pack` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `global_user`
+--
+
+DROP TABLE IF EXISTS `global_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `global_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `address` varchar(255) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `dob` datetime DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `global_role` varchar(255) DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `mobile_no` varchar(255) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `user_name` varchar(255) DEFAULT NULL,
+  `subscriber_id` int(11) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `emai_id` varchar(255) DEFAULT NULL,
+  `email_id` varchar(255) DEFAULT NULL,
+  `pass_reset_code` varchar(255) DEFAULT NULL,
+  `pass_reset_otp` varchar(255) DEFAULT NULL,
+  `reg_token` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKql8wb8nomll52gs3nh09cedox` (`subscriber_id`),
+  KEY `FK24ivof7aj5m3dayny12f4o5u0` (`tenant_id`),
+  CONSTRAINT `FK24ivof7aj5m3dayny12f4o5u0` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`),
+  CONSTRAINT `FKql8wb8nomll52gs3nh09cedox` FOREIGN KEY (`subscriber_id`) REFERENCES `subscriber` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `global_user`
+--
+
+LOCK TABLES `global_user` WRITE;
+/*!40000 ALTER TABLE `global_user` DISABLE KEYS */;
+INSERT INTO `global_user` VALUES (34,NULL,'dev','2018-12-14 11:52:58',NULL,'male',NULL,0x01,'7353207901','34','2019-02-20 15:56:52','$2a$10$9SZr/gdiUk7rzcYw9MevxuDG36MYRDZ.MqLafxYcxe1O/HlBY0JU.','Mounesh',NULL,1,'test@gmail.com','mounesh.gb@gmail.com',NULL,'988074','e8RgkQVTy50:APA91bGjROqu0YuvUDHG-dF02SK7lmGLCs1aFmo3IAdMaPGgWH2XWIs6LnOrtOLeJOupybvqMkg_dkCueHocO0Z67T8bfZ0h-wqEDuxpe27gz9OiMpSxvfsA4fyc-GLkaw3NvktXlx0X'),(35,NULL,'dev','2018-12-14 13:57:05',NULL,'male',NULL,0x01,'9980663789','35','2019-02-08 15:30:51','$2a$10$tm8vjjZ365EFDf3GfEQ0beeglHvsl2XExDnqO5CZqdK.46IQwMxwi','Test',NULL,1,'moun@gmail.com',NULL,NULL,NULL,NULL),(36,NULL,'dev','2018-12-20 10:07:50','2019-02-21 18:30:00','male',NULL,0x01,'9901893195','36','2019-02-25 06:36:00','$2a$10$XQidKA/YD8M0f3idkTC7PeUX.F.nUZEpuy9ZJrZ9PPbNgrLEUo4Fy','Anand',NULL,1,NULL,'anand@gmail.com',NULL,NULL,NULL),(37,NULL,'dev','2018-12-20 10:17:02','1994-03-02 18:30:00','female',NULL,0x01,'5555555555','dev','2018-12-20 10:17:02','$2a$10$9OD1R/GexAvLj.Oa0571V.VaviyjXccnU4uqZwAU.pG0XQyYhc7UO','Gayatri',NULL,NULL,NULL,'gayatri@gmail.com',NULL,NULL,'e8RgkQVTy50:APA91bGjROqu0YuvUDHG-dF02SK7lmGLCs1aFmo3IAdMaPGgWH2XWIs6LnOrtOLeJOupybvqMkg_dkCueHocO0Z67T8bfZ0h-wqEDuxpe27gz9OiMpSxvfsA4fyc-GLkaw3NvktXlx0X'),(38,NULL,'dev','2018-12-21 05:53:00','1995-08-16 18:30:00','male',NULL,0x01,'9649047111','38','2018-12-21 05:54:30','$2a$10$SsZWJ755SUG1peh5Lg2M/Ovnx1txYJm1akNy5s/HayCqvF0gZ4bQm','Anmol ',NULL,1,NULL,'anmolbhardwaj94@gmail.com',NULL,NULL,NULL),(39,NULL,'dev','2018-12-25 11:21:12','2018-12-04 18:30:00','male',NULL,0x01,'7353207999','39','2018-12-25 12:26:04','$2a$10$ZRXB1UxhtYMdQeYn9WXS2e9k3CwtcUbPMgoQWmALX6Y66rIKH3mGy','Test',NULL,NULL,NULL,'smart.cable.app@gmail.com','1546118044876',NULL,NULL),(40,NULL,'dev','2018-12-27 17:38:42',NULL,'male',NULL,0x01,'9876543210','40','2018-12-27 19:26:38','$2a$10$xG3gMsolOJ3eVcjulghiG.ZwmHJDq0OnTaMmqDDzzlFGvhPZCIIFi','Narendra Modi',NULL,NULL,NULL,'mounesh@gmail.com',NULL,NULL,NULL),(41,NULL,'dev','2018-12-31 07:50:13',NULL,'male',NULL,0x01,'8310378973','41','2018-12-31 11:58:07','$2a$10$uemeX0zh16.fil3527YWk.hD.tP3JglXoPNuvd3suMaSTS1oT//lq','Ramesh',NULL,NULL,NULL,'',NULL,NULL,NULL),(42,NULL,'dev','2019-01-26 17:44:43',NULL,'male',NULL,0x01,'9740413171','dev','2019-01-26 17:44:43','$2a$10$GL75LS1QBgW/TNUdG2SEyez8TaY6WhyOzB0DGDBjtMQjezM95LiBy','Ramappa Basappa Totagi',NULL,NULL,NULL,'',NULL,NULL,NULL),(43,NULL,'dev','2019-01-26 23:58:59',NULL,'male',NULL,0x01,'7899241227','dev','2019-01-26 23:58:59','$2a$10$ocKmy6YjCo02YA7Im4apW.mNa..MgMsNSfzmResHiQqzXtOtfuSUi','Muttu Aravalli',NULL,2,NULL,'',NULL,NULL,NULL),(44,NULL,'dev','2019-02-09 23:29:41',NULL,'male',NULL,0x01,'9686132225','44','2019-02-17 17:52:07','$2a$10$GZygtTbPle6WOEUSzJE.J.W67sDBfH7bB4bpTiIlyz.ExZH3y5XYW','Sindlingayya Pujer',NULL,NULL,NULL,'',NULL,NULL,'e8RgkQVTy50:APA91bGjROqu0YuvUDHG-dF02SK7lmGLCs1aFmo3IAdMaPGgWH2XWIs6LnOrtOLeJOupybvqMkg_dkCueHocO0Z67T8bfZ0h-wqEDuxpe27gz9OiMpSxvfsA4fyc-GLkaw3NvktXlx0X'),(45,NULL,'dev','2019-02-10 08:02:09',NULL,'male',NULL,0x01,'9844491728','45','2019-02-10 16:45:31','$2a$10$SJKi4akxFpZxYFTJqGCezOEyOet/0U1OaxP4elF8R.qBaOHNUpJeu','Malakaji',NULL,NULL,NULL,'',NULL,NULL,'e8RgkQVTy50:APA91bGjROqu0YuvUDHG-dF02SK7lmGLCs1aFmo3IAdMaPGgWH2XWIs6LnOrtOLeJOupybvqMkg_dkCueHocO0Z67T8bfZ0h-wqEDuxpe27gz9OiMpSxvfsA4fyc-GLkaw3NvktXlx0X'),(46,NULL,'dev','2019-02-20 15:44:28',NULL,'male',NULL,0x01,'9876543211','46','2019-02-20 15:46:03','$2a$10$K6EaHAQ28pLGh.IDYOepqO6NAp4CMXDj62toJqrYrcVGuppEJL5I6','Ramesh Kumar',NULL,NULL,NULL,'',NULL,NULL,'e8RgkQVTy50:APA91bGjROqu0YuvUDHG-dF02SK7lmGLCs1aFmo3IAdMaPGgWH2XWIs6LnOrtOLeJOupybvqMkg_dkCueHocO0Z67T8bfZ0h-wqEDuxpe27gz9OiMpSxvfsA4fyc-GLkaw3NvktXlx0X');
+/*!40000 ALTER TABLE `global_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `package_rate`
+--
+
+DROP TABLE IF EXISTS `package_rate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `package_rate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `rate` double DEFAULT NULL,
+  `channel_pack` int(11) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK3xoe0ta740mvgfaor976nl2vn` (`channel_pack`),
+  KEY `FKltm38ns6gdysgdrpgbdutdljt` (`tenant_id`),
+  CONSTRAINT `FK3xoe0ta740mvgfaor976nl2vn` FOREIGN KEY (`channel_pack`) REFERENCES `channel_pack` (`id`),
+  CONSTRAINT `FKltm38ns6gdysgdrpgbdutdljt` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `package_rate`
+--
+
+LOCK TABLES `package_rate` WRITE;
+/*!40000 ALTER TABLE `package_rate` DISABLE KEYS */;
+/*!40000 ALTER TABLE `package_rate` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `payment_details`
+--
+
+DROP TABLE IF EXISTS `payment_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `payment_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `amount_paid` int(11) DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `payment_date` datetime DEFAULT NULL,
+  `subscriber_id` int(11) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_modified_by` varchar(255) DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  `payment_mode` varchar(255) DEFAULT NULL,
+  `payment_success` bit(1) DEFAULT NULL,
+  `paytm_order_id` varchar(255) DEFAULT NULL,
+  `paytm_status` varchar(255) DEFAULT NULL,
+  `paytm_txn_id` varchar(255) DEFAULT NULL,
+  `expirty_date` datetime DEFAULT NULL,
+  `is_recharge_active` bit(1) DEFAULT NULL,
+  `pack_details` text,
+  `pack_mrp` double DEFAULT NULL,
+  `pack_name` varchar(255) DEFAULT NULL,
+  `recharge_for` varchar(255) DEFAULT NULL,
+  `expiry_date` datetime DEFAULT NULL,
+  `selected_dist_pack` int(11) DEFAULT NULL,
+  `op_rech_success` bit(1) DEFAULT NULL,
+  `wallet_left` double DEFAULT NULL,
+  `is_extended_pack` bit(1) DEFAULT NULL,
+  `pack_start_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKms9xx1jh3cwl18gbbd6pyhy5h` (`subscriber_id`),
+  KEY `FKcmi33udks5h1i6vfbbg76p2f4` (`tenant_id`),
+  KEY `FK5hpedma7ejijj2vldsc6y2jn5` (`selected_dist_pack`),
+  CONSTRAINT `FK5hpedma7ejijj2vldsc6y2jn5` FOREIGN KEY (`selected_dist_pack`) REFERENCES `distributor_pack` (`id`),
+  CONSTRAINT `FKcmi33udks5h1i6vfbbg76p2f4` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`),
+  CONSTRAINT `FKms9xx1jh3cwl18gbbd6pyhy5h` FOREIGN KEY (`subscriber_id`) REFERENCES `subscriber` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payment_details`
+--
+
+LOCK TABLES `payment_details` WRITE;
+/*!40000 ALTER TABLE `payment_details` DISABLE KEYS */;
+INSERT INTO `payment_details` VALUES (111,199,0x01,'2019-01-01 00:00:00',862,1,'34','2019-03-28 22:51:51','34','2019-03-28 22:51:51','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-01-31 00:00:00',1,NULL,0,0x01,'2019-01-01 00:00:00'),(112,199,0x01,'2019-01-24 00:00:00',862,1,'34','2019-03-28 22:52:08','34','2019-03-28 22:52:08','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-03-02 00:00:00',1,NULL,0,0x01,'2019-01-31 00:00:00'),(113,199,0x00,'2019-03-20 00:00:00',862,1,'34','2019-03-28 22:52:50','34','2019-03-28 22:52:50','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-04-19 00:00:00',1,NULL,0,0x01,'2019-03-20 00:00:00'),(114,199,0x00,'2019-03-28 22:53:12',882,1,'34','2019-03-28 22:53:23','34','2019-03-28 22:53:23','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-04-27 22:53:12',1,NULL,0,0x01,'2019-03-28 22:53:12'),(115,199,0x00,'2019-03-28 22:53:35',882,1,'34','2019-03-28 22:54:07','34','2019-03-28 22:54:07','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-27 00:00:00',1,NULL,0,0x01,'2019-04-27 00:00:00'),(116,199,0x01,'2019-02-27 00:00:00',872,1,'34','2019-03-28 22:56:41','34','2019-03-28 22:56:41','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-03-29 00:00:00',1,NULL,0,0x01,'2019-02-27 00:00:00'),(117,199,0x00,'2019-02-26 00:00:00',865,1,'34','2019-03-28 22:58:35','34','2019-03-28 22:58:35','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-03-28 00:00:00',1,NULL,0,0x01,'2019-02-26 00:00:00'),(118,199,0x01,'2019-01-02 00:00:00',883,1,'34','2019-03-28 23:18:48','34','2019-03-28 23:18:48','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-02-01 00:00:00',1,NULL,0,0x01,'2019-01-02 00:00:00'),(119,199,0x00,'2019-03-28 23:19:08',862,1,'34','2019-03-28 23:19:11','34','2019-03-28 23:19:11','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-19 00:00:00',1,NULL,0,0x01,'2019-04-19 00:00:00'),(120,199,0x00,'2019-03-29 00:27:11',872,1,'34','2019-03-29 00:27:15','34','2019-03-29 00:27:15','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-04-28 00:27:11',1,NULL,0,0x01,'2019-03-29 00:27:11'),(121,199,0x01,'2019-01-01 00:00:00',865,1,'34','2019-03-29 15:53:46','34','2019-03-29 15:53:46','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-01-31 00:00:00',1,NULL,0,0x01,'2019-01-01 00:00:00'),(122,199,0x00,'2019-01-25 00:00:00',865,1,'34','2019-03-29 15:53:57','34','2019-03-29 15:53:57','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-03-02 00:00:00',1,NULL,0,0x01,'2019-01-31 00:00:00'),(123,199,0x00,'2019-01-31 00:00:00',865,1,'34','2019-03-29 15:54:24','34','2019-03-29 15:54:24','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-04-01 00:00:00',1,NULL,0,0x01,'2019-03-02 00:00:00'),(124,199,0x00,'2019-03-29 15:54:35',865,1,'34','2019-03-29 15:54:39','34','2019-03-29 15:54:39','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 00:00:00',1,NULL,0,0x01,'2019-04-01 00:00:00'),(125,199,0x00,'2019-03-29 15:54:45',865,1,'34','2019-03-29 15:54:48','34','2019-03-29 15:54:48','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-31 00:00:00',1,NULL,0,0x01,'2019-05-01 00:00:00'),(126,199,0x00,'2019-03-29 15:56:15',865,1,'34','2019-03-29 15:56:19','34','2019-03-29 15:56:19','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-04-28 15:56:15',1,NULL,0,0x01,'2019-03-29 15:56:15'),(127,199,0x01,'2019-04-01 18:30:00',882,1,'34','2019-04-07 17:14:02','34','2019-04-07 17:14:02','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 18:30:00',1,NULL,0,0x01,'2019-04-01 18:30:00'),(128,199,0x01,'2019-04-03 18:30:00',877,1,'34','2019-04-07 17:15:38','34','2019-04-07 17:15:38','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-03 18:30:00',1,NULL,0,0x01,'2019-04-03 18:30:00'),(129,199,0x01,'2019-04-04 18:30:00',864,1,'34','2019-04-07 17:18:15','34','2019-04-07 17:18:15','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-04 18:30:00',1,NULL,0,0x01,'2019-04-04 18:30:00'),(130,199,0x01,'2019-04-05 00:00:00',861,1,'34','2019-04-07 22:58:49','34','2019-04-07 22:58:49','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-05 00:00:00',1,NULL,0,0x01,'2019-04-05 00:00:00'),(131,199,0x01,'2019-04-05 00:00:00',890,1,'34','2019-04-07 23:05:50','34','2019-04-07 23:05:50','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-05 00:00:00',1,NULL,0,0x01,'2019-04-05 00:00:00'),(132,199,0x01,'2019-04-02 00:00:00',883,1,'34','2019-04-07 23:08:00','34','2019-04-07 23:08:00','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x01,'2019-04-02 00:00:00'),(133,0,0x00,'2019-04-07 23:08:35',718,1,'34','2019-04-07 23:08:49','34','2019-04-07 23:08:49','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-07 23:08:35',1,NULL,54,0x01,'2019-04-07 23:08:35'),(134,199,0x01,'2019-03-10 00:00:00',865,1,'34','2019-04-07 23:19:01','34','2019-04-07 23:19:01','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-04-09 00:00:00',1,NULL,0,0x01,'2019-03-10 00:00:00'),(135,199,0x01,'2019-04-07 23:21:47',865,1,'34','2019-04-07 23:21:51','34','2019-04-07 23:21:51','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-09 00:00:00',1,NULL,0,0x01,'2019-04-09 00:00:00'),(136,145,0x00,'2019-04-07 23:23:33',718,1,'34','2019-04-07 23:23:38','34','2019-04-07 23:23:38','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-06 00:00:00',1,NULL,0,0x01,'2019-05-07 00:00:00'),(137,199,0x01,'2019-04-05 00:00:00',718,1,'34','2019-04-07 23:25:48','34','2019-04-07 23:25:48','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-05 00:00:00',1,NULL,0,0x01,'2019-04-05 00:00:00'),(138,199,0x01,'2019-01-26 00:00:00',820,1,'34','2019-04-07 23:33:14','34','2019-04-07 23:33:14','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-02-25 00:00:00',1,NULL,0,0x01,'2019-01-26 00:00:00'),(139,199,0x00,'2019-04-07 23:33:35',820,1,'34','2019-04-07 23:33:38','34','2019-04-07 23:33:38','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-07 23:33:35',1,NULL,0,0x01,'2019-04-07 23:33:35'),(140,199,0x01,'2019-04-07 23:33:52',820,1,'34','2019-04-07 23:33:57','34','2019-04-07 23:33:57','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-07 23:33:52',1,NULL,0,0x01,'2019-04-07 23:33:52'),(141,199,0x00,'2019-04-07 23:34:27',820,1,'34','2019-04-07 23:34:29','34','2019-04-07 23:34:29','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-06 00:00:00',1,NULL,0,0x01,'2019-05-07 00:00:00'),(142,199,0x00,'2019-04-07 23:34:53',820,1,'34','2019-04-07 23:34:57','34','2019-04-07 23:34:57','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-06 23:33:52',1,NULL,0,0x01,'2019-05-07 23:33:52'),(143,199,0x01,'2019-04-07 23:35:26',820,1,'34','2019-04-07 23:35:28','34','2019-04-07 23:35:28','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-06 23:33:52',1,NULL,0,0x01,'2019-05-07 23:33:52'),(144,199,0x01,'2019-04-07 23:35:50',820,1,'34','2019-04-07 23:35:53','34','2019-04-07 23:35:53','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-07-06 00:00:00',1,NULL,0,0x01,'2019-06-06 00:00:00'),(145,275,0x01,'2019-04-03 00:00:00',775,1,'34','2019-04-07 23:38:57','34','2019-04-07 23:38:57','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,275,'GOLD PACK - KANNAD','30','2019-05-03 00:00:00',2,NULL,0,0x01,'2019-04-03 00:00:00'),(146,199,0x00,'2019-04-03 18:30:00',872,1,'34','2019-04-07 18:18:22','34','2019-04-07 18:18:22','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-28 00:00:00',1,NULL,0,0x01,'2019-04-28 00:00:00'),(147,199,0x01,'2019-04-04 18:30:00',871,1,'34','2019-04-07 18:18:47','34','2019-04-07 18:18:47','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-04 18:30:00',1,NULL,0,0x01,'2019-04-04 18:30:00'),(148,199,0x01,'2019-04-07 18:24:03',862,1,'34','2019-04-07 18:24:16','34','2019-04-07 18:24:16','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-18 00:00:00',1,NULL,0,0x01,'2019-05-19 00:00:00'),(149,199,0x01,'2019-03-31 18:30:00',724,1,'34','2019-04-07 18:24:43','34','2019-04-07 18:24:43','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-04-30 18:30:00',1,NULL,0,0x01,'2019-03-31 18:30:00'),(150,199,0x00,'2019-04-08 06:36:07',863,1,'34','2019-04-08 06:36:19','34','2019-04-08 06:36:19','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-08 06:36:07',1,NULL,0,0x01,'2019-04-08 06:36:07'),(151,199,0x00,'2019-04-01 18:30:00',863,1,'34','2019-04-08 06:36:52','34','2019-04-08 06:36:52','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 18:30:00',1,NULL,0,0x01,'2019-04-01 18:30:00'),(152,199,0x01,'2019-04-08 10:27:45',680,1,'34','2019-04-08 10:28:13','34','2019-04-08 10:28:13','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-08 10:27:45',1,NULL,0,0x01,'2019-04-08 10:27:45'),(153,199,0x01,'2019-04-01 18:30:00',863,1,'34','2019-04-08 10:28:49','34','2019-04-08 10:28:49','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 18:30:00',1,NULL,0,0x01,'2019-04-01 18:30:00'),(154,199,0x01,'2019-04-08 13:05:09',778,1,'34','2019-04-08 13:05:18','34','2019-04-08 13:05:18','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-08 13:05:09',1,NULL,0,0x01,'2019-04-08 13:05:09'),(155,199,0x01,'2019-04-08 13:10:47',706,1,'34','2019-04-08 13:10:59','34','2019-04-08 13:10:59','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-08 13:10:47',1,NULL,0,0x01,'2019-04-08 13:10:47'),(156,199,0x01,'2019-04-01 18:30:00',893,1,'34','2019-04-08 13:20:14','34','2019-04-08 13:20:14','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 18:30:00',1,NULL,0,0x01,'2019-04-01 18:30:00'),(157,199,0x01,'2019-04-02 00:00:00',770,1,'34','2019-04-08 18:58:02','34','2019-04-08 18:58:02','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x01,'2019-04-02 00:00:00'),(158,199,0x01,'2019-04-02 00:00:00',754,1,'34','2019-04-08 19:02:39','34','2019-04-08 19:02:39','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-01 00:00:00',1,NULL,0,0x01,'2019-05-02 00:00:00'),(159,199,0x01,'2019-04-01 18:30:00',781,1,'34','2019-04-08 13:46:48','34','2019-04-08 13:46:48','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-31 18:30:00',1,NULL,0,0x01,'2019-05-01 18:30:00'),(160,199,0x01,'2019-04-01 18:30:00',907,1,'34','2019-04-08 13:51:29','34','2019-04-08 13:51:29','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 18:30:00',1,NULL,0,0x01,'2019-04-01 18:30:00'),(161,199,0x01,'2019-04-01 18:30:00',719,1,'34','2019-04-08 13:57:48','34','2019-04-08 13:57:48','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 18:30:00',1,NULL,0,0x01,'2019-04-01 18:30:00'),(162,199,0x01,'2019-04-01 18:30:00',715,1,'34','2019-04-08 14:04:06','34','2019-04-08 14:04:06','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 18:30:00',1,NULL,0,0x01,'2019-04-01 18:30:00'),(163,199,0x01,'2019-04-01 18:30:00',726,1,'34','2019-04-08 14:21:11','34','2019-04-08 14:21:11','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-01 18:30:00',1,NULL,0,0x01,'2019-04-01 18:30:00'),(164,199,0x01,'2019-04-02 00:00:00',725,1,'34','2019-04-08 19:55:58','34','2019-04-08 19:55:58','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x01,'2019-04-02 00:00:00'),(165,199,0x00,'2019-04-02 00:00:00',760,1,'34','2019-04-08 21:20:40','34','2019-04-08 21:20:40','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x01,'2019-04-02 00:00:00'),(166,199,0x01,'2019-04-02 00:00:00',760,1,'34','2019-04-08 21:23:40','34','2019-04-08 21:23:40','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x01,'2019-04-02 00:00:00'),(167,199,0x01,'2019-04-02 00:00:00',743,1,'34','2019-04-08 21:29:03','34','2019-04-08 21:29:03','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x01,'2019-04-02 00:00:00'),(168,199,0x01,NULL,798,1,'34','2019-04-08 21:36:17','34','2019-04-08 21:36:17','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x01,'2019-04-02 00:00:00'),(169,199,0x01,'2019-04-08 05:30:00',866,1,'34','2019-04-08 22:01:32','34','2019-04-08 22:01:32','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-08 05:30:00',1,NULL,0,0x01,'2019-04-08 05:30:00'),(170,199,0x01,'2019-04-02 05:30:00',745,1,'34','2019-04-08 22:02:06','34','2019-04-08 22:02:06','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 05:30:00',1,NULL,0,0x01,'2019-04-02 05:30:00'),(171,199,0x01,'2019-04-02 05:30:00',860,1,'34','2019-04-08 22:03:06','34','2019-04-08 22:03:06','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 05:30:00',1,NULL,0,0x01,'2019-04-02 05:30:00'),(172,199,0x01,'2019-04-02 00:00:00',671,1,'34','2019-04-08 16:45:10','34','2019-04-08 16:45:10','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x01,'2019-04-02 00:00:00'),(173,199,0x01,'2019-03-30 05:30:00',884,1,'34','2019-04-08 23:24:44','34','2019-04-08 23:24:44','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-04-29 05:30:00',1,NULL,0,0x01,'2019-03-30 05:30:00'),(174,199,0x01,'2019-04-02 05:30:00',829,1,'34','2019-04-08 23:25:31','34','2019-04-08 23:25:31','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 05:30:00',1,NULL,0,0x01,'2019-04-02 05:30:00'),(175,199,0x01,'2019-04-02 00:00:00',674,1,'34','2019-04-08 18:22:31','34','2019-04-08 18:22:31','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-02 00:00:00',1,NULL,0,0x00,'2019-04-02 00:00:00'),(176,199,0x01,'2019-04-08 00:00:00',801,1,'34','2019-04-08 18:25:19','34','2019-04-08 18:25:19','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-08 00:00:00',1,NULL,0,0x00,'2019-04-08 00:00:00'),(177,199,0x01,'2019-01-01 00:00:00',673,1,'34','2019-04-08 18:26:33','34','2019-04-08 18:26:33','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-01-31 00:00:00',1,NULL,0,0x00,'2019-01-01 00:00:00'),(178,199,0x01,'2019-01-30 00:00:00',673,1,'34','2019-04-08 18:27:11','34','2019-04-08 18:27:11','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-03-02 00:00:00',1,NULL,0,0x01,'2019-01-31 00:00:00'),(179,199,0x00,'2019-04-09 00:00:00',872,1,'34','2019-04-08 19:28:09','34','2019-04-08 19:28:09','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-27 00:00:00',1,NULL,0,0x01,'2019-05-28 00:00:00'),(180,199,0x01,'2019-04-09 05:30:00',693,1,'0','2019-04-09 01:13:25','0','2019-04-09 01:13:25','online',NULL,'693_1554752604393',NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-09 05:30:00',1,NULL,0,0x00,'2019-04-09 05:30:00'),(181,199,0x01,'2019-04-04 00:00:00',872,1,'34','2019-04-10 17:34:31','34','2019-04-10 17:34:31','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-04 00:00:00',1,NULL,0,0x00,'2019-04-04 00:00:00'),(182,199,0x00,'2019-04-09 00:00:00',865,1,'34','2019-04-10 17:38:03','34','2019-04-10 17:38:03','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-08 00:00:00',1,NULL,0,0x01,'2019-05-09 00:00:00'),(183,199,0x01,'2019-04-19 05:30:00',877,1,'34','2019-04-19 22:05:03','34','2019-04-19 22:05:03','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-02 05:30:00',1,NULL,0,0x01,'2019-05-03 05:30:00'),(184,199,0x01,'2019-04-19 05:30:00',865,1,'34','2019-04-19 22:06:51','34','2019-04-19 22:06:51','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-08 05:30:00',1,NULL,0,0x01,'2019-05-09 05:30:00'),(185,199,0x01,'2019-04-20 05:30:00',872,1,'34','2019-04-20 22:23:25','34','2019-04-20 22:23:25','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-03 05:30:00',1,NULL,0,0x01,'2019-05-04 05:30:00'),(186,199,0x01,'2019-04-20 05:30:00',862,1,'34','2019-04-20 22:25:06','34','2019-04-20 22:25:06','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-07-18 05:30:00',1,NULL,0,0x01,'2019-06-18 05:30:00'),(187,199,0x01,'2019-04-20 05:30:00',862,1,'34','2019-04-20 22:29:23','34','2019-04-20 22:29:23','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-08-17 05:30:00',1,NULL,0,0x01,'2019-07-18 05:30:00'),(188,199,0x01,'2019-04-20 05:30:00',862,1,'34','2019-04-20 22:34:41','34','2019-04-20 22:34:41','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-09-16 05:30:00',1,NULL,0,0x01,'2019-08-17 05:30:00'),(189,199,0x01,'2019-04-20 05:30:00',861,1,'34','2019-04-20 22:38:12','34','2019-04-20 22:38:12','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-06-04 05:30:00',1,NULL,0,0x01,'2019-05-05 05:30:00'),(190,199,0x01,'2019-04-20 05:30:00',865,1,'34','2019-04-20 22:49:00','34','2019-04-20 22:49:00','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-07-08 05:30:00',1,NULL,0,0x01,'2019-06-08 05:30:00'),(192,199,0x01,'2019-04-20 05:30:00',882,1,'34','2019-04-20 23:26:59','34','2019-04-20 23:26:59','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-05-31 05:30:00',1,NULL,0,0x01,'2019-05-01 05:30:00'),(193,199,0x01,'2019-04-20 05:30:00',877,1,'34','2019-04-20 23:38:52','34','2019-04-20 23:38:52','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,199,'SILVER PACK - KANNAD','30','2019-07-02 05:30:00',1,NULL,0,0x01,'2019-06-02 05:30:00'),(194,124,0x00,'2019-04-21 00:00:00',896,1,'34','2019-04-20 19:38:09','34','2019-04-20 19:38:09','offline',0x01,NULL,NULL,NULL,NULL,0x01,NULL,124,'TEST','30','2019-05-21 00:00:00',4,NULL,0,0x00,'2019-04-21 00:00:00');
+/*!40000 ALTER TABLE `payment_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `last_modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  `post_type` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `tital` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `content1` text COLLATE utf8mb4_bin,
+  `gps_json` varchar(500) COLLATE utf8mb4_bin DEFAULT NULL,
+  `lattitude` double DEFAULT NULL,
+  `location` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `youtube_url` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKn4e3o286ej36ybap01dykmm18` (`user_id`),
+  CONSTRAINT `FKn4e3o286ej36ybap01dykmm18` FOREIGN KEY (`user_id`) REFERENCES `global_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post`
+--
+
+LOCK TABLES `post` WRITE;
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` VALUES (14,'Sparrows, one of the endangered species.','34','2018-12-20 00:41:21',0x01,'34','2018-12-21 19:20:01','1',34,'Sparrows','ಬೆಳಗಾವಿ: ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್ ಡಿ ಕುಮಾರಸ್ವಾಮಿ ಅವರು ಕ್ಷಮೆಯಾಚಿಸಬೇಕು ಎಂದು ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ಪಟ್ಟು ಹಿಡಿದು ಪ್ರತಿಭಟನೆ ಮುಂದುವರೆಸಿದ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಸ್ಪೀಕರ್ ರಮೇಶ್ ಕುಮಾರ್ ಅವರು ವಿಧಾನಸಭೆ ಕಲಾಪವನ್ನು ಅನಿರ್ಧಿಷ್ಟಾವಧಿಗೆ ಮುಂದೂಡಿದರು. ಇದರೊಂದಿಗೆ 10 ದಿನಗಳ ಚಳಿಗಾಲದ ಅಧಿವೇಶನಕ್ಕೆ ಶುಕ್ರವಾರ ತೆರೆ ಬಿದ್ದಿದೆ. ವಿಧಾನಸಭೆಯಲ್ಲಿ ಮುಖ್ಯಮಂತ್ರಿಗಳ ಕ್ಷಮೆ ಯಾಚನೆಗೆ ಒತ್ತಾಯಿಸಿ ಪ್ರತಿಭಟನೆ ಹಾಗೂ ವಿಧಾನ ಪರಿಷತ್ ನಲ್ಲಿ ಉತ್ತರ ಕರ್ನಾಟಕದ ಸಮಸ್ಯೆಗಳ ಚರ್ಚೆಗೆ ಆಗ್ರಹ, ಗದ್ದಲ-ಕೋಲಾಹಲದ ನಡುವೆಯೇ ಹಲವು ಮಹತ್ವದ ವಿಧೇಯಕಗಳಿಗೆ ಅಂಗೀಕಾರ ಪಡೆದ ನಂತರ ಉಭಯ ಸದನಗಳ ಕಲಾಪವನ್ನು ಮುಂದೂಡಲಾಯಿತು. ರೈತರ ಸಾಲಮನ್ನಾದ ಬಗ್ಗೆ ಸ್ಪಷ್ಟನೆಗೆ ಆಗ್ರಹಿಸಿ ಹಾಗೂ ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್.ಡಿ.ಕುಮಾರಸ್ವಾಮಿಯವರು ಯಡಿಯೂರಪ್ಪನವರನ್ನು ಕ್ಷಮೆ ಕೇಳಬೇಕೆಂದು ಒತ್ತಾಯಿಸಿ ವಿಧಾನಸಭೆಯಲ್ಲಿ ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ನಡೆಸುತ್ತಿದ್ದ ಪ್ರತಿಭಟನೆ ಇಂದು ಕೂಡ ಮುಂದುವರಿದಿತ್ತು.ಸದನದ ಬಾವಿಗಿಳಿದ ಬಿಜೆಪಿ ಸದಸ್ಯರು ಸರ್ಕಾರದ ವಿರುದ್ಧ ಘೋಷಣೆಗಳನ್ನು ಕೂಗಲಾರಂಭಿಸಿದರು. ಬಿಜೆಪಿಯವರ ಈ ನಡೆಗೆ ಆಕ್ಷೇಪ ವ್ಯಕ್ತಪಡಿಸಿದ ಆಡಳಿತಾರೂಢ ಜೆಡಿಎಸ್-ಕಾಂಗ್ರೆಸ್ ಸದಸ್ಯರು ಪ್ರತಿರೋಧ ವ್ಯಕ್ತಪಡಿಸಿದರು. ಈ ಸಂದರ್ಭದಲ್ಲಿ ಸದನದಲ್ಲಿ ಗದ್ದಲ-ಕೋಲಾಹಲ ಉಂಟಾಯಿತು. ಹೀಗಾಗಿ ಸ್ಪೀಕರ್ ಕಲಾಪವನ್ನು ಅನಿರ್ಧಿಷ್ಟಾವಧಿಗೆ ಮುಂದೂಡಿದರು. ಬಳಿಕ ಸುವರ್ಣಸೌಧದಲ್ಲಿ ಸುದ್ದಿಗಾರರೊಂದಿಗೆ ಮಾತನಾಡಿದ ಸ್ಪೀಕರ್ ರಮೇಶ್ ಕುಮಾರ್ ಅವರು, ಈ ಅಧಿವೇಶನ ತೃಪ್ತಿ ತಂದಿದೆ. ಪ್ರಮುಖ ವಿಚಾರಗಳ ಬಗ್ಗೆ ಚರ್ಚೆಯಾಗಿದೆ. ಆಡಳಿತ ಪಕ್ಷ- ವಿರೋಧ ಪಕ್ಷದ ಶಾಸಕರಿಗೆ ಧನ್ಯವಾದಗಳು ಎಂದರು. ಈ ಬಾರಿ ಯಾವುದೇ ಸಮಸ್ಯೆ ಇಲ್ಲದಂತೆ ಅಧಿವೇಶನ ಮುಕ್ತಾಯವಾಗಿದೆ. ಹೆಚ್ಚಿನ ಹಣ ಅಧಿವೇಶನಕ್ಕೆ ಖರ್ಚು ಆಗುತ್ತಿತ್ತು. ಈ ಬಾರಿ ಹೆಚ್ಚಿನ ಹಣ ಪೋಲು ಮಾಡದಂತೆ ಸೂಚಿಸಲಾಗಿತ್ತು. ಎಂಟರಿಂದ ಹತ್ತು ಕೋಟಿ ಉಳಿದಿದೆ. 10 ರಿಂದ 12 ಕೋಟಿ ಖರ್ಚು ಮಾಡಲಾಗಿದೆ. ಕಳೆದ ಬಾರಿ 22 ಕೋಟಿ ಹಣ ಖರ್ಚು ಆಗಿತ್ತು. ಎಲ್ಲ ವರ್ಗದ ಸಿಬ್ಬಂದಿಗೆ ನಾನು ಧನ್ಯವಾದಗಳು ಹೇಳುತ್ತೇನೆ ಎಂದು ಸ್ಪೀಕರ್​ ತಿಳಿಸಿದರು.ಬೆಳಗಾವಿ: ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್ ಡಿ ಕುಮಾರಸ್ವಾಮಿ ಅವರು ಕ್ಷಮೆಯಾಚಿಸಬೇಕು ಎಂದು ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ಪಟ್ಟು ಹಿಡಿದು ಪ್ರತಿಭಟನೆ ಮುಂದುವರೆಸಿದ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಸ್ಪೀಕರ್ ರಮೇಶ್ ಕುಮಾರ್ ಅವರು ವಿಧಾನಸಭೆ ಕಲಾಪವನ್ನು ಅನಿರ್ಧಿಷ್ಟಾವಧಿಗೆ ಮುಂದೂಡಿದರು. ಇದರೊಂದಿಗೆ 10 ದಿನಗಳ ಚಳಿಗಾಲದ ಅಧಿವೇಶನಕ್ಕೆ ಶುಕ್ರವಾರ ತೆರೆ ಬಿದ್ದಿದೆ. ವಿಧಾನಸಭೆಯಲ್ಲಿ ಮುಖ್ಯಮಂತ್ರಿಗಳ ಕ್ಷಮೆ ಯಾಚನೆಗೆ ಒತ್ತಾಯಿಸಿ ಪ್ರತಿಭಟನೆ ಹಾಗೂ ವಿಧಾನ ಪರಿಷತ್ ನಲ್ಲಿ ಉತ್ತರ ಕರ್ನಾಟಕದ ಸಮಸ್ಯೆಗಳ ಚರ್ಚೆಗೆ ಆಗ್ರಹ, ಗದ್ದಲ-ಕೋಲಾಹಲದ ನಡುವೆಯೇ ಹಲವು ಮಹತ್ವದ ವಿಧೇಯಕಗಳಿಗೆ ಅಂಗೀಕಾರ ಪಡೆದ ನಂತರ ಉಭಯ ಸದನಗಳ ಕಲಾಪವನ್ನು ಮುಂದೂಡಲಾಯಿತು. ರೈತರ ಸಾಲಮನ್ನಾದ ಬಗ್ಗೆ ಸ್ಪಷ್ಟನೆಗೆ ಆಗ್ರಹಿಸಿ ಹಾಗೂ ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್.ಡಿ.ಕುಮಾರಸ್ವಾಮಿಯವರು ಯಡಿಯೂರಪ್ಪನವರನ್ನು ಕ್ಷಮೆ ಕೇಳಬೇಕೆಂದು ಒತ್ತಾಯಿಸಿ ವಿಧಾನಸಭೆಯಲ್ಲಿ ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ನಡೆಸುತ್ತಿದ್ದ ಪ್ರತಿಭಟನೆ ಇಂದು ಕೂಡ ಮುಂದುವರಿದಿತ್ತು.ಸದನದ ಬಾವಿಗಿಳಿದ ಬಿಜೆಪಿ ಸದಸ್ಯರು ಸರ್ಕಾರದ ವಿರುದ್ಧ ಘೋಷಣೆಗಳನ್ನು ಕೂಗಲಾರಂಭಿಸಿದರು. ಬಿಜೆಪಿಯವರ ಈ ನಡೆಗೆ ಆಕ್ಷೇಪ ವ್ಯಕ್ತಪಡಿಸಿದ ಆಡಳಿತಾರೂಢ ಜೆಡಿಎಸ್-ಕಾಂಗ್ರೆಸ್ ಸದಸ್ಯರು ಪ್ರತಿರೋಧ ವ್ಯಕ್ತಪಡಿಸಿದರು. ಈ ಸಂದರ್ಭದಲ್ಲಿ ಸದನದಲ್ಲಿ ಗದ್ದಲ-ಕೋಲಾಹಲ ಉಂಟಾಯಿತು. ಹೀಗಾಗಿ ಸ್ಪೀಕರ್ ಕಲಾಪವನ್ನು ಅನಿರ್ಧಿಷ್ಟಾವಧಿಗೆ ಮುಂದೂಡಿದರು. ಬಳಿಕ ಸುವರ್ಣಸೌಧದಲ್ಲಿ ಸುದ್ದಿಗಾರರೊಂದಿಗೆ ಮಾತನಾಡಿದ ಸ್ಪೀಕರ್ ರಮೇಶ್ ಕುಮಾರ್ ಅವರು, ಈ ಅಧಿವೇಶನ ತೃಪ್ತಿ ತಂದಿದೆ. ಪ್ರಮುಖ ವಿಚಾರಗಳ ಬಗ್ಗೆ ಚರ್ಚೆಯಾಗಿದೆ. ಆಡಳಿತ ಪಕ್ಷ- ವಿರೋಧ ಪಕ್ಷದ ಶಾಸಕರಿಗೆ ಧನ್ಯವಾದಗಳು ಎಂದರು. ಈ ಬಾರಿ ಯಾವುದೇ ಸಮಸ್ಯೆ ಇಲ್ಲದಂತೆ ಅಧಿವೇಶನ ಮುಕ್ತಾಯವಾಗಿದೆ. ಹೆಚ್ಚಿನ ಹಣ ಅಧಿವೇಶನಕ್ಕೆ ಖರ್ಚು ಆಗುತ್ತಿತ್ತು. ಈ ಬಾರಿ ಹೆಚ್ಚಿನ ಹಣ ಪೋಲು ಮಾಡದಂತೆ ಸೂಚಿಸಲಾಗಿತ್ತು. ಎಂಟರಿಂದ ಹತ್ತು ಕೋಟಿ ಉಳಿದಿದೆ. 10 ರಿಂದ 12 ಕೋಟಿ ಖರ್ಚು ಮಾಡಲಾಗಿದೆ. ಕಳೆದ ಬಾರಿ 22 ಕೋಟಿ ಹಣ ಖರ್ಚು ಆಗಿತ್ತು. ಎಲ್ಲ ವರ್ಗದ ಸಿಬ್ಬಂದಿಗೆ ನಾನು ಧನ್ಯವಾದಗಳು ಹೇಳುತ್ತೇನೆ ಎಂದು ಸ್ಪೀಕರ್​ ತಿಳಿಸಿದರು.ಬೆಳಗಾವಿ: ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್ ಡಿ ಕುಮಾರಸ್ವಾಮಿ ಅವರು ಕ್ಷಮೆಯಾಚಿಸಬೇಕು ಎಂದು ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ಪಟ್ಟು ಹಿಡಿದು ಪ್ರತಿಭಟನೆ ಮುಂದುವರೆಸಿದ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಸ್ಪೀಕರ್ ರಮೇಶ್ ಕುಮಾರ್ ಅವರು ವಿಧಾನಸಭೆ ಕಲಾಪವನ್ನು ಅನಿರ್ಧಿಷ್ಟಾವಧಿಗೆ ಮುಂದೂಡಿದರು. ಇದರೊಂದಿಗೆ 10 ದಿನಗಳ ಚಳಿಗಾಲದ ಅಧಿವೇಶನಕ್ಕೆ ಶುಕ್ರವಾರ ತೆರೆ ಬಿದ್ದಿದೆ. ವಿಧಾನಸಭೆಯಲ್ಲಿ ಮುಖ್ಯಮಂತ್ರಿಗಳ ಕ್ಷಮೆ ಯಾಚನೆಗೆ ಒತ್ತಾಯಿಸಿ ಪ್ರತಿಭಟನೆ ಹಾಗೂ ವಿಧಾನ ಪರಿಷತ್ ನಲ್ಲಿ ಉತ್ತರ ಕರ್ನಾಟಕದ ಸಮಸ್ಯೆಗಳ ಚರ್ಚೆಗೆ ಆಗ್ರಹ, ಗದ್ದಲ-ಕೋಲಾಹಲದ ನಡುವೆಯೇ ಹಲವು ಮಹತ್ವದ ವಿಧೇಯಕಗಳಿಗೆ ಅಂಗೀಕಾರ ಪಡೆದ ನಂತರ ಉಭಯ ಸದನಗಳ ಕಲಾಪವನ್ನು ಮುಂದೂಡಲಾಯಿತು. ರೈತರ ಸಾಲಮನ್ನಾದ ಬಗ್ಗೆ ಸ್ಪಷ್ಟನೆಗೆ ಆಗ್ರಹಿಸಿ ಹಾಗೂ ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್.ಡಿ.ಕುಮಾರಸ್ವಾಮಿಯವರು ಯಡಿಯೂರಪ್ಪನವರನ್ನು ಕ್ಷಮೆ ಕೇಳಬೇಕೆಂದು ಒತ್ತಾಯಿಸಿ ವಿಧಾನಸಭೆಯಲ್ಲಿ ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ನಡೆಸುತ್ತಿದ್ದ ಪ್ರತಿಭಟನೆ ಇಂದು ಕೂಡ ಮುಂದುವರಿದಿತ್ತು.ಸದನದ ಬಾವಿಗಿಳಿದ ಬಿಜೆಪಿ ಸದಸ್ಯರು ಸರ್ಕಾರದ ವಿರುದ್ಧ ಘೋಷಣೆಗಳನ್ನು ಕೂಗಲಾರಂಭಿಸಿದರು. ಬಿಜೆಪಿಯವರ ಈ ನಡೆಗೆ ಆಕ್ಷೇಪ ವ್ಯಕ್ತಪಡಿಸಿದ ಆಡಳಿತಾರೂಢ ಜೆಡಿಎಸ್-ಕಾಂಗ್ರೆಸ್ ಸದಸ್ಯರು ಪ್ರತಿರೋಧ ವ್ಯಕ್ತಪಡಿಸಿದರು. ಈ ಸಂದರ್ಭದಲ್ಲಿ ಸದನದಲ್ಲಿ ಗದ್ದಲ-ಕೋಲಾಹಲ ಉಂಟಾಯಿತು. ಹೀಗಾಗಿ ಸ್ಪೀಕರ್ ಕಲಾಪವನ್ನು ಅನಿರ್ಧಿಷ್ಟಾವಧಿಗೆ ಮುಂದೂಡಿದರು. ಬಳಿಕ ಸುವರ್ಣಸೌಧದಲ್ಲಿ ಸುದ್ದಿಗಾರರೊಂದಿಗೆ ಮಾತನಾಡಿದ ಸ್ಪೀಕರ್ ರಮೇಶ್ ಕುಮಾರ್ ಅವರು, ಈ ಅಧಿವೇಶನ ತೃಪ್ತಿ ತಂದಿದೆ. ಪ್ರಮುಖ ವಿಚಾರಗಳ ಬಗ್ಗೆ ಚರ್ಚೆಯಾಗಿದೆ. ಆಡಳಿತ ಪಕ್ಷ- ವಿರೋಧ ಪಕ್ಷದ ಶಾಸಕರಿಗೆ ಧನ್ಯವಾದಗಳು ಎಂದರು. ಈ ಬಾರಿ ಯಾವುದೇ ಸಮಸ್ಯೆ ಇಲ್ಲದಂತೆ ಅಧಿವೇಶನ ಮುಕ್ತಾಯವಾಗಿದೆ. ಹೆಚ್ಚಿನ ಹಣ ಅಧಿವೇಶನಕ್ಕೆ ಖರ್ಚು ಆಗುತ್ತಿತ್ತು. ಈ ಬಾರಿ ಹೆಚ್ಚಿನ ಹಣ ಪೋಲು ಮಾಡದಂತೆ ಸೂಚಿಸಲಾಗಿತ್ತು. ಎಂಟರಿಂದ ಹತ್ತು ಕೋಟಿ ಉಳಿದಿದೆ. 10 ರಿಂದ 12 ಕೋಟಿ ಖರ್ಚು ಮಾಡಲಾಗಿದೆ. ಕಳೆದ ಬಾರಿ 22 ಕೋಟಿ ಹಣ ಖರ್ಚು ಆಗಿತ್ತು. ಎಲ್ಲ ವರ್ಗದ ಸಿಬ್ಬಂದಿಗೆ ನಾನು ಧನ್ಯವಾದಗಳು ಹೇಳುತ್ತೇನೆ ಎಂದು ಸ್ಪೀಕರ್​ ತಿಳಿಸಿದರು.ಬೆಳಗಾವಿ: ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್ ಡಿ ಕುಮಾರಸ್ವಾಮಿ ಅವರು ಕ್ಷಮೆಯಾಚಿಸಬೇಕು ಎಂದು ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ಪಟ್ಟು ಹಿಡಿದು ಪ್ರತಿಭಟನೆ ಮುಂದುವರೆಸಿದ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಸ್ಪೀಕರ್ ರಮೇಶ್ ಕುಮಾರ್ ಅವರು ವಿಧಾನಸಭೆ ಕಲಾಪವನ್ನು ಅನಿರ್ಧಿಷ್ಟಾವಧಿಗೆ ಮುಂದೂಡಿದರು. ಇದರೊಂದಿಗೆ 10 ದಿನಗಳ ಚಳಿಗಾಲದ ಅಧಿವೇಶನಕ್ಕೆ ಶುಕ್ರವಾರ ತೆರೆ ಬಿದ್ದಿದೆ. ವಿಧಾನಸಭೆಯಲ್ಲಿ ಮುಖ್ಯಮಂತ್ರಿಗಳ ಕ್ಷಮೆ ಯಾಚನೆಗೆ ಒತ್ತಾಯಿಸಿ ಪ್ರತಿಭಟನೆ ಹಾಗೂ ವಿಧಾನ ಪರಿಷತ್ ನಲ್ಲಿ ಉತ್ತರ ಕರ್ನಾಟಕದ ಸಮಸ್ಯೆಗಳ ಚರ್ಚೆಗೆ ಆಗ್ರಹ, ಗದ್ದಲ-ಕೋಲಾಹಲದ ನಡುವೆಯೇ ಹಲವು ಮಹತ್ವದ ವಿಧೇಯಕಗಳಿಗೆ ಅಂಗೀಕಾರ ಪಡೆದ ನಂತರ ಉಭಯ ಸದನಗಳ ಕಲಾಪವನ್ನು ಮುಂದೂಡಲಾಯಿತು. ರೈತರ ಸಾಲಮನ್ನಾದ ಬಗ್ಗೆ ಸ್ಪಷ್ಟನೆಗೆ ಆಗ್ರಹಿಸಿ ಹಾಗೂ ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್.ಡಿ.ಕುಮಾರಸ್ವಾಮಿಯವರು ಯಡಿಯೂರಪ್ಪನವರನ್ನು ಕ್ಷಮೆ ಕೇಳಬೇಕೆಂದು ಒತ್ತಾಯಿಸಿ ವಿಧಾನಸಭೆಯಲ್ಲಿ ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ನಡೆಸುತ್ತಿದ್ದ ',NULL,NULL,NULL,NULL,NULL),(15,'Many many Happy returns of the day ','34','2018-12-20 06:52:06',0x01,'34','2019-01-06 18:02:42','2',34,'Birthday','TEST11','{\"fullAddress\":\"Unnamed Road, Kenganur, Karnataka 591104, India\",\"streetMain\":\"Unnamed Road\",\"city\":\"Kenganur\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"591104\",\"latitude\":15.7339504,\"longitude\":74.8774123,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Kenganur',74.8774123,NULL),(16,'Indian national bird.','37','2018-12-20 10:25:32',0x01,'37','2018-12-20 10:34:50','1',37,'peacock',NULL,NULL,NULL,NULL,NULL,NULL),(17,'ಜಾತ್ರೆಯ ಸಂಭ್ರಮದಲ್ಲಿ ಜನಸಮೂಹ.','34','2018-12-20 21:21:31',0x01,'34','2018-12-21 15:02:47','1',34,'Kenganur Jatre','Village fair',NULL,NULL,NULL,NULL,NULL),(18,'KGF releasing tomorrow','34','2018-12-20 21:25:08',0x01,'34','2018-12-21 14:32:58','1',34,'Kgf','TEST 6',NULL,NULL,NULL,NULL,NULL),(19,'ಕ್ರಾಂತಿವೀರ ಸಾಂಗೊಳ್ಳಿ ರಾಯಣ್ಣ\nSangolli Rayanna was a prominent warrior from Karnataka, India. He was the army chief of the Kingdom of Kittur ','34','2018-12-20 21:32:21',0x01,'34','2018-12-21 16:00:43','1',34,'Sangolli rayanna','latest modified on server',NULL,NULL,NULL,NULL,NULL),(20,'ಅಗಹಹಜಜ್ಜಂ ಅಹಜ್ಜಜಹ್ ಹಹಜಾಜ್ಜ್ಜ್ಜ್ ಹಹಹಜನ್ ಹಹಹಜಸ್ ಹಹಜಕಕಾಕ್ sjsjsjskwkw ಹಜಹಜ್','34','2018-12-20 21:35:53',0x01,'34','2018-12-21 17:45:32','1',34,'Junki','TEST 4',NULL,NULL,NULL,NULL,NULL),(21,'ನವದೆಹಲಿ: ರಾಜ್ಯಸರ್ಕಾರ ಕೈಗೆತ್ತಿಕೊಂಡಿರುವ ಮೇಕೆದಾಟು ಯೋಜನೆಗೆ  ಅಡ್ಡಗಾಲು ಹಾಕುತ್ತಿರುವ ತಮಿಳುನಾಡಿನ ಧೋರಣೆ ವಿರುದ್ಧ ರಾಜ್ಯದ ಸರ್ವ ಪಕ್ಷಗಳ ಸಂಸದರು ತೀವ್ರ ಆಕ್ಷೇಪ ವ್ಯಕ್ತಪಡಿಸಿದ್ದು, ಸಂಸತ್ತಿನ ಒಳಗೆ ಹಾಗೂ ಹೊರಗೆ ಒಕ್ಕೊರಲಿನ  ಹೋರಾಟ ನಡೆಸಲು ಸರ್ವಾನುಮತದ ನಿರ್ಣಯ ಕೈಗೊಂಡಿದ್ದಾರೆ.','34','2018-12-20 21:41:14',0x01,'34','2018-12-26 11:46:24','1',34,'Bangalore news','ಬೆಂಗಳೂರು : <b> ಕೇಂದ್ರ ಸರ್ಕಾರದ ಭಾರತೀಯ ದೂರಸಂಪರ್ಕ ನಿಯಂತ್ರಣ ಪ್ರಾಧಿಕಾರದ (ಟ್ರಾಯ್‌)</b> ಹೊಸ ನೀತಿಯಿಂದ ಕರ್ನಾಟಕವೊಂದರಲ್ಲೇ ಸುಮಾರು 85 ಸಾವಿರ ಸ್ವಯಂ ಉದ್ಯೋಗಿಗಳ ನೌಕರಿಗೆ ಕುತ್ತು ಬರುವ ಸಾಧ್ಯತೆ ಇದೆ.\n\nಕಳೆದ ಮೂವತ್ತು ವರ್ಷಗಳಿಂದ ಸರ್ಕಾರದ ಯಾವುದೇ ಅನುದಾನ ಮತ್ತು ಸಹಕಾರವಿಲ್ಲದೇ ಬೆಳೆದ ಬಂದ ಕೇಬಲ್‌ ಟೀವಿ ಅಪರೇಟರ್‌ ಉದ್ಯಮ, ಇಂದು ಅತ್ಯಂತ ದೊಡ್ಡ ಉದ್ಯಮವಾಗಿ ನಿಂತಿದೆ. ಕರ್ನಾಟಕವೊಂದರಲ್ಲೇ ಸುಮಾರು 85 ಸಾವಿರ ಮಂದಿ ಕೇಬಲ್‌ ಟಿವಿ ಉದ್ಯಮವನ್ನು ನಂಬಿಕೊಂಡು ಜೀವನ ಸಾಗಿಸುತ್ತಿದ್ದಾರೆ. ಡಿ.29ರಂದು ಭಾರತೀಯ ದೂರಸಂಪರ್ಕ ನಿಯಂತ್ರಣ ಪ್ರಾಧಿಕಾರ ಗ್ರಾಹಕರಿಗೆ ಚಾನಲ್‌ಗಳ ಆಯ್ಕೆ ಮಾಡಿಕೊಳ್ಳುವ ಹಕ್ಕು ನೀಡುವುದಕ್ಕೆ ಮುಂದಾಗಿದ್ದು, ಇದರಿಂದ ಗ್ರಾಹಕರು ತಮ್ಮಗೆ ಬೇಕಾದ ಚಾನಲ್‌ಗಳನ್ನು ಮಾತ್ರ ಆಯ್ಕೆ ಮಾಡಿಕೊಳ್ಳಬಹುದಾಗಿದೆ.\n\nಆದರೆ, ಪ್ರಸ್ತುತ ಕೇಬಲ್‌ ಟಿವಿ ಆಪರೇಟರ್‌ಗಳು ನೀಡುವ ದರಕ್ಕಿಂತ ಹೆಚ್ಚಿನ ಶುಲ್ಕವನ್ನು ಪಾವತಿ ಮಾಡಬೇಕಾಗಲಿದೆ. ಆಪರೇಟರ್‌ಗಳಿಗೆ ಹಂಚಿಕೆಯಾಗುತ್ತಿದ್ದ ಲಾಭಾಂಶದ ಪ್ರಮಾಣ ಇಳಿಕೆಯಾಗಲಿದೆ. ಇದರಿಂದ ಕೇಬಲ್‌ ಟೀವಿ ಉದ್ಯಮವನ್ನೇ ನೆಚ್ಚಿಕೊಂಡು ಜೀವನ ಸಾಗಿರುತ್ತಿರುವ ದೇಶದ ಲಕ್ಷಾಂತರ ಮಂದಿ ಉದ್ಯೋಗ ಕಳೆದುಕೊಳ್ಳುವ ಭೀತಿ ಎದುರಾಗಿದೆ.\n\nಗ್ರಾಮೀಣ ಉದ್ಯೋಗಕ್ಕೆ ಗಂಡಾಂತರ:  ಕೇಬಲ್‌ ಟಿವಿ ಆಪರೇಟರ್‌ಗಳಿಗೆ ಯಾವುದೇ ವಿದ್ಯಾರ್ಹತೆ ಇಲ್ಲ. ಗ್ರಾಮೀಣ ಪ್ರದೇಶ ಸೇರಿದಂತೆ ಇಡೀ ಉದ್ಯಮದಲ್ಲಿ ಹೆಚ್ಚಾಗಿ ಅವಿದ್ಯಾವಂತರು, ಕಡಿಮೆ ಶೈಕ್ಷಣಿಕ ಅರ್ಹತೆ ಹೊಂದಿರುವವರು ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದಾರೆ. ಶೇ.60ರಷ್ಟುಗ್ರಾಮೀಣ ಪ್ರದೇಶ ಯುವಕರಿಗೆ ಸ್ವಯಂ ಉದ್ಯೋಗ ನೀಡಿ ಹತ್ತಾರು ವರ್ಷಗಳಿಂದ ಸಲಹುತ್ತಿದ್ದು, ಲಕ್ಷಾಂತರ ಕುಟುಂಬಗಳಿಗೆ ಆಧಾರ ಸ್ತಂಬವಾಗಿದೆ. ಆದರೆ ಈಗ ಜಾರಿಯಾಗುತ್ತಿರುವ ಹೊಸ ನೀತಿಯಿಂದ ತಮ್ಮ ಉದ್ಯೋಗಕ್ಕೆ ಮಾರಕವಾಗಲಿದೆ ಎಂಬ ಆಂತಕ ಕೇಬಲ್‌ ಟೀವಿ ಆಪರೇಟರ್‌ಗಳಲ್ಲಿ ಮನೆ ಮಾಡಿದೆ.\n\nಎಂಎಸ್‌ಓಗಳೇ ಸ್ಪರ್ಧಿಗಳು:  ಈವರೆಗೆ ಕೇಬಲ್‌ ಟೀವಿ ಆಪರೇಟರ್‌ಗಳಿಗೆ ಸ್ಯಾಟ್‌ಲೈಟ್‌ನಿಂದ ಸಿಗ್ನಲ್‌ಗಳನ್ನು ಡೌನ್‌ಲೋಡ್‌ ಮಾಡಿ ನೀಡುತ್ತಿದ್ದ ಎಂಎಸ್‌ಒ (ಮಲ್ಟಿಸವೀರ್‍ಸ್‌ ಆಪರೇಟರ್‌)ಗಳು ನೇರವಾಗಿ ಡಿಟಿಎಚ್‌ ಮೂಲಕ ಗ್ರಾಹಕರಿಗೆ ಸಂಪರ್ಕ ನೀಡುವುದಕ್ಕೆ ಮುಂದಾಗಿದ್ದಾರೆ. ಅಲ್ಲದೇ ನೂತನ ನೀತಿಯಂತೆ ಕೇಬಲ್‌ ಟೀವಿ ಆಪರೇಟರ್‌ಗಳಿಗೆ ಗ್ರಾಹಕರು ಆಯ್ಕೆಗೆ ತಕ್ಕಂತೆ ಚಾನಲ್‌ಗಳನ್ನು ಒದಗಿಸುವುದಕ್ಕೆ ಬೇಕಾದ ಸೌಲಭ್ಯಮತ್ತು ವ್ಯವಸ್ಥೆ ಇಲ್ಲ. ಈಗಾಗಲೇ ಡಿಟಿಎಚ್‌ಗಳು ಹೊಸ ನೀತಿಗೆ ಬೇಕಾದ ಕೆಲ ತಂತ್ರಜ್ಞಾನವನ್ನು ರೂಪಿಸಿಕೊಂಡಿರುವುದರಿಂದ ಡಿಟಿಎಚ್‌ಗಳು ಕೇಬಲ್‌ ಟೀವಿ ಗ್ರಾಹಕರನ್ನು ಸೆಳೆದು ಕಷ್ಟವಾಗಲಾರದು. ಇದರಿಂದ ಕೇಬಲ್‌ ಟೀವಿ ಉದ್ಯಮ ನೆಲಕಚ್ಚಲಿದ್ದು, ಅದರಲ್ಲಿರುವ ಉದ್ಯೋಗಿಗಳು ನಿರುದ್ಯೋಗಿಗಳಾಗಲಿದ್ದಾರೆ.\n\n.60ನಲ್ಲಿ ವೇತನ, ಬಾಡಿಗೆ, ನಿರ್ವಹಣೆ ಕಷ್ಟ :  ಹೊಸ ನೀತಿಯ ಪ್ರಕಾರ .130 ಸೇವಾ ಶುಲ್ಕ ಹಾಗೂ ಪೇ ಚಾನಲ್‌ಗಳ ಶೇಕಡವಾರು ಹಂಚಿಕೆಯಲ್ಲಿ ಕೇಬಲ್‌ ಟೀವಿ ಆಪರೇಟರ್‌ಗಳಿಗೆ ಒಂದು ಮನೆಯಿಂದ ಸುಮಾರು .60 ಸಿಗಲಿದೆ. ಈ ಹಣದಲ್ಲಿ ಕೇಬಲ್‌ ಟಿವಿ ಆಪರೇಟರ್‌ಗಳು ಮೂರು ಜನ ಸಿಬ್ಬಂದಿ ವೇತನ, ಮಳಿಗೆ ಬಾಡಿಗೆ, ವಿದ್ಯುತ್‌ ಬಿಲ್‌, ದುರಸ್ತಿ ವೆಚ್ಚ ಎಲ್ಲವನ್ನು ಭರಿಸುವುದಕ್ಕೆ ಸಾಧ್ಯವಿಲ್ಲ. ಹಾಗಾಗಿ, ಕೇಬಲ್‌ ಟಿವಿ ಉದ್ಯಮ ಸಂಪೂರ್ಣವಾಗಿ ನಷ್ಟಕ್ಕೆ ಒಳಗಾಗಲಿದ್ದು, ಸಿಬ್ಬಂದಿ ಬೀದಿಗೆ ಬರಲಿದ್ದಾರೆ ಎಂದು ಕೇಬಲ್‌ ಟೀವಿ ಆಪರೇಟರ್‌ಗಳು ಹೇಳುತ್ತಾರೆ.\n\n.. ','{\"fullAddress\":\"21, Bannerghatta Main Rd, OLd Gurappanapalya, 1st Stage, BTM Layout, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"21\",\"areaName\":\"BTM Layout\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.92512081,\"longitude\":77.60177185}',NULL,'Bengaluru',77.60177185,NULL),(22,NULL,'34','2018-12-21 16:54:32',0x01,'34','2018-12-21 17:34:19','1',34,'Test','ಬೆಳಗಾವಿ: ಮುಖ್ಯಮಂತ್ರಿ ಎಚ್ ಡಿ ಕುಮಾರಸ್ವಾಮಿ ಅವರು ಕ್ಷಮೆಯಾಚಿಸಬೇಕು ಎಂದು ಪ್ರತಿಪಕ್ಷ ಬಿಜೆಪಿ ಪಟ್ಟು ಹಿಡಿದು ಪ್ರತಿಭಟನೆ ಮುಂದುವರೆಸಿದ ',NULL,NULL,NULL,NULL,NULL),(23,NULL,'34','2018-12-21 17:36:41',0x01,'34','2018-12-21 17:36:41','1',34,'Dandeli','Dandelion trip',NULL,NULL,NULL,NULL,NULL),(24,NULL,'34','2018-12-21 17:38:21',0x00,'34','2018-12-23 22:46:50','1',34,'Zycus','Zycus infotech Banglore','{\'fullAddress\':\'9th Cross Road, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\',\'streetMain\':\'Tavarekere Main Road\',\'areaName\':\'Suddagunte Palya\',\'city\':\'Bengaluru\',\'state\':\'Karnataka\',\'countryName\':\'India\',\'postalCode\':\'560029\',\'latitude\':12.93105953,\'longitude\':77.6091755}',NULL,'Bengaluru',77.6091755,NULL),(25,NULL,'34','2018-12-21 17:43:27',0x01,'34','2018-12-22 13:50:32','1',34,'Shetty marriage','Shetty marriage',NULL,NULL,NULL,NULL,NULL),(26,NULL,'34','2018-12-21 17:44:29',0x01,'34','2018-12-21 17:44:29','2',34,'Birthday','My birthday',NULL,NULL,NULL,NULL,NULL),(27,NULL,'34','2018-12-23 18:30:48',0x01,'34','2018-12-23 21:17:29','1',34,'GPS test tital','GPS Test description','{\'fullAddress\':\'9th Cross Road, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\',\'streetMain\':\'Tavarekere Main Road\',\'areaName\':\'Suddagunte Palya\',\'city\':\'Bengaluru\',\'state\':\'Karnataka\',\'countryName\':\'India\',\'postalCode\':\'560029\',\'latitude\':12.93105953,\'longitude\':77.6091755}',NULL,'Bengaluru',77.6091755,NULL),(28,NULL,'34','2018-12-25 03:27:45',0x01,'34','2018-12-27 11:20:19','1',34,'Happy Christmas','Wish happy Christmas to all of you......','{\"fullAddress\":\"3/159, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/159\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93098878,\"longitude\":77.60936706}',NULL,'Bengaluru',77.60936706,NULL),(29,NULL,'34','2018-12-27 14:02:42',0x01,'34','2018-12-27 14:22:06','1',34,'Gunshot','',NULL,NULL,NULL,NULL,NULL),(30,NULL,'34','2018-12-27 17:09:39',0x01,'34','2018-12-31 12:45:38','2',34,'ಸುವರ್ಣಸೌಧದಲ್ಲೀಗ ಮಕ್ಕಳ ಕಲರವ!','ಬೆಳಗಾವಿ: ವರ್ಷಕ್ಕೊಮ್ಮೆ ಚಳಿಗಾಲದಲ್ಲಿ ಮಾತ್ರ ನೆನಪಿಗೆ ಬರುವ 443 ಕೋಟಿ ರೂ. ವೆಚ್ಚದ ಸುವರ್ಣ ವಿಧಾನಸೌಧವೀಗ ರಾಜಕೀಯ ಶಕ್ತಿ ಕೇಂದ್ರದ ಜತೆಗೆ ವಿದ್ಯಾರ್ಥಿಗಳ ಶೈಕ್ಷಣಿಕ ಪ್ರವಾಸದ ಕೇಂದ್ರವಾಗಿ ಬದಲಾಗಿದೆ! \n\nಅಧಿವೇಶನದ ನಂತರ ಖಾಲಿ ಬೀಳುವ ಸುವರ್ಣ ವಿಧಾನಸೌಧವನ್ನು ಈಗ ಶಾಲಾ ವಿದ್ಯಾರ್ಥಿಗಳ ವೀಕ್ಷಣೆಗೆ ಮುಕ್ತಗೊಳಿಸಲಾಗಿದೆ. ಪ್ರಾಥಮಿಕ ಮತ್ತು ಪ್ರೌಢ ಶಿಕ್ಷಣದಲ್ಲಿ ಬರುವ ಪೌರನೀತಿ ಬೋಧನೆಗೆ ಪೂರಕವಾಗಿ ಸೌಧದ ಬಗ್ಗೆ ಅಲ್ಲಿನ ಸಿಬ್ಬಂದಿ ಮಾಹಿತಿಯನ್ನೂ ನೀಡುತ್ತಾರೆ. ಇದರಿಂದ ಈ ವರ್ಷ ಸುವರ್ಣ ವಿಧಾನ ಸೌಧಕ್ಕೆ ಶೈಕ್ಷಣಿಕ ಪ್ರವಾಸಕ್ಕೆ ಬರುವ ವಿದ್ಯಾರ್ಥಿಗಳ ಸಂಖ್ಯೆ ಹೆಚ್ಚಾಗಿದೆ. ರಾಜ್ಯದ ವಿವಿಧ ಜಿಲ್ಲೆಗಳ ಶಾಲೆಗಳ ಶೈಕ್ಷಣಿಕ ಪ್ರವಾಸದ ಪಟ್ಟಿಯಲ್ಲಿ ಸುವರ್ಣ ವಿಧಾನಸೌಧ ಸೇರುತ್ತಿದೆ. \n\nಕಳೆದ ವರ್ಷದಿಂದಲೂ ಈ ವ್ಯವಸ್ಥೆ ಇದ್ದರೂ ಬೆಳಗಾವಿ ಜಿಲ್ಲೆಗಷ್ಟೆ ಸೀಮಿತವಾಗಿತ್ತು. ಈಗ ಹೊರ ಜಿಲ್ಲೆಯ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೂ ಸ್ಥಳದಲ್ಲಿಯೇ ಅರ್ಜಿ ಪಡೆದು ಸೌಧ ವೀಕ್ಷಣೆಗೆ ಉಚಿತ ಅವಕಾಶ ಕೊಡಲಾಗುತ್ತಿದೆ. ಈವರೆಗೆ ಉತ್ತರ ಕರ್ನಾಟಕದ ಬೆಳಗಾವಿ, ವಿಜಯಪುರ, ಬಾಗಲಕೋಟೆ, ಹಾವೇರಿ ಜಿಲ್ಲೆ ಹಾಗೂ ದಕ್ಷಿಣ ಕರ್ನಾಟಕದ ಮೈಸೂರು, ಮಂಡ್ಯ, ರಾಮನಗರ ಜಿಲ್ಲೆಯ ಶಾಲೆಗಳ ವಿದ್ಯಾರ್ಥಿಗಳು ಸೌಧವನ್ನು ವೀಕ್ಷಿಸಿದ್ದಾರೆ. \'\'ಇದು ಶೈಕ್ಷಣಿಕ ಪ್ರವಾಸದ ಅವಧಿಯಾಗಿದ್ದರಿಂದ ಸೌಧ ವೀಕ್ಷಣೆಗೆ ಬರುವ ವಿದ್ಯಾರ್ಥಿಗಳ ಸಂಖ್ಯೆ ಈಗ ಹೆಚ್ಚಾಗಿದೆ ಎನ್ನುತ್ತಾರೆ\'\', ಸೌಧದ ಸಹಾಯಕ ಎಂಜಿನಿಯರ್‌ ಜೆ. ಅರವಿಂದ್‌. ','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(31,NULL,'34','2018-12-27 17:12:08',0x01,'34','2018-12-27 17:12:08','1',34,'Test','','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(32,NULL,'34','2018-12-27 17:12:55',0x01,'34','2018-12-27 17:12:55','1',34,'Shetty','','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(33,NULL,'34','2018-12-27 17:13:58',0x01,'34','2018-12-27 17:23:45','1',34,'Goa','Amazing days in Goa','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(34,NULL,'34','2018-12-27 17:14:45',0x01,'34','2018-12-31 12:17:31','1',34,'Flower click on MI a1?','The earth loughs in flowers?','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(35,NULL,'34','2018-12-27 17:15:53',0x01,'34','2018-12-27 17:15:53','1',34,'Test','','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(36,NULL,'34','2018-12-27 17:16:56',0x01,'34','2018-12-27 17:16:56','1',34,'Varsha','','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(37,NULL,'34','2018-12-27 17:20:41',0x01,'34','2019-02-17 17:56:39','1',34,'Jatre','','{\"fullAddress\":\"6/12, 1st Cross Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"6/12\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93183653,\"longitude\":77.60915669,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.60915669,NULL),(38,NULL,'34','2018-12-27 17:22:15',0x01,'34','2018-12-27 17:22:15','1',34,'Malkaji','','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(39,NULL,'34','2018-12-27 17:33:02',0x01,'34','2018-12-27 17:33:02','2',34,'Birthday','','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(40,NULL,'40','2018-12-27 17:49:29',0x01,'40','2018-12-27 18:20:28','1',40,'Chumini','','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(41,NULL,'40','2018-12-28 08:44:20',0x01,'40','2018-12-28 08:44:20','1',40,'Dove','','{\"fullAddress\":\"3/155, Tavarekere Main Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"3/155\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93099724,\"longitude\":77.60964712}',NULL,'Bengaluru',77.60964712,NULL),(42,NULL,'34','2018-12-28 19:01:20',0x01,'34','2018-12-29 10:38:27','1',34,'test','test',NULL,NULL,NULL,NULL,NULL),(43,NULL,'34','2018-12-28 19:02:51',0x01,'34','2018-12-29 11:18:06','1',34,'Kenganur Dove','<p><span style=\"color: #800000;\"><strong>Hello this is the test html content</strong></span></p>\n<p>&nbsp;</p>\n<p><span style=\"color: #0000ff;\">Am i looking in blue colour?</span></p>\n<p><span style=\"color: #0000ff;\">Below should be inline image of dove.</span></p>\n<p><span style=\"color: #0000ff;\"><img src=\"https://i.pinimg.com/originals/d9/ac/2d/d9ac2d58da5c794a83f34fa9f624f2df.jpg\" alt=\"Dove\" width=\"300\" height=\"305\" /></span></p>\n<p>&nbsp;</p>',NULL,NULL,NULL,NULL,NULL),(44,NULL,'34','2018-12-29 14:36:13',0x01,'34','2018-12-29 20:46:43','1',34,'Vtu','Jai vtu????',NULL,NULL,NULL,NULL,NULL),(45,NULL,'34','2018-12-30 03:23:43',0x01,'34','2018-12-31 12:02:03','1',34,'KGF?','From the streets of Mumbai to the bloody gold mines of Kolar field??',NULL,NULL,NULL,NULL,NULL),(46,NULL,'34','2018-12-30 11:01:41',0x01,'34','2018-12-30 11:01:41','1',34,'Trend set','',NULL,NULL,NULL,NULL,NULL),(47,NULL,'41','2018-12-31 07:52:56',0x01,'41','2018-12-31 10:37:32','1',41,'Advance Happy New Year','','{\"fullAddress\":\"Thaverekere Main Road, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"Bengaluru\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93101315,\"longitude\":77.60999838,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.60999838,NULL),(48,NULL,'34','2019-01-01 16:07:31',0x01,'34','2019-01-01 16:20:32','1',34,'KGF Trailer','<div>utbe\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qXgF-iJ_ezE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n</div>',NULL,NULL,NULL,NULL,NULL),(49,NULL,'34','2019-01-03 07:50:44',0x01,'34','2019-01-03 07:50:44','2',34,'Youtube Test','157.45.255.237',NULL,NULL,NULL,NULL,NULL),(50,NULL,'34','2019-01-03 07:56:54',0x01,'34','2019-01-03 07:56:54','1',34,'test','',NULL,NULL,NULL,NULL,NULL),(51,NULL,'34','2019-01-03 13:32:25',0x01,'34','2019-01-03 13:32:25','1',34,'test','',NULL,NULL,NULL,NULL,NULL),(52,NULL,'34','2019-01-03 13:35:48',0x01,'34','2019-01-03 13:38:51','1',34,'Test Youtube','',NULL,NULL,NULL,NULL,'https://youtu.be/_mcCOIxTfOs'),(53,NULL,'34','2019-01-03 14:37:29',0x01,'34','2019-01-03 12:02:51','1',34,'utube test 2','',NULL,NULL,NULL,NULL,'https://www.youtube.com/watch?v=OHRaAX6_VUo'),(55,NULL,'34','2019-02-01 07:01:04',0x00,'34','2019-02-01 09:31:04','1',34,'Test','Tt','{\"fullAddress\":\"13, Bannerghatta Main Rd, OLd Gurappanapalya, 1st Stage, BTM Layout, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"13\",\"areaName\":\"BTM Layout\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.92502883,\"longitude\":77.60228728,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.60228728,NULL),(56,NULL,'35','2019-02-03 11:27:31',0x01,'35','2019-02-03 11:27:31','4',35,'Coconut','News','{\"fullAddress\":\"Unnamed Road, Kenganur, Karnataka 591104, India\",\"streetMain\":\"Unnamed Road\",\"city\":\"Kenganur\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"591104\",\"latitude\":15.7337398,\"longitude\":74.87728616,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Kenganur',74.87728616,''),(57,NULL,'44','2019-02-17 14:04:57',0x01,'44','2019-02-17 14:04:57','1',44,'Kannad film','At forum.','{\"fullAddress\":\"11, Hosur Main Road, Chikku Lakshmaiah Layout, Adugodi, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"11\",\"areaName\":\"Adugodi\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93375287,\"longitude\":77.6110703,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.6110703,''),(58,NULL,'44','2019-02-17 14:12:46',0x01,'44','2019-02-17 14:12:46','1',44,'Avengers','','{\"fullAddress\":\"21, Hosur Rd, Chikku Lakshmaiah Layout, Koramangala, Bengaluru, Karnataka 560095, India\",\"streetMain\":\"21\",\"areaName\":\"Koramangala\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560095\",\"latitude\":12.93464317,\"longitude\":77.61131623,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.61131623,''),(59,NULL,'34','2019-02-17 14:14:40',0x01,'34','2019-02-17 14:14:40','1',34,'Teddy','','{\"fullAddress\":\"21, Hosur Rd, Chikku Lakshmaiah Layout, Koramangala, Bengaluru, Karnataka 560095, India\",\"streetMain\":\"21\",\"areaName\":\"Koramangala\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560095\",\"latitude\":12.93464317,\"longitude\":77.61131623,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.61131623,''),(60,NULL,'45','2019-02-17 14:16:37',0x01,'45','2019-02-17 14:16:37','1',45,'Iron man','','{\"fullAddress\":\"21, Hosur Rd, Chikku Lakshmaiah Layout, Koramangala, Bengaluru, Karnataka 560095, India\",\"streetMain\":\"21\",\"areaName\":\"Koramangala\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560095\",\"latitude\":12.93464317,\"longitude\":77.61131623,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.61131623,''),(61,NULL,'44','2019-02-17 17:49:13',0x01,'44','2019-02-17 17:49:13','2',44,'Chandra marriage','','{\"fullAddress\":\"6/12, 1st Cross Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"6/12\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93183653,\"longitude\":77.60915669,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.60915669,''),(62,NULL,'45','2019-02-17 17:58:52',0x01,'45','2019-02-17 17:58:52','2',45,'Ha ha','','{\"fullAddress\":\"6/12, 1st Cross Rd, Venkateshwara Layout, Suddagunte Palya, Bengaluru, Karnataka 560029, India\",\"streetMain\":\"6/12\",\"areaName\":\"Suddagunte Palya\",\"city\":\"Bengaluru\",\"state\":\"Karnataka\",\"countryName\":\"India\",\"postalCode\":\"560029\",\"latitude\":12.93183653,\"longitude\":77.60915669,\"androidId\":\"bf2cdefe8920eb4b\"}',NULL,'Bengaluru',77.60915669,''),(63,NULL,'34','2019-03-16 03:53:05',0x00,'34','2019-03-16 03:53:05','1',34,'video test','<video width=\"320\" height=\"240\" controls>\n  <source src=\"https://storage.googleapis.com/smartcableapp-211915.appspot.com/trend_vid.mp4\" type=\"video/mp4\">\n  <source src=\"https://storage.googleapis.com/smartcableapp-211915.appspot.com/trend_vid.mp4\" type=\"video/ogg\">\n  Your browser does not support the video tag.\n</video>',NULL,NULL,NULL,NULL,'');
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `post_image`
+--
+
+DROP TABLE IF EXISTS `post_image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `post_image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image_url` varchar(255) DEFAULT NULL,
+  `post_id` int(11) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKsip7qv57jw2fw50g97t16nrjr` (`post_id`),
+  CONSTRAINT `FKsip7qv57jw2fw50g97t16nrjr` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post_image`
+--
+
+LOCK TABLES `post_image` WRITE;
+/*!40000 ALTER TABLE `post_image` DISABLE KEYS */;
+INSERT INTO `post_image` VALUES (19,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545246681076',14,'34',NULL,0x00,'34','2018-12-20 00:41:21'),(20,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545248893486',14,NULL,NULL,0x00,'34','2018-12-20 01:18:21'),(21,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545249298534',14,NULL,'2018-12-20 01:24:59',0x00,'34','2018-12-20 01:24:59'),(22,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545249485141',14,'34','2018-12-20 01:28:05',0x00,'34','2018-12-20 01:28:05'),(23,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545288726941',15,'34','2018-12-20 06:52:06',0x00,'34','2018-12-20 06:52:06'),(24,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545297540209',15,'34','2018-12-20 14:49:19',0x00,'34','2018-12-20 14:49:21'),(25,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545299692733',14,'34','2018-12-20 09:54:52',0x00,'34','2018-12-20 09:54:52'),(26,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/37_01545301532377',16,'37','2018-12-20 10:25:32',0x01,'37','2018-12-20 10:25:32'),(27,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545340618333',14,'34','2018-12-20 21:16:58',0x00,'34','2018-12-20 21:16:58'),(28,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545340891121',17,'34','2018-12-20 21:21:31',0x00,'34','2018-12-20 21:21:31'),(29,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545341108131',18,'34','2018-12-20 21:25:08',0x00,'34','2018-12-20 21:25:08'),(30,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545341557329',19,'34','2018-12-20 21:32:37',0x00,'34','2018-12-20 21:32:37'),(31,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545394175432',17,'34','2018-12-21 12:09:35',0x01,'34','2018-12-21 12:09:35'),(32,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545408043434',19,'34','2018-12-21 16:00:43',0x01,'34','2018-12-21 16:00:43'),(33,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545408366582',15,'34','2018-12-21 16:06:06',0x00,'34','2018-12-21 16:06:06'),(34,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545413801833',23,'34','2018-12-21 17:36:41',0x01,'34','2018-12-21 17:36:41'),(35,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545413901433',24,'34','2018-12-21 17:38:21',0x00,'34','2018-12-21 17:38:21'),(36,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545414207146',25,'34','2018-12-21 17:43:27',0x00,'34','2018-12-21 17:43:27'),(37,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545414269761',26,'34','2018-12-21 17:44:29',0x01,'34','2018-12-21 17:44:29'),(38,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545414332230',20,'34','2018-12-21 17:45:32',0x01,'34','2018-12-21 17:45:32'),(39,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545486632426',25,'34','2018-12-22 13:50:32',0x01,'34','2018-12-22 13:50:32'),(40,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545591394141',21,'34','2018-12-23 18:56:34',0x00,'34','2018-12-23 18:56:34'),(41,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545708465744',28,'34','2018-12-25 03:27:45',0x00,'34','2018-12-25 03:27:45'),(42,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545741984144',28,'34','2018-12-25 12:46:24',0x00,'34','2018-12-25 12:46:24'),(43,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545743638540',28,'34','2018-12-25 18:43:59',0x00,'34','2018-12-25 18:43:59'),(44,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545909347707',28,'34','2018-12-27 11:15:47',0x00,'34','2018-12-27 11:15:47'),(45,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545909619832',28,'34','2018-12-27 11:20:19',0x01,'34','2018-12-27 11:20:19'),(46,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545919362582',29,'34','2018-12-27 14:02:42',0x00,'34','2018-12-27 14:02:42'),(47,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545920526085',29,'34','2018-12-27 14:22:06',0x01,'34','2018-12-27 14:22:06'),(48,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545930579934',30,'34','2018-12-27 17:09:39',0x00,'34','2018-12-27 17:09:39'),(49,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545930728849',31,'34','2018-12-27 17:12:08',0x01,'34','2018-12-27 17:12:08'),(50,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545930775635',32,'34','2018-12-27 17:12:55',0x01,'34','2018-12-27 17:12:55'),(51,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545930838675',33,'34','2018-12-27 17:13:58',0x01,'34','2018-12-27 17:13:58'),(52,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545930885968',34,'34','2018-12-27 17:14:45',0x01,'34','2018-12-27 17:14:45'),(53,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545930953242',35,'34','2018-12-27 17:15:53',0x01,'34','2018-12-27 17:15:53'),(54,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545931016878',36,'34','2018-12-27 17:16:56',0x01,'34','2018-12-27 17:16:56'),(55,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545931241312',37,'34','2018-12-27 17:20:41',0x00,'34','2018-12-27 17:20:41'),(56,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545931335570',38,'34','2018-12-27 17:22:15',0x01,'34','2018-12-27 17:22:15'),(57,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01545931982745',39,'34','2018-12-27 17:33:02',0x01,'34','2018-12-27 17:33:02'),(58,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/40_01545932969940',40,'40','2018-12-27 17:49:29',0x01,'40','2018-12-27 17:49:29'),(59,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/40_01545986660365',41,'40','2018-12-28 08:44:20',0x01,'40','2018-12-28 08:44:20'),(60,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01546003865860',42,'34','2018-12-28 19:01:10',0x00,'34','2018-12-28 19:01:20'),(61,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01546003966422',43,'34','2018-12-28 19:02:51',0x01,'34','2018-12-28 19:02:51'),(62,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01546079907634',42,'34','2018-12-29 10:38:27',0x01,'34','2018-12-29 10:38:27'),(63,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01546094173628',44,'34','2018-12-29 14:36:13',0x01,'34','2018-12-29 14:36:13'),(64,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01546140223429',45,'34','2018-12-30 03:23:43',0x01,'34','2018-12-30 03:23:43'),(65,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01546167701054',46,'34','2018-12-30 11:01:41',0x01,'34','2018-12-30 11:01:41'),(66,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/41_01546242776953',47,'41','2018-12-31 07:52:56',0x00,'41','2018-12-31 07:52:56'),(67,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/41_01546252626538',47,'41','2018-12-31 10:37:06',0x01,'41','2018-12-31 10:37:06'),(68,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01546260338234',30,'34','2018-12-31 12:45:38',0x01,'34','2018-12-31 12:45:38'),(69,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01549013464132',55,'34','2019-02-01 09:31:04',0x00,'34','2019-02-01 09:31:04'),(70,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/35_01549193251036',56,'35','2019-02-03 11:27:31',0x01,'35','2019-02-03 11:27:31'),(71,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/44_01550412297239',57,'44','2019-02-17 14:04:57',0x01,'44','2019-02-17 14:04:57'),(72,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/44_01550412766141',58,'44','2019-02-17 14:12:46',0x01,'44','2019-02-17 14:12:46'),(73,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/34_01550412880881',59,'34','2019-02-17 14:14:40',0x01,'34','2019-02-17 14:14:40'),(74,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/45_01550412997566',60,'45','2019-02-17 14:16:37',0x01,'45','2019-02-17 14:16:37'),(75,'https://storage.googleapis.com/smartcableapp-211915.appspot.com/PostImages/44_01550425753278',61,'44','2019-02-17 17:49:13',0x01,'44','2019-02-17 17:49:13');
+/*!40000 ALTER TABLE `post_image` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `post_likes`
+--
+
+DROP TABLE IF EXISTS `post_likes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `post_likes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `is_liked` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKmxmoc9p5ndijnsqtvsjcuoxm3` (`post_id`),
+  KEY `FKbvgancnvef33fbvef40aapjoq` (`user_id`),
+  CONSTRAINT `FKbvgancnvef33fbvef40aapjoq` FOREIGN KEY (`user_id`) REFERENCES `global_user` (`id`),
+  CONSTRAINT `FKmxmoc9p5ndijnsqtvsjcuoxm3` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post_likes`
+--
+
+LOCK TABLES `post_likes` WRITE;
+/*!40000 ALTER TABLE `post_likes` DISABLE KEYS */;
+INSERT INTO `post_likes` VALUES (1,14,34,0x00),(2,16,34,0x01),(3,16,37,0x01),(4,14,37,0x01),(5,20,34,0x01),(6,16,38,0x01),(7,14,38,0x01),(8,18,34,0x01),(9,21,34,0x01),(10,19,34,0x01),(11,17,34,0x01),(12,22,34,0x01),(13,25,34,0x01),(14,23,34,0x01),(15,27,34,0x01),(16,24,34,0x01),(17,28,34,0x01),(18,38,34,0x01),(19,37,34,0x01),(20,31,34,0x01),(21,35,40,0x01),(22,40,34,0x01),(23,46,34,0x01),(24,45,34,0x01),(25,34,34,0x01),(26,57,45,0x01),(27,61,44,0x01),(28,59,44,0x01),(29,58,44,0x01);
+/*!40000 ALTER TABLE `post_likes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_modified_by` varchar(255) DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  `role_name` varchar(255) DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,NULL,NULL,NULL,NULL,'ROLE_ADMIN',0x01),(2,NULL,NULL,NULL,NULL,'ROLE_PUBLIC',0x01),(3,NULL,NULL,NULL,NULL,'ROLE_DEVELOPER',0x01);
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `smart_app_setting`
+--
+
+DROP TABLE IF EXISTS `smart_app_setting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `smart_app_setting` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `allow_bottom_banner` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `allow_interstitial` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `allow_top_banner` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `android_version` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `enable_ads` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `share_message_a` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `smart_app_setting`
+--
+
+LOCK TABLES `smart_app_setting` WRITE;
+/*!40000 ALTER TABLE `smart_app_setting` DISABLE KEYS */;
+INSERT INTO `smart_app_setting` VALUES (1,'true','true','false','1','false',0x01,'Install Trendfly from Google Play Store  https://play.google.com/store/apps/details?id=com.smartapp.webview    Click the link to see the post..');
+/*!40000 ALTER TABLE `smart_app_setting` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subscriber`
+--
+
+DROP TABLE IF EXISTS `subscriber`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `subscriber` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `adarcard_no` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `balance` varchar(255) DEFAULT NULL,
+  `contact_no` varchar(255) DEFAULT NULL,
+  `stb_id` varchar(255) DEFAULT NULL,
+  `stb_model` varchar(255) DEFAULT NULL,
+  `subscribed_date` datetime DEFAULT NULL,
+  `subscriber_name` varchar(255) DEFAULT NULL,
+  `vc_number` varchar(255) DEFAULT NULL,
+  `areamaster_id` int(11) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_modified_by` varchar(255) DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  `wallet_balance` double DEFAULT NULL,
+  `pack_expiry_date` datetime DEFAULT NULL,
+  `active_pack` int(11) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `discontinued` bit(1) DEFAULT NULL,
+  `discontinuity_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK6u1a4xkra6dgxvkvem0f4ajdl` (`areamaster_id`),
+  KEY `FK6lw158704mhshsq8onxi2q0fh` (`tenant_id`),
+  KEY `FKo204ordcs2dy1o9crykpyu7o1` (`active_pack`),
+  KEY `FK1nwgu0q08dkqy4aa3xi99i6t2` (`discontinuity_id`),
+  CONSTRAINT `FK1nwgu0q08dkqy4aa3xi99i6t2` FOREIGN KEY (`discontinuity_id`) REFERENCES `discontinuity` (`id`),
+  CONSTRAINT `FK6lw158704mhshsq8onxi2q0fh` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`id`),
+  CONSTRAINT `FK6u1a4xkra6dgxvkvem0f4ajdl` FOREIGN KEY (`areamaster_id`) REFERENCES `area_master` (`id`),
+  CONSTRAINT `FKo204ordcs2dy1o9crykpyu7o1` FOREIGN KEY (`active_pack`) REFERENCES `distributor_pack` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=910 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subscriber`
+--
+
+LOCK TABLES `subscriber` WRITE;
+/*!40000 ALTER TABLE `subscriber` DISABLE KEYS */;
+INSERT INTO `subscriber` VALUES (664,NULL,'kenganur',NULL,'8792414649','3E0903A4','','2016-12-07 00:00:00','Manjunath Shivarudrappa Angadi3','1000100068221338',NULL,1,0x01,'34','2019-01-20 18:36:57','34','2019-01-20 18:36:57',NULL,NULL,NULL,NULL,NULL,NULL),(665,NULL,'kenganur',NULL,'9731211132','3E09038B','','2016-12-08 00:00:00','Ningappa Siddalingappa Bevinakoppa','1000100068117926',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(666,NULL,'kenganur',NULL,'9740413171','3E0903AC','','2016-12-08 00:00:00','Ramappa Basappa Totagi','1000100068376223',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(667,NULL,'kenganur',NULL,'9743109994','3E0FCB81','','2016-12-08 00:00:00','Suresh Yallappa Hulagannavar','68235282',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:08:04',NULL,NULL,NULL,NULL,NULL,NULL),(668,NULL,'kenganur',NULL,'9620467482','480182FF','','2016-12-09 00:00:00','Pundalik Basawanneppa Ganiger','67085117',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:08:24',NULL,NULL,NULL,NULL,NULL,NULL),(669,NULL,'kenganur',NULL,'9845107152','3E0F17A1','','2016-12-10 00:00:00','Ramesh Shreeshail Patil','68162489',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:08:38',NULL,NULL,NULL,NULL,NULL,NULL),(670,NULL,'kenganur',NULL,'9686132225','3E0EF515','','2016-12-10 00:00:00','Shidlingayya Irayya Pujer','68162564',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:08:40',0,NULL,NULL,NULL,NULL,NULL),(671,NULL,'kenganur',NULL,'9980663786','3E0EF5F0','','2016-12-09 18:30:00','Gangayya Veerabasayya Pujer','1000100068239797',NULL,1,0x01,NULL,NULL,NULL,NULL,0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(672,NULL,'kenganur','00','9663712687','3E0F1776','','2019-01-01 00:00:00','Shoukatali Allisab Nadaf','68162711',NULL,1,0x01,'34','2019-03-14 23:28:23','34','2019-03-14 23:28:23',NULL,NULL,NULL,NULL,NULL,NULL),(673,NULL,'kenganur',NULL,'9743699982','3E0EF547','','2016-12-11 00:00:00','Gurunath Mallappa Bhovi','68102431',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:08:51',0,'2019-03-02 00:00:00',1,'Inactive',NULL,NULL),(674,NULL,'kenganur',NULL,'8123315490','3E0F0527','','2016-12-13 00:00:00','Girish BasappaTotagi','67779000',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:08:56',0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(675,NULL,'kenganur',NULL,'9880381851','3E091D0B','',NULL,'Hanamant Ramachandra Gudadappanavar','68282811',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:01',NULL,NULL,NULL,NULL,NULL,NULL),(676,NULL,'kenganur',NULL,'9972902124','20121500000101964','',NULL,'Gurunath Ramachandra Gudadappanavar','56686338',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:04',NULL,NULL,NULL,NULL,NULL,NULL),(677,NULL,'kenganur',NULL,'9972901558','3E0F0F06','',NULL,'Siddharud Ramappa Gudadappanavar','68005289',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:10',NULL,NULL,NULL,NULL,NULL,NULL),(678,NULL,'kenganur',NULL,'9844593267','3E0F0F02','','2016-12-15 00:00:00','Nagayya Shidlingayya Puranikamath','68011392',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:16',NULL,NULL,NULL,NULL,NULL,NULL),(679,NULL,'kenganur',NULL,'7026800370','3E0F0EF9','','2016-12-15 00:00:00','Prakash Shidlingappa Angadi','68005267',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:18',NULL,NULL,NULL,NULL,NULL,NULL),(680,NULL,'kenganur',NULL,'9844869467','3E0F0F00','','2016-12-15 00:00:00','Basappa Veerabhadrappa Kiroji','68012083',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:22',0,'2019-05-08 00:00:00',1,'Active',NULL,NULL),(681,NULL,'kenganur',NULL,'9902845856','3E0F0F08','','2016-12-16 00:00:00','Mahantesh Mallappa Gudadur','68011267',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:23',NULL,NULL,NULL,NULL,NULL,NULL),(682,NULL,'kenganur',NULL,'9964972974','3E0F2D30','','2016-12-16 00:00:00','Riyaz Rasulsab Nadaf','67777418',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:24',NULL,NULL,NULL,NULL,NULL,NULL),(683,NULL,'kenganur',NULL,'9008441886','3E0F506B','','2016-12-16 00:00:00','Mohan Basavaneppa Patil','68044213',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:32',NULL,NULL,NULL,NULL,NULL,NULL),(684,NULL,'kenganur',NULL,'8748965249','3E0F5065','','2016-12-16 00:00:00','Mahantesh Basavantappa Bevinakoppa','67769060',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:41',NULL,NULL,NULL,NULL,NULL,NULL),(685,NULL,'kenganur',NULL,'7760498418','480160E3','','2016-12-16 00:00:00','Siddarud Sadashiva Bevinakoppa','67186218',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:48',NULL,NULL,NULL,NULL,NULL,NULL),(686,NULL,'kenganur',NULL,'8197372663','3E0F4F6A','','2016-12-17 00:00:00','Mahantesh Panchakshari Kajagar','68044300',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:50',NULL,NULL,NULL,NULL,NULL,NULL),(687,NULL,'kenganur',NULL,'9008064584','3E0F0F01','','2016-12-15 00:00:00','Sangayya Madivalayya Simikerimath','68011260',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:51',NULL,NULL,NULL,NULL,NULL,NULL),(688,NULL,'kenganur',NULL,'7259909251','3E0F0EFB','','2016-12-15 00:00:00','Rudrappa Irappa Bevinakoppa','68046969',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:52',NULL,NULL,NULL,NULL,NULL,NULL),(689,NULL,'kenganur',NULL,'7353167402','3E0F5045','','2016-12-20 00:00:00','Ishwar Shiddalingappa Angadi','67980462',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:53',NULL,NULL,NULL,NULL,NULL,NULL),(690,NULL,'kenganur',NULL,'9164595741','3E0F38AB','','2016-12-20 00:00:00','Siddaruda Irayya Pujer','68044320',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:54',NULL,NULL,NULL,NULL,NULL,NULL),(691,NULL,'kenganur',NULL,'9632640771','3E0F5017','','2016-12-20 00:00:00','Irappa Shivaputrappa Bevinakoppa ','68044387',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:55',NULL,NULL,NULL,NULL,NULL,NULL),(692,NULL,'kenganur',NULL,'9241582956','3E0F5060','','2016-12-21 00:00:00','Siddarood Fakkirappa Bevinakoppa','67980237',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:56',NULL,NULL,NULL,NULL,NULL,NULL),(693,NULL,'kenganur',NULL,'9844491728','3E0F5052','','2016-12-21 00:00:00','Mallikarjun Siddappa Agasibagil','68044163',NULL,1,0x01,NULL,NULL,'34','2019-03-28 17:15:10',0,NULL,NULL,NULL,NULL,NULL),(694,NULL,'kenganur',NULL,'9008410514','3E0F5068','','2016-12-21 00:00:00','Veerabhadrappa Basappa Gudikatti','67980913',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:09:58',NULL,NULL,NULL,NULL,NULL,NULL),(695,NULL,'kenganur',NULL,'8722339299','3E0F505D','','2016-12-21 00:00:00','Manoj Basavaraj Pented','67769057',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:00',NULL,NULL,NULL,NULL,NULL,NULL),(696,NULL,'kenganur',NULL,'8861094280','3E0F2A31','','2016-12-22 00:00:00','Mallikarjun Ningappa Ambabai','67980974',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:01',NULL,NULL,NULL,NULL,NULL,NULL),(697,NULL,'kenganur',NULL,'9164800954','3E0F2A54','','2016-12-22 00:00:00','Ningappa Somappa Bevinakoppa','67742812',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:02',NULL,NULL,NULL,NULL,NULL,NULL),(698,NULL,'kenganur',NULL,'8970485886','3E0F248D','','2016-12-22 00:00:00','Prakash Annappa Patil','67797779',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:03',NULL,NULL,NULL,NULL,NULL,NULL),(699,NULL,'kenganur',NULL,'8722287874','3E0F23FB','','2016-12-23 00:00:00','Vijay Babu Patil','67797118',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:04',NULL,NULL,NULL,NULL,NULL,NULL),(700,NULL,'kenganur',NULL,'7026185641','3E0F2741','','2016-12-23 00:00:00','Shantayya Shankarayya Charantimath','68039272',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:05',NULL,NULL,NULL,NULL,NULL,NULL),(701,NULL,'kenganur',NULL,'9741634349','3E0F2A48','','2016-12-23 00:00:00','Sannappa Irappa Bhuvi','67791619',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:05',NULL,NULL,NULL,NULL,NULL,NULL),(702,NULL,'kenganur',NULL,'8722281589','3E0F2A3D','','2016-12-23 00:00:00','Somappa Ramappa Pented','67742878',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:07',NULL,NULL,NULL,NULL,NULL,NULL),(703,NULL,'kenganur',NULL,'8095657695','3E0F2A5B','','2016-12-23 00:00:00','Rajesab Fakrusab Nadaf','67798036',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:07',NULL,NULL,NULL,NULL,NULL,NULL),(704,NULL,'kenganur',NULL,'9740413395','3E0F3BEB','','2016-12-23 00:00:00','Kasimsab Gudusab Nadaf','67762813',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:08',NULL,NULL,NULL,NULL,NULL,NULL),(705,NULL,'kenganur',NULL,'9964001297','3E0F4416','','2016-12-25 00:00:00','Madivalayya Basayya Degalollimath','67756935',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:09',NULL,NULL,NULL,NULL,NULL,NULL),(706,NULL,'kenganur',NULL,'8495955788','3E0F0F03','','2016-12-25 00:00:00','Basappa Yallappa Ganiger','67748160',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:10',0,'2019-05-08 00:00:00',1,'Active',NULL,NULL),(707,NULL,'kenganur',NULL,'9164059305','3E0F33F4','','2016-12-26 00:00:00','Malikasab Husenasab Hulamani','67777987',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:11',NULL,NULL,NULL,NULL,NULL,NULL),(708,NULL,'kenganur',NULL,'9164729754','20121500000102035','','2016-12-27 00:00:00','Yallappa Veerabhadrappa Gudikatti','56686340',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:12',NULL,NULL,NULL,NULL,NULL,NULL),(709,NULL,'kenganur',NULL,'9663406270','3E0F4E1A','','2016-12-27 00:00:00','Ramanna Sankappa Pented','68041295',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:13',NULL,NULL,NULL,NULL,NULL,NULL),(710,NULL,'kenganur',NULL,'9980891948','3E0F33EC','','2016-12-29 00:00:00','Siddarudha Arjun Savadatti','68039748',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:14',NULL,NULL,NULL,NULL,NULL,NULL),(711,NULL,'kenganur',NULL,'8722641918','3E0F3332','','2016-12-29 00:00:00','Madiwalappa Shivalingappa Angadi','67782958',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:15',NULL,NULL,NULL,NULL,NULL,NULL),(712,NULL,'kenganur',NULL,'9964796631','3E0F4E4D','','2016-12-29 00:00:00','Manjunath Mahadevappa Patil','67762710',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:16',NULL,NULL,NULL,NULL,NULL,NULL),(713,NULL,'kenganur',NULL,'7026109357','3E0F33E0','','2016-12-29 00:00:00','Manjunath Hanumanth Halabavi','67777925',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:17',NULL,NULL,NULL,NULL,NULL,NULL),(714,NULL,'kenganur',NULL,'8722537406','3E28C183','','2016-12-29 00:00:00','Ramesh Chambanna Kajagar','69346237',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:17',NULL,NULL,NULL,NULL,NULL,NULL),(715,NULL,'kenganur',NULL,'8722009725','3E0F33D9','','2016-12-30 00:00:00','Doddayya Muddayya Puranikamath','68011942',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:18',0,'2019-05-01 00:00:00',1,'Active',NULL,NULL),(716,NULL,'kenganur',NULL,'9148191768','3E0F3404','','2016-12-31 00:00:00','Mahmadisak Ibrahimsab  Kittur','68041239',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:19',NULL,NULL,NULL,NULL,NULL,NULL),(717,NULL,'kenganur',NULL,'7760318925','3E0F3400','','2017-01-01 00:00:00','Salim Nadaf','68041994',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:20',NULL,NULL,NULL,NULL,NULL,NULL),(718,NULL,'kenganur',NULL,'9611678408','3E28C1AE','','2017-01-25 18:30:00','Basappa Panchakshari Kajagar','69425643',NULL,1,0x01,'34','2019-01-22 12:15:19','34','2019-04-07 23:25:22',0,'2019-05-05 00:00:00',1,'Active',NULL,NULL),(719,NULL,'kenganur',NULL,'9844203704','3E28C1AA','','2017-01-03 00:00:00','Doddayya Irayya  Pujer','69346923',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:22',0,'2019-05-01 00:00:00',1,'Active',NULL,NULL),(720,NULL,'kenganur',NULL,'9731621941','3E28C1A9','','2017-01-03 00:00:00','Kalmesh Balappa Ambabai','69425163',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:23',NULL,NULL,NULL,NULL,NULL,NULL),(721,NULL,'kenganur',NULL,'8970182962','3E28C1AD','','2017-01-03 00:00:00','Siddappa Ramappa Kuri','69346855',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:24',NULL,NULL,NULL,NULL,NULL,NULL),(722,NULL,'kenganur',NULL,'7022072267','3E28C1A3','','2017-01-03 00:00:00','Mamataz Khatalasab Kittur','69428179',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:25',NULL,NULL,NULL,NULL,NULL,NULL),(723,NULL,'kenganur',NULL,'9964626491','3E28C19F','','2017-01-04 00:00:00','Nabisab Maddesab Nadaf','69411872',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:25',NULL,NULL,NULL,NULL,NULL,NULL),(724,NULL,'kenganur',NULL,'7353370063','3E289EB4','','2017-01-04 00:00:00','Chambanna Ramanagouda Patil','69425917',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:27',0,'2019-04-30 00:00:00',1,'Active',NULL,NULL),(725,NULL,'kenganur',NULL,'7026306162','3E28C19D','','2017-01-04 00:00:00','Fakkirappa Ningappa  Kuri','69416043',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:28',0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(726,NULL,'kenganur',NULL,'7026020430','3E28C1A6','','2017-01-05 00:00:00','Fakirappa Bhimappa Jeevapur','69425256',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:29',0,'2019-05-01 00:00:00',1,'Active',NULL,NULL),(727,NULL,'kenganur',NULL,'8748080494','3E28ADB2','','2017-01-06 00:00:00','Mahadevappa Mallappa Kolakar','68897014',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:30',NULL,NULL,NULL,NULL,NULL,NULL),(728,NULL,'kenganur',NULL,'8550022373','3E28C01B','','2017-01-07 00:00:00','Nagappa Ramappa Tubaki','69419916',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:31',NULL,NULL,NULL,NULL,NULL,NULL),(729,NULL,'kenganur',NULL,'9731821834','3E289CCC','','2017-01-09 00:00:00','Umesh Mallikarjun Ganiger','69071725',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:31',NULL,NULL,NULL,NULL,NULL,NULL),(730,NULL,'kenganur',NULL,'9591748588','3E28A0F8','','2017-01-11 00:00:00','Siddappa Gangappa Tattimani','68970711',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:32',NULL,NULL,NULL,NULL,NULL,NULL),(731,NULL,'kenganur',NULL,'9538492111','3E28B4A3','','2017-01-15 00:00:00','Vithal Yallappa Kuri','69420287',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:34',NULL,NULL,NULL,NULL,NULL,NULL),(732,NULL,'kenganur',NULL,'9743780606','3E28A6A0','','2017-01-08 00:00:00','Rudrappa Madiwalappa Goravankolla','68898324',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:35',NULL,NULL,NULL,NULL,NULL,NULL),(733,NULL,'kenganur',NULL,'8197398969','3E28A0FB','','2017-01-16 00:00:00','Mugatabi Naiksab Tallur','1000100068970978',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(734,NULL,'kenganur',NULL,'8197398969','3E289230','','2017-01-17 00:00:00','Imamasab Husenasab Tallur','1000100068901092',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(735,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(736,NULL,'kenganur',NULL,'8217773205','20121500000102050','','2017-01-21 00:00:00','Hanamantappa Fakkirappa Madar','56686324',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:37',NULL,NULL,NULL,NULL,NULL,NULL),(737,NULL,'kenganur',NULL,'7353163911','3E2A7F58','','2017-01-22 00:00:00','Shivaputrappa Madivalappa Hullur','69374110',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:38',NULL,NULL,NULL,NULL,NULL,NULL),(738,NULL,'kenganur',NULL,'7353717413','3E2A6F88','','2017-01-22 00:00:00','Nagavva Sangappa Kodli','69377744',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:39',NULL,NULL,NULL,NULL,NULL,NULL),(739,NULL,NULL,NULL,'9980663789',NULL,NULL,'2018-01-01 00:00:00','mahi',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(740,NULL,'kenganur',NULL,'9880056551','3E2A6F55','','2017-01-23 00:00:00','Jyoti Basavaraj Angadi','69316295',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:41',NULL,NULL,NULL,NULL,NULL,NULL),(741,NULL,'kenganur',NULL,'8861867826','3E2A6F84','','2017-01-23 00:00:00','Imamsab Modinsab Hulamani','69388824',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:42',NULL,NULL,NULL,NULL,NULL,NULL),(742,NULL,'kenganur',NULL,'9880763488','3E2A6F92','','2017-01-23 00:00:00','Modinasab Imamasab Hulamani','69315563',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:42',NULL,NULL,NULL,NULL,NULL,NULL),(743,NULL,'kenganur',NULL,'9945038978','3E2A8204','','2017-01-22 18:30:00','Fakrusab Modinsab Hulamani','69374716',NULL,1,0x01,'1','2018-10-06 15:27:02','34','2019-02-24 23:10:44',0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(744,NULL,'kenganur',NULL,'9844398849','3E2A71D1','','2017-01-28 00:00:00','Lalasab Mugutasab Hulamani','69388308',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:45',NULL,NULL,NULL,NULL,NULL,NULL),(745,NULL,'kenganur',NULL,'9071903081','3E2A823E','','2017-01-26 00:00:00','Gangavva Mallikarjun Angadi','69374790',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:45',0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(746,NULL,'kenganur',NULL,'9148990541','3E2A717C','','2017-01-28 00:00:00','Vinayak Basappa Teragavi','69388913',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:46',0,NULL,NULL,NULL,NULL,NULL),(747,NULL,'kenganur',NULL,'9538945831','3E2A70A1','','2017-01-28 00:00:00','Mahadev Chanamallappa Kajagar','69325434',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:47',NULL,NULL,NULL,NULL,NULL,NULL),(748,NULL,'kenganur',NULL,'9611866846','3E2A7180','','2017-01-30 00:00:00','Maktumasab Babasab Dundimani','69388513',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:48',NULL,NULL,NULL,NULL,NULL,NULL),(749,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(750,NULL,'kenganur',NULL,'7406358208','3E2A706E','','2017-02-04 00:00:00','Somappa Basappa Menasinakai','69334236',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:50',NULL,NULL,NULL,NULL,NULL,NULL),(751,NULL,'kenganur',NULL,'9844181470','3E2A7043','','2017-02-05 00:00:00','Mahadev Siddappa Ambabayi','69377709',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:51',NULL,NULL,NULL,NULL,NULL,NULL),(752,NULL,'kenganur',NULL,'9964344367','3E2A7035','','2017-02-06 00:00:00','Ratnavva Siddaroad Ambabayi','69373667',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:52',NULL,NULL,NULL,NULL,NULL,NULL),(753,NULL,'kenganur',NULL,'8749025324','3E093C4F','','2017-02-09 00:00:00','Rajappa Fakirappa Barigidad','68141419',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:53',NULL,NULL,NULL,NULL,NULL,NULL),(754,NULL,'kenganur',NULL,'9902516471','3E091CE1','','2017-02-10 00:00:00','Chambayya Shidramayya Puranikamath','68289931',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:54',0,'2019-06-01 00:00:00',1,'Active',NULL,NULL),(755,NULL,'kenganur',NULL,'8150862481','3E0FCC90','','2017-02-22 00:00:00','Vittal  Sidlingappa Bevinakoppa','68235296',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:55',NULL,NULL,NULL,NULL,NULL,NULL),(756,NULL,'kenganur',NULL,'9731211132','3E0FCB6F','','2017-02-23 00:00:00','Pundalik Mahadevappa Hittalamani','1000100068189676',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(757,NULL,'kenganur',NULL,'8722022063','3E0FCA01','','2017-02-23 00:00:00','Mallappa Ramappa Pented','68224000',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:56',NULL,NULL,NULL,NULL,NULL,NULL),(758,NULL,'kenganur',NULL,'7353020244','3E0FCAAD','','2017-02-24 00:00:00','Mallappa Fakirappa Goravankolla','68235221',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:57',NULL,NULL,NULL,NULL,NULL,NULL),(759,NULL,'kenganur',NULL,'9164651871','3E0FCC0A','','2017-03-02 00:00:00','Hanamanth Rudrappa Tubaki','68584593',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:58',NULL,NULL,NULL,NULL,NULL,NULL),(760,NULL,'kenganur',NULL,'8722869565','3E0FCB81','','2017-02-28 18:30:00','Fakrusab  Tallur ( Dilawar )','68235282',NULL,1,0x01,'34','2019-01-25 20:38:46','34','2019-04-08 21:21:09',0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(761,NULL,'kenganur',NULL,'7996854395','3E0FCC76','','2017-03-07 00:00:00','Somappa Yallappa Gudadari','68584583',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:10:59',NULL,NULL,NULL,NULL,NULL,NULL),(762,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(763,NULL,'kenganur',NULL,'7353153688','3E0FCB12','','2017-03-09 18:30:00','Manjula Basavaraj Hittalamani','68548747',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:01',NULL,NULL,NULL,NULL,NULL,NULL),(764,NULL,'kenganur',NULL,'9880831761','3E104671','','2017-03-12 00:00:00','Mahadev Shivanand Kajagar','68038868',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:02',NULL,NULL,NULL,NULL,NULL,NULL),(765,NULL,'kenganur',NULL,'9845460448','3E10465C','','2017-03-15 00:00:00','Nagavva Balappa Hulagannavar','67757808',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:03',NULL,NULL,NULL,NULL,NULL,NULL),(766,NULL,'kenganur',NULL,'9845265633','3E104672','','2017-03-17 00:00:00','Shrikant Mushappa Yakkannavar','68038647',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:04',NULL,NULL,NULL,NULL,NULL,NULL),(767,NULL,'kenganur',NULL,'8971022821','3E104658','','2017-03-23 00:00:00','Kamalakshi Basavaraj Badanavar','68038873',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:04',NULL,NULL,NULL,NULL,NULL,NULL),(768,NULL,'kenganur',NULL,'8494908592','3E104667','','2017-03-27 00:00:00','Yallappa Shankareppa Patil','67757533',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:05',NULL,NULL,NULL,NULL,NULL,NULL),(769,NULL,'kenganur',NULL,'7259664610','3E10466D','','2017-03-26 00:00:00','Prabhu Mallikarjun Dodamani','67757509',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:07',NULL,NULL,NULL,NULL,NULL,NULL),(770,NULL,'kenganur',NULL,'8746867149','','','2017-03-27 00:00:00','Chambanna Dundappa Kadakol','',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:10',0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(771,NULL,'kenganur',NULL,'7348842246','3E10466F','','2017-03-27 00:00:00','Lingayya Madivalaya Simikerimath','68038507',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:11',NULL,NULL,NULL,NULL,NULL,NULL),(772,NULL,'kenganur',NULL,'8970791059','3E104648','','2017-03-31 00:00:00','Mahantesh Channayya Pujer','67757804',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:13',NULL,NULL,NULL,NULL,NULL,NULL),(773,NULL,'kenganur',NULL,'9743337405','3E10461C','','2017-03-31 00:00:00','Kalappa Manappa Badiger','68049064',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:14',NULL,NULL,NULL,NULL,NULL,NULL),(774,NULL,'kenganur',NULL,'7353373581','3E0FCBD7','','2017-03-01 00:00:00','Yallappa Somappa Ganiger','68167493',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:15',NULL,NULL,NULL,NULL,NULL,NULL),(775,NULL,'kenganur',NULL,'8105059196','3E0F0EF2','','2017-01-01 00:00:00','Buddappa Panchakshari Kajagar','68032391',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:16',0,'2019-05-03 00:00:00',2,'Active',NULL,NULL),(776,NULL,'kenganur',NULL,'9686738775','3E28A0B1','','2017-02-01 00:00:00','Rudrappa Siddappa Goudannavar','69424157',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:17',NULL,NULL,NULL,NULL,NULL,NULL),(777,NULL,'kenganur',NULL,'7259694904','3E1C5D04','','2017-01-07 00:00:00','Sikandarsab Mugutsab Tallur','68816891',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:17',NULL,NULL,NULL,NULL,NULL,NULL),(778,NULL,'kenganur',NULL,'8746012657','3E102C7C','','2017-04-09 00:00:00','Basappa Phakirappa Barigidad','68036446',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:18',0,'2019-05-08 00:00:00',1,'Active',NULL,NULL),(779,NULL,'kenganur',NULL,'8861852374','3E107539','','2017-04-09 00:00:00','Gurunath Sedeppa Talawar','68017921',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:19',NULL,NULL,NULL,NULL,NULL,NULL),(780,NULL,'kenganur',NULL,'9632045393','3E102C4C','','2017-04-09 00:00:00','Pundlikappa Siddappa Madar','68037002',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:20',NULL,NULL,NULL,NULL,NULL,NULL),(781,NULL,'kenganur',NULL,'9620709004','3E102C83','','2017-04-10 00:00:00','Dilawar Baksusab hulamani','68036676',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:21',0,'2019-05-31 00:00:00',1,'Active',NULL,NULL),(782,NULL,'kenganur',NULL,'7795716650','3E102C80','','2017-04-12 00:00:00','Ramappa Yallappa Madar','68009827',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:22',NULL,NULL,NULL,NULL,NULL,NULL),(783,NULL,'kenganur',NULL,'7090334976','3E102C50','','2017-04-12 00:00:00','Husenbi Sikandarsab Nadaf ','68036681',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:23',NULL,NULL,NULL,NULL,NULL,NULL),(784,NULL,'kenganur',NULL,'9071919210','3E102C73','','2017-04-14 00:00:00','Sharifsab Allisab Nadaf','67758667',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:24',NULL,NULL,NULL,NULL,NULL,NULL),(785,NULL,'kenganur',NULL,'7090847892','3E102C52','','2017-04-16 00:00:00','Irappa Nagappa Melinamani','68036668',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:25',NULL,NULL,NULL,NULL,NULL,NULL),(786,NULL,'kenganur',NULL,'9632662979','3E102C54','','2017-04-16 00:00:00','Siddappa Fakkirappa Barigidad','68037038',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:26',NULL,NULL,NULL,NULL,NULL,NULL),(787,NULL,'kenganur',NULL,'9980734402','3E090D23','','2017-04-19 00:00:00','Modinsab Ibrahimsab Kittur','68330363',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:27',NULL,NULL,NULL,NULL,NULL,NULL),(788,NULL,'kenganur',NULL,'9844601592','3E1024E4','','2017-04-20 00:00:00','Rasulasab Husensab Hulamani','67775378',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:28',NULL,NULL,NULL,NULL,NULL,NULL),(789,NULL,'kenganur',NULL,'9740901624','3E103862','','2017-04-21 00:00:00','Veerupakshippa Basappa Agasibagil','68020970',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:28',NULL,NULL,NULL,NULL,NULL,NULL),(790,NULL,'kenganur',NULL,'9731838921','3E1031F2','','2017-04-22 00:00:00','Mahantesh Madivalappa Hullur','67775902',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:29',NULL,NULL,NULL,NULL,NULL,NULL),(791,NULL,'kenganur',NULL,'8050215305','3E1038F6','','2017-04-22 00:00:00','Siddarood Basappa Ganiger','68009220',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:30',NULL,NULL,NULL,NULL,NULL,NULL),(792,NULL,'kenganur',NULL,'8105245192','3E1038D2','','2017-04-22 00:00:00','Shankar Irappa Badiger','68009896',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:31',NULL,NULL,NULL,NULL,NULL,NULL),(793,NULL,'kenganur',NULL,'8880884592','3E10388F','','2017-04-23 00:00:00','Mahabub Allisab Nadaf','68020943',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:32',NULL,NULL,NULL,NULL,NULL,NULL),(794,NULL,'kenganur',NULL,'9964231118','','','2017-04-28 00:00:00','Nabisab Husenasab Hulamani','',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:33',NULL,NULL,NULL,NULL,NULL,NULL),(795,NULL,'kenganur',NULL,'7996854473','3E1038EE','','2017-05-08 00:00:00','Padamappa Gulappa Hittalamni','67747567',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:34',NULL,NULL,NULL,NULL,NULL,NULL),(796,NULL,'kenganur',NULL,'9844829338','3E103200','','2017-05-20 00:00:00','Sangayya Chanabasayya Pujer','67775416',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:35',NULL,NULL,NULL,NULL,NULL,NULL),(797,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(798,NULL,'kenganur',NULL,'7353207901','3E1033AF','','2017-05-21 18:30:00','Gangappa Shankareppa  Ganiger','1000100068015291',NULL,1,0x01,NULL,NULL,'34','2019-03-28 17:17:20',0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(799,NULL,'kenganur',NULL,'7259880452','4406F6FB','','2017-05-25 00:00:00','Irappa Appanna Agasibagil','69048896',NULL,1,0x01,NULL,NULL,'34','2019-02-24 23:11:38',NULL,NULL,NULL,NULL,NULL,NULL),(800,NULL,'',NULL,'','','','2016-12-14 00:00:00','Hanamant  Gudadappanavar','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(801,NULL,'',NULL,'','','','2016-12-14 00:00:00','Gurunath  Gudadappanavar','',NULL,1,0x01,NULL,NULL,NULL,NULL,0,'2019-05-08 00:00:00',1,'Active',NULL,NULL),(802,NULL,'',NULL,'','','','2016-12-14 00:00:00','Siddharud  Gudadappanavar','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(803,NULL,'',NULL,'','','','2017-06-01 00:00:00','Manjunath Siddappa Ganiger','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(804,NULL,'',NULL,'','','','2017-07-11 00:00:00','Shivappa Ningappa Naykar','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(805,NULL,'',NULL,'','','','2017-07-11 00:00:00','Shankreppa Bevinakoppa ','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(806,NULL,'',NULL,'','','','2017-07-14 00:00:00','Veerabhadrappa Ramappa Bevinakoppa ','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(807,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(808,'','',NULL,'1234567654','stb123',NULL,'2018-01-24 00:00:00','Anand babu',NULL,NULL,1,0x00,'34','2019-01-20 12:26:31','34','2019-01-20 12:26:31',NULL,NULL,NULL,NULL,NULL,NULL),(809,NULL,'',NULL,'','','','2017-08-01 00:00:00','Nagappa Dundappa Bailawad','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(810,NULL,'',NULL,'','','','2017-08-10 00:00:00','Mugutsab Dilawar Tallur','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(811,NULL,'',NULL,'','','','2017-08-18 00:00:00','Salim NaikasabTallur','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(812,NULL,'',NULL,'','','','2017-08-17 00:00:00','Yamanappa Gangappa Talawar','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(813,NULL,NULL,NULL,'9220603719',NULL,NULL,'2018-01-01 05:30:00','Ragav',NULL,NULL,1,0x01,'1','2018-10-07 00:01:47','1','2018-10-07 00:01:47',NULL,NULL,NULL,NULL,NULL,NULL),(814,NULL,'',NULL,'','','','2017-09-01 00:00:00','Mahadevappa Shidlingappa Kiroji','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(815,NULL,'',NULL,'','','','2017-09-01 00:00:00','Madiwalappa Irappa Bevinakoppa','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(816,NULL,'',NULL,'','','','2017-09-01 00:00:00','Siddarudh Shankar Kajagar','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(817,NULL,'',NULL,'','','','2017-09-13 00:00:00','Santosh Shivappa Naykar','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(818,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(819,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(820,'','TQ//Bailhongal',NULL,'7353207909','456',NULL,'2018-07-31 18:30:00','Bob bonhard',NULL,NULL,1,0x01,NULL,NULL,'34','2019-04-07 23:35:14',0,'2019-07-06 00:00:00',1,'Active',NULL,NULL),(821,NULL,NULL,NULL,'7353207910',NULL,NULL,'2018-01-01 00:00:00','mahi',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(822,'','',NULL,'1234567897','5432','','2018-09-02 18:30:00','Mounesh1','',NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(823,NULL,NULL,NULL,'1234567890','577',NULL,'2018-09-02 18:30:00','Mounesh',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(824,NULL,NULL,NULL,'1234567893','577',NULL,'2018-09-02 18:30:00','Mounesh',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(825,NULL,NULL,NULL,'7353207902','678',NULL,'2018-09-22 18:30:00','Mounesh',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(826,NULL,NULL,NULL,'7353207903','57899',NULL,'2018-05-06 18:30:00','Mounesh',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(827,NULL,NULL,NULL,'6464','haha',NULL,'2018-08-12 18:30:00','test',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(828,NULL,NULL,NULL,'1234564890','bb',NULL,'2018-09-29 18:30:00','mmmmm',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(829,'','kenganur',NULL,'7353207904','hj',NULL,'2018-02-28 18:30:00','Gayatri',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(830,NULL,NULL,NULL,'8310378973','stb123',NULL,'2018-01-31 18:30:00','jio',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(831,NULL,NULL,NULL,'7353207901','586hh',NULL,'2018-04-30 18:30:00','mine',NULL,NULL,2,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(832,NULL,NULL,NULL,'9980663789','hshs','jsj','2018-01-31 18:30:00','ramesh',NULL,NULL,2,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(833,NULL,NULL,NULL,'7353207999','28',NULL,'2018-01-31 18:30:00','mahesh',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(834,NULL,NULL,NULL,'7894561230','fah',NULL,'2018-01-24 18:30:00','mgb',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(835,NULL,NULL,NULL,'1234567833','fgh',NULL,'2018-04-30 18:30:00','rajanna',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(836,NULL,NULL,NULL,'9980603789',NULL,NULL,'2018-01-01 05:30:00','mahi',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(837,NULL,NULL,NULL,'1234569870','gah',NULL,'2018-08-31 18:30:00','jaleela',NULL,NULL,1,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(838,NULL,NULL,NULL,'9123456789','123',NULL,'2018-10-05 18:30:00','kalmesh',NULL,6,1,0x01,'1','2018-10-06 16:07:50','1','2018-10-06 16:07:50',NULL,NULL,NULL,NULL,NULL,NULL),(839,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(840,NULL,NULL,NULL,'9784563120','67',NULL,'2018-06-30 18:30:00','test user',NULL,2,1,0x01,'1','2018-10-06 18:36:34','1','2018-10-06 18:36:34',NULL,NULL,NULL,NULL,NULL,NULL),(841,NULL,NULL,NULL,'9876541230','596',NULL,'2018-05-31 18:30:00','saurav',NULL,4,1,0x01,'1','2018-10-06 18:59:37','1','2018-10-06 18:59:37',NULL,NULL,NULL,NULL,NULL,NULL),(842,'','tghtfrghbtfr',NULL,'525441555252',NULL,NULL,'2018-10-11 00:00:00','aaaa',NULL,1,1,0x00,'4','2018-10-11 06:46:39','4','2018-10-11 06:46:39',NULL,NULL,NULL,NULL,NULL,NULL),(846,NULL,NULL,NULL,'7894561233','668',NULL,'2018-10-02 18:30:00','test anand',NULL,1,1,0x01,'1','2018-10-11 07:03:56','1','2018-10-11 07:03:56',NULL,NULL,NULL,NULL,NULL,NULL),(847,'688','test',NULL,'1234554312',NULL,NULL,'2018-10-01 00:00:00','Test123',NULL,NULL,1,0x01,'1','2018-10-11 14:44:29','1','2018-10-11 14:44:29',NULL,NULL,NULL,NULL,NULL,NULL),(848,NULL,NULL,NULL,'1472583906','577',NULL,'2018-09-30 18:30:00','test',NULL,7,1,0x01,'4','2018-10-11 10:25:42','4','2018-10-11 10:25:42',NULL,NULL,NULL,NULL,NULL,NULL),(851,NULL,NULL,NULL,'3692581470','578',NULL,'2018-08-31 18:30:00','test',NULL,NULL,1,0x01,'4','2018-10-11 13:08:18','4','2018-10-11 13:08:18',NULL,NULL,NULL,NULL,NULL,NULL),(852,NULL,NULL,NULL,'3571592147','68',NULL,'2018-08-31 18:30:00','ashis',NULL,NULL,1,0x00,'4','2018-10-11 13:09:46','4','2018-10-11 13:09:46',NULL,NULL,NULL,NULL,NULL,NULL),(853,NULL,NULL,NULL,'7894561230','123','123','2017-12-31 18:30:00','test',NULL,NULL,2,0x01,'2','2018-10-14 08:51:54','2','2018-10-14 08:51:54',NULL,NULL,NULL,NULL,NULL,NULL),(854,'','',NULL,'7234197091','adf123','','2019-01-23 00:00:00','NEw Subs','',NULL,1,0x01,'34','2019-01-20 12:14:47','34','2019-01-20 12:14:47',NULL,NULL,NULL,NULL,NULL,NULL),(855,NULL,NULL,NULL,'9876543210','527',NULL,'2018-10-03 18:30:00','tik tok',NULL,NULL,1,0x01,'34','2019-01-25 12:50:51','34','2019-01-25 12:50:51',NULL,NULL,NULL,NULL,NULL,NULL),(856,NULL,NULL,NULL,'9876543211','STB64512375462',NULL,'2018-08-07 18:30:00','Ramesh Kumar',NULL,NULL,1,0x01,'34','2019-02-20 15:49:05','34','2019-02-20 15:49:05',0,NULL,NULL,NULL,NULL,NULL),(857,NULL,NULL,'00','8792414649','3E0903A4',NULL,NULL,'Manjunath Shivarudrappa Angadi','68221338',NULL,1,0x01,'34','2019-02-24 22:53:50',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(858,NULL,NULL,'00','9731211132','3E09038B',NULL,NULL,'Ningappa Siddalingappa Bevinakoppa','68117926',NULL,1,0x01,'34','2019-02-24 22:54:09',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(859,NULL,NULL,'00','9740413171','3E0903AC',NULL,NULL,'Ramappa Basappa Totagi','68376223',NULL,1,0x01,'34','2019-02-24 22:54:24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(860,NULL,NULL,'00','9686132532','3E0EF5F0',NULL,NULL,'Gangayya Veerabasayya Pujer','68239797',NULL,1,0x01,'34','2019-02-24 23:08:41',NULL,NULL,0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(861,NULL,NULL,'00','9741679213','3E289915',NULL,NULL,'Arjun SedaeppaTalawar','69425474',NULL,1,0x01,'34','2019-02-24 23:10:36','34','2019-03-28 16:48:24',0,'2019-06-04 00:00:00',1,'Active',NULL,NULL),(862,'234sjksk234','Kenganur, Bailhongal','00','7353217901','3E2A6F43','sdfsd','2016-02-02 00:00:00','Adiveppa Gangappa Angadi','69377878',NULL,1,0x01,'34','2019-03-16 23:48:00','34','2019-03-28 18:53:12',0,'2019-09-16 00:00:00',1,'Active',NULL,NULL),(863,NULL,NULL,'00','8722006625','3E2A71FD',NULL,NULL,'Basappa Ningappa Jeewapur','69388755',NULL,1,0x01,'34','2019-02-24 23:10:49','34','2019-04-08 06:41:05',0,'2019-05-01 00:00:00',1,'Active',NULL,NULL),(864,NULL,NULL,'00','9632894506','3E0FCC7A',NULL,NULL,'Basappa Mallappa Gudadur','68097112',NULL,1,0x01,'34','2019-02-24 23:11:00',NULL,NULL,0,'2019-05-04 00:00:00',1,'Active',NULL,NULL),(865,NULL,NULL,'00','9686452769','3E103207',NULL,NULL,'Arjun Rudrappa Jakati','67775477',NULL,1,0x01,'34','2019-02-24 23:11:36','34','2019-04-10 17:38:37',0,'2019-07-08 00:00:00',1,'Active',NULL,NULL),(866,NULL,NULL,'00','9964288334','3E1033AF',NULL,NULL,'Gangappa Shankareppa  Ganiger','68015291',NULL,1,0x01,'34','2019-02-24 23:11:37',NULL,NULL,0,'2019-05-08 00:00:00',1,'Active',NULL,NULL),(867,NULL,NULL,'00','7760934962','3E2A3821',NULL,NULL,'Manjunath Siddappa Ganiger','69048710',NULL,1,0x01,'34','2019-02-24 23:11:39',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(868,NULL,NULL,'00','8722288323','3E2A3715',NULL,NULL,'Shivappa Ningappa Naykar','69099426',NULL,1,0x01,'34','2019-02-24 23:11:40',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(869,NULL,NULL,'00','7337610585','3E2A383D',NULL,NULL,'Shankreppa Bevinakoppa ','69084480',NULL,1,0x01,'34','2019-02-24 23:11:40',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(870,NULL,NULL,'00','8550026639','3E2A367E',NULL,NULL,'Veerabhadrappa Ramappa Bevinakoppa ','69320652',NULL,1,0x01,'34','2019-02-24 23:11:41',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(871,NULL,NULL,'00','8152893074','3E2A36C9',NULL,NULL,'Ashabi Kadirasab Bahaddurasi','69320937',NULL,1,0x01,'34','2019-02-24 23:11:42','34','2019-03-28 21:02:59',0,'2019-05-04 00:00:00',1,'Active',NULL,NULL),(872,NULL,NULL,'00','8970782996','3E2A3840',NULL,NULL,'Anand Babu Talawar','69059644',NULL,1,0x01,'34','2019-02-24 23:11:43','34','2019-04-08 19:29:42',0,'2019-06-03 00:00:00',1,'Active',NULL,NULL),(873,NULL,NULL,'00','9902994373','3E2A36D0',NULL,NULL,'Nagappa Dundappa Bailawad','69083346',NULL,1,0x01,'34','2019-02-24 23:11:44',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(874,NULL,NULL,'00','7026513186','3E2A3790',NULL,NULL,'Mugutsab Dilawar Tallur','69059636',NULL,1,0x01,'34','2019-02-24 23:11:45',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(875,NULL,NULL,'00','9164879522','3E2A3607',NULL,NULL,'Salim NaikasabTallur','69367695',NULL,1,0x01,'34','2019-02-24 23:11:46',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(876,NULL,NULL,'00','7353497180','3E2A36AC',NULL,NULL,'Yamanappa Gangappa Talawar','69320139',NULL,1,0x01,'34','2019-02-24 23:11:47',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(877,NULL,NULL,'00','9902581813','3E2A4703',NULL,NULL,'Basappa Fakkirappa Madar','68170678',NULL,1,0x01,'34','2019-02-24 23:11:48','34','2019-03-28 16:52:11',0,'2019-07-02 00:00:00',1,'Active',NULL,NULL),(878,NULL,NULL,'00','9535570771','3E2A47D9',NULL,NULL,'Mahadevappa Shidlingappa Kiroji','68243035',NULL,1,0x01,'34','2019-02-24 23:11:49',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(879,NULL,NULL,'00','9844111373','3E2A47DB',NULL,NULL,'Madiwalappa Irappa Bevinakoppa','68234504',NULL,1,0x01,'34','2019-02-24 23:11:50',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(880,NULL,NULL,'00','9164284639','3E2A47E3',NULL,NULL,'Siddarudh Shankar Kajagar','68171260',NULL,1,0x01,'34','2019-02-24 23:11:51',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(881,NULL,NULL,'00','8970048958','3E2A47DF',NULL,NULL,'Santosh Shivappa Naykar','68232159',NULL,1,0x01,'34','2019-02-24 23:11:53',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(882,NULL,NULL,'00','9611592075','3E2A47E5',NULL,NULL,'Ameena Diwansab Hongal','68209313',NULL,1,0x01,'34','2019-02-24 23:11:53','34','2019-03-29 15:53:04',0,'2019-05-31 00:00:00',1,'Active',NULL,NULL),(883,NULL,NULL,'00','8748073557','3E2A47E9',NULL,NULL,'Basalingappa Rayappa Hittalamani','68209348',NULL,1,0x01,'34','2019-02-24 23:11:54','34','2019-03-28 16:47:11',0,'2019-05-02 00:00:00',1,'Active',NULL,NULL),(884,NULL,NULL,'00','7353025918','3E28ADB2',NULL,NULL,'Gaurish Malleshappa Bagevadi ','68827014',NULL,1,0x01,'34','2019-02-24 23:11:56',NULL,NULL,0,'2019-04-29 00:00:00',1,'Active',NULL,NULL),(885,NULL,NULL,'00','8970011965','3E2A47D5',NULL,NULL,'shreeshail kajagar','68269528',NULL,1,0x01,'34','2019-02-24 23:11:56',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(886,NULL,NULL,'00','8951678893','3E495E68',NULL,NULL,'somappa madiwalar','82238890',NULL,1,0x01,'34','2019-02-24 23:11:58',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(887,NULL,NULL,'00','7760922948','3E4959B1',NULL,NULL,'Sukhananda Kajagar','82238597',NULL,1,0x01,'34','2019-02-24 23:12:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(888,NULL,NULL,'00','9008224369','3E495956',NULL,NULL,'Nagaraj kajagar','82238703',NULL,1,0x01,'34','2019-02-24 23:12:01',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(889,NULL,NULL,'00','7353725791','4405E99D',NULL,NULL,'Manjunath Bevinakoppa','67000318',NULL,1,0x01,'34','2019-02-24 23:12:02',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(890,NULL,NULL,'00','8550843275','3E495D84',NULL,NULL,'Basappa Irappa Bevinakoppa','82219688',NULL,1,0x01,'34','2019-02-24 23:12:03',NULL,NULL,0,'2019-05-05 00:00:00',1,'Active',NULL,NULL),(891,NULL,NULL,'00','8496030644','3E495D7C',NULL,NULL,'Sidram patil','82220144',NULL,1,0x01,'34','2019-02-24 23:12:04',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(892,NULL,NULL,'00','9008441889','3E495892',NULL,NULL,'Shankar kambar','82236814',NULL,1,0x01,'34','2019-02-24 23:12:05',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(893,NULL,NULL,'00','8151020692','3E495D78',NULL,NULL,'Beerappa Hittalamani','82219903',NULL,1,0x01,'34','2019-02-24 23:12:06',NULL,NULL,0,'2019-05-01 00:00:00',1,'Active',NULL,NULL),(894,NULL,NULL,'00','7996057090','3E495816',NULL,NULL,'Sanju Hittalamani','82238689',NULL,1,0x01,'34','2019-02-24 23:12:07',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(895,NULL,NULL,'00','8151050640','3E497260',NULL,NULL,'kaaling Hittalamani','82247460',NULL,1,0x01,'34','2019-02-24 23:12:08',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(896,NULL,NULL,'00','9900972248','3E49571A',NULL,NULL,'Gurupad Pujer','82246152',NULL,1,0x01,'34','2019-02-24 23:12:09','34','2019-04-20 19:38:33',0,NULL,NULL,'Inactive',NULL,NULL),(897,NULL,NULL,'00','8748063143','2400CE02',NULL,NULL,'Sangappa Tattimani','81537210',NULL,1,0x01,'34','2019-02-24 23:12:10',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(898,NULL,NULL,'00','7760572980','2400C942',NULL,NULL,'Mallanagoudra ','81533990',NULL,1,0x01,'34','2019-02-24 23:12:11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(899,NULL,NULL,'00','7353111976','3E4977D0',NULL,NULL,'Mabusubani Tallur','82269349',NULL,1,0x01,'34','2019-02-24 23:12:12',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(900,NULL,NULL,'00','9686970709','3E1038FD',NULL,NULL,'Irat Bevinakoppa','68009647',NULL,1,0x01,'34','2019-02-24 23:12:13',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(901,NULL,NULL,'00','9880003425','3801D554',NULL,NULL,'Siddarood Sedeppa Angadi','65498170',NULL,1,0x01,'34','2019-02-24 23:12:14',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(902,NULL,NULL,'00','8496994651','3801E9C8',NULL,NULL,'Suban Nadaf','65500951',NULL,1,0x01,'34','2019-02-24 23:12:15',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(903,'','','00','7353107901','123','','2019-03-03 00:00:00','new ','',NULL,1,0x01,'34','2019-03-14 23:05:06','34','2019-03-14 23:05:06',NULL,NULL,NULL,NULL,NULL,NULL),(904,'','','00','1231231234','dfs','','2019-03-26 00:00:00','New2','',NULL,1,0x01,'34','2019-03-14 23:09:07','34','2019-03-14 23:09:07',NULL,NULL,NULL,NULL,NULL,NULL),(905,'','','00','1231231231','dfdsf','','2019-03-21 00:00:00','New3','',NULL,1,0x01,'34','2019-03-14 23:25:02','34','2019-03-14 23:25:02',NULL,NULL,NULL,NULL,NULL,NULL),(906,'','','00','2342342342','dfjdf','','2019-03-20 00:00:00','Yash','',NULL,1,0x01,'34','2019-03-16 23:39:39','34','2019-03-16 23:39:39',NULL,NULL,NULL,NULL,NULL,NULL),(907,'','','00','3234234234','dfsd','','2019-03-11 00:00:00','Dharshan','',NULL,1,0x01,'34','2019-03-16 23:40:21','34','2019-03-16 23:40:21',0,'2019-05-01 00:00:00',1,'Active',NULL,NULL),(908,'','','00','7988909890','hjkj','','2019-03-01 00:00:00','jhkhkj','',NULL,1,0x01,'34','2019-03-16 23:49:06','34','2019-03-16 23:49:06',NULL,NULL,NULL,NULL,NULL,NULL),(909,'','','00','2141212412','dfsdf','','2019-03-26 18:30:00','Test123','',NULL,1,0x01,'34','2019-03-18 16:28:00','34','2019-03-18 16:28:00',NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `subscriber` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subscriber_channel`
+--
+
+DROP TABLE IF EXISTS `subscriber_channel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `subscriber_channel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `channel_id` int(11) DEFAULT NULL,
+  `subscriber_package_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKma820do5t930ixr9sbmce4emc` (`channel_id`),
+  KEY `FK4kpisptayojxp7smdm5hr6705` (`subscriber_package_id`),
+  CONSTRAINT `FK4kpisptayojxp7smdm5hr6705` FOREIGN KEY (`subscriber_package_id`) REFERENCES `subscriber_package` (`id`),
+  CONSTRAINT `FKma820do5t930ixr9sbmce4emc` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22913 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subscriber_channel`
+--
+
+LOCK TABLES `subscriber_channel` WRITE;
+/*!40000 ALTER TABLE `subscriber_channel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subscriber_channel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subscriber_package`
+--
+
+DROP TABLE IF EXISTS `subscriber_package`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `subscriber_package` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `channel_pack` int(11) DEFAULT NULL,
+  `subscriber_id` int(11) DEFAULT NULL,
+  `is_all_channel_optin` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKjac3pgjong3qn8wd2p7w4krn9` (`channel_pack`),
+  KEY `FKq0taikw7m1qcrya9bovkiyd5a` (`subscriber_id`),
+  CONSTRAINT `FKjac3pgjong3qn8wd2p7w4krn9` FOREIGN KEY (`channel_pack`) REFERENCES `channel_pack` (`id`),
+  CONSTRAINT `FKq0taikw7m1qcrya9bovkiyd5a` FOREIGN KEY (`subscriber_id`) REFERENCES `subscriber` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6882 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subscriber_package`
+--
+
+LOCK TABLES `subscriber_package` WRITE;
+/*!40000 ALTER TABLE `subscriber_package` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subscriber_package` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tenant`
+--
+
+DROP TABLE IF EXISTS `tenant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tenant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `contact_no` varchar(255) DEFAULT NULL,
+  `pan_no` varchar(255) DEFAULT NULL,
+  `tenant_name` varchar(255) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_modified_by` varchar(255) DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `logo_path` varchar(255) DEFAULT NULL,
+  `rech_password` varchar(255) DEFAULT NULL,
+  `rech_username` varchar(255) DEFAULT NULL,
+  `recharge_url` varchar(255) DEFAULT NULL,
+  `paytm_industry_type_id` varchar(255) DEFAULT NULL,
+  `paytm_merchant_id` varchar(255) DEFAULT NULL,
+  `paytm_merchant_key` varchar(255) DEFAULT NULL,
+  `paytm_website` varchar(255) DEFAULT NULL,
+  `enable_email_not` bit(1) DEFAULT NULL,
+  `enable_online_payment` bit(1) DEFAULT NULL,
+  `enable_sms_not` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tenant`
+--
+
+LOCK TABLES `tenant` WRITE;
+/*!40000 ALTER TABLE `tenant` DISABLE KEYS */;
+INSERT INTO `tenant` VALUES (1,'1234567890','TBMPL000','Kenganur Cable Networks','34','2019-04-20 19:35:55','34','2019-04-20 19:35:55',0x01,NULL,'1992','BGM1732','http://203.192.220.228:15000','Retail','GmSUei46727514374713','rwds#OO3&%YYJARe','DEFAULT',0x01,0x01,0x01),(2,'1234567890','TBMPL000','Muttu Cable Networks',NULL,NULL,NULL,NULL,0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'7353207900',NULL,'Test Cable Nw',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'7353207900',NULL,'Test Cable Nw','34','2019-04-16 00:03:23','34','2019-04-16 00:03:23',0x01,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `tenant` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_address`
+--
+
+DROP TABLE IF EXISTS `user_address`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `city` varchar(255) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `postal_code` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `street` varchar(255) DEFAULT NULL,
+  `global_user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKly3pei6goq5xcaptfitwtu0d9` (`global_user_id`),
+  CONSTRAINT `FKly3pei6goq5xcaptfitwtu0d9` FOREIGN KEY (`global_user_id`) REFERENCES `global_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_address`
+--
+
+LOCK TABLES `user_address` WRITE;
+/*!40000 ALTER TABLE `user_address` DISABLE KEYS */;
+INSERT INTO `user_address` VALUES (49,'Banglore','developer','2018-12-20 10:17:02',0x01,'developer','2018-12-20 10:17:02','52929292','Karnatak','Banglore',37),(52,'Werty','developer','2018-12-21 05:54:30',0x01,'developer','2018-12-21 05:54:30','121007','Erty','Qwerty',38),(64,'Bengaluru','developer','2018-12-25 12:26:04',0x01,'developer','2018-12-25 12:26:04','560067','Karnataka','Immadihalli Rd',39),(85,'Bengaluru','developer','2018-12-27 19:26:38',0x01,'developer','2018-12-27 19:26:38','560029','Karnataka','3/155 Tavarekere Main Rd Venkateshwara Layout',40),(104,'Bengaluru','developer','2018-12-31 11:58:07',0x01,'developer','2018-12-31 11:58:07','560029','Karnataka','2/4 1st Cross Rd Venkateshwara Layout',41),(109,'','developer','2019-01-26 17:44:43',0x01,'developer','2019-01-26 17:44:43','','','',42),(110,'','developer','2019-01-26 23:58:59',0x01,'developer','2019-01-26 23:58:59','','','',43),(111,'Bailhonga','developer','2019-01-31 19:34:50',0x01,'developer','2019-01-31 19:34:50','591104','Karanatak','KENGANUR',36),(116,'','developer','2019-02-08 15:30:51',0x01,'developer','2019-02-08 15:30:51','','','',35),(119,'','developer','2019-02-10 16:45:31',0x01,'developer','2019-02-10 16:45:31','','','',45),(122,'','developer','2019-02-17 17:52:07',0x01,'developer','2019-02-17 17:52:07','','','',44),(124,'Bengaluru','developer','2019-02-20 15:46:03',0x01,'developer','2019-02-20 15:46:03','560029','Karnataka','6/12 1st Cross Rd Venkateshwara Layout',46),(125,'Kenganur','developer','2019-02-20 15:56:52',0x01,'developer','2019-02-20 15:56:52','591104','Karnatak','Kurabar oni ',34);
+/*!40000 ALTER TABLE `user_address` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_role`
+--
+
+DROP TABLE IF EXISTS `user_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `last_modified_by` varchar(255) DEFAULT NULL,
+  `last_modified_date` datetime DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  `global_user_id` int(11) DEFAULT NULL,
+  `is_active` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKa68196081fvovjhkek5m97n3y` (`role_id`),
+  KEY `FKff8jnfei4rmdlwlfsuvkcn5rf` (`global_user_id`),
+  CONSTRAINT `FKa68196081fvovjhkek5m97n3y` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
+  CONSTRAINT `FKff8jnfei4rmdlwlfsuvkcn5rf` FOREIGN KEY (`global_user_id`) REFERENCES `global_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_role`
+--
+
+LOCK TABLES `user_role` WRITE;
+/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
+INSERT INTO `user_role` VALUES (57,NULL,NULL,NULL,NULL,2,37,NULL),(60,NULL,NULL,NULL,NULL,1,38,NULL),(72,NULL,NULL,NULL,NULL,2,39,NULL),(93,NULL,NULL,NULL,NULL,2,40,NULL),(112,NULL,NULL,NULL,NULL,2,41,NULL),(120,NULL,NULL,NULL,NULL,2,42,NULL),(121,NULL,NULL,NULL,NULL,1,43,NULL),(122,NULL,NULL,NULL,NULL,2,43,NULL),(123,NULL,NULL,NULL,NULL,1,36,NULL),(128,NULL,NULL,NULL,NULL,1,35,NULL),(131,NULL,NULL,NULL,NULL,2,45,NULL),(134,NULL,NULL,NULL,NULL,2,44,NULL),(136,NULL,NULL,NULL,NULL,2,46,NULL),(137,NULL,NULL,NULL,NULL,1,34,NULL);
+/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-07-08  7:31:49

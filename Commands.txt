@@ -138,3 +138,19 @@ kubectl scale deployment frontend --replicas=5
 kubectl delete service frontend
 gcloud compute forwarding-rules list
 gcloud container clusters delete guestbook
+
+//debuging
+kubectl exec -it [POD_NAME] sh
+nslookup <Serivice_name>  (works in pod and kubectl)
+nslookup  kubernetes.default (should always work)
+kubectl get endpoints [SERVICE-NAME]
+wget -qO- <endpoint> (equivalent to curl)
+
+
+
+
+
+
+
+
+
