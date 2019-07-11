@@ -31,10 +31,4 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
-spring: 
-    autoconfigure:
-        exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
-    data:
-        mongodb:
-            uri: mongodb+srv://root:mgbKng123@cluster0-2xmkr.mongodb.net/test?retryWrites=true&w=majority
-            database: trendfly_prod
+
