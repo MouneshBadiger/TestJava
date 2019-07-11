@@ -37,4 +37,4 @@ spring:
     data:
         mongodb:
             uri: mongodb+srv://root:mgbKng123@cluster0-2xmkr.mongodb.net/test?retryWrites=true&w=majority
-            database: trendfly_dev
+            database: trendfly_prod
