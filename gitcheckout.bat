@@ -13,3 +13,4 @@ git clone https://github.com/MouneshBadiger/SMSForward.git
 git clone https://github.com/MouneshBadiger/EurekaServer.git
 git clone https://github.com/MouneshBadiger/ZuulServer.git
 git clone https://github.com/MouneshBadiger/CablePro.git
+git clone https://github.com/MouneshBadiger/TestApp.git
