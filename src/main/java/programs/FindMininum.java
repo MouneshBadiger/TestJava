@@ -1,4 +1,4 @@
-package test;
+package programs;
 
 public class FindMininum {
 	

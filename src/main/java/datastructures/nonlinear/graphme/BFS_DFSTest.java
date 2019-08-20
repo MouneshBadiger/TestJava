@@ -1,6 +1,6 @@
 package datastructures.nonlinear.graphme;
 
-public class BFSTest {
+public class BFS_DFSTest {
 	
 	public static void main(String[] args) {
 		System.out.println("----Main----");

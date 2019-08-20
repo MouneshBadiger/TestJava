@@ -35,6 +35,15 @@ public class TestFibonacci {
 	     } 
 		
 	}
+	static void fibbonacci(int n1,int n2,int count){
+		
+		int sum=n1+n2;
+		System.out.print(" "+sum);
+		count--;
+		if(count>0)
+			fibbonacci(n2,sum,count);
+	
+}
 	public static void main(String[] args) {
 		int count=10;    
 		  System.out.print(n1+" "+n2);//printing 0 and 1    

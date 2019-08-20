@@ -1,4 +1,4 @@
-package datastructures.nonlinear.graph;
+package datastructures.nonlinear.graphme;
 // Java Program for union-find algorithm to detect cycle in a graph 
 import java.util.*; 
 import java.lang.*; 
@@ -32,13 +32,6 @@ class GraphDisjointSet
 		return find(parent, parent[i]); 
 	} 
 
-	// A utility function to do union of two subsets 
-	void Union(int parent[], int x, int y) 
-	{ 
-		int xset = find(parent, x); 
-		int yset = find(parent, y); 
-		parent[xset] = yset; 
-	} 
 
 
 	// The main function to check whether a given graph 
@@ -57,13 +50,18 @@ class GraphDisjointSet
 		// there is cycle in graph. 
 		for (int i = 0; i < graph.E; ++i) 
 		{ 
-			int x = graph.find(parent, graph.edge[i].src); 
-			int y = graph.find(parent, graph.edge[i].dest); 
+			int x = graph.find(parent, graph.edge[i].src); //find the root of source vertex
+			int y = graph.find(parent, graph.edge[i].dest); //find the root of destination vertex
 
-			if (x == y) 
+			if (x == y) {//if root of the both vertex is same then they belong to same set=>hence there is a cycle
 				return 1; 
-
-			graph.Union(parent, x, y); 
+			}
+			else {
+				//else make union of both sets
+				/*int xset = find(parent, x); not required
+				int yset = find(parent, y);*/ 
+				parent[x] = y; 
+			}
 		} 
 		return 0; 
 	} 
