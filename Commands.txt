@@ -12,10 +12,19 @@ Linux Commands
 
 GIT Commands
 ----------------------
-git remote rm origin
+git init
+
+ git remote rm origin
  git remote add origin https://github.com/user/repo.git
  git branch --set-upstream-to=origin/<branch> master
  git remote -v
+
+git status
+git add --all
+git commit -m "--comments--"
+git push origin master
+git diff
+
 
 Docker commands
 --------------------
@@ -24,7 +33,7 @@ apk add curl
 1.docker pull quay.io/python-devs/ci-image
 2.docker image ls
 3.docker container ls --all
-4.docker container run--detach --name mydb -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:latest
+4.docker container run --detach --name mydb -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:latest
 
 docker container run -d -p 8080:8082 -e GOOGLE_APPLICATION_CREDENTIALS=/app/smartcableapp-211915-af70f90f4962.json -e SPRING_PROFILES_ACTIVE=dev,jpa -it 7353207901/cable-service:1.1 sh
 
@@ -69,7 +78,7 @@ docker swarm leave --force
 
 docker container prune
 
-
+docker container run  -d -p 15672:15672 -p 5672:5672 rabbitmq:management
 Angular commands
 -----------------------------
 
@@ -187,4 +196,21 @@ What is deadlock and when it can occur?
 What is interthread-communication or cooperation?
 
 
+553-CPC-MOCUI
+NWQzOWNlMTBlNGIwMTg1Njk0NDM2OTNk
+NWQzOWQzOGJlNGIwZDYwNjY0ZWRhMzQ3
+IFD Environment: https://njrarltvmw03b0.linux.us.ams1907.com/ups-ent/ests-ifd
+IFT Environment: https://apiportest.ams1907.com/ups-ent/ests-ift/
+IFS Environment: https://apiporstg.ams1907.com/ups-ent/ests-ifs/ 
+IFP Environment: https://apiportali.ups.com/ups-ent/ests-ifp/
 
+
+ESTS API (End-Point URL to be invoked by Client Applications to get a JWT):
+
+IFD: https://apigwydev2.ams1907.com/ups-ent/ests-ifd/V1/jwtapi/token 
+IFT: https://apigwytest.ams1907.com/ups-ent/ests-ift/V1/jwtapi/token 
+IFS: https://apigwystg.ams1907.com/ups-ent/ests-ifs/V1/jwtapi/token 
+IFP: https://apigwyi.ups.com/ups-ent/ests-ifp/V1/jwtapi/token
+
+--------------
+sorna password: Karupa1#
