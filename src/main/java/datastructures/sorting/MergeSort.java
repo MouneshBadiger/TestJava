@@ -1,6 +1,10 @@
 package datastructures.sorting;
 
 import java.util.Arrays;
+//In merge sort two arrays sorted and merged back.. resuting array is sorted it is done recursiviely
+//step 1: devide array into two parts based on m
+//step 2: sort left and righht array recursives.
+//step 3 : Since it is recursive merge method will start when sort recursion exits(l>=r)
 
 public class MergeSort {
 	
@@ -27,7 +31,7 @@ public class MergeSort {
 	}
 	
 	public static void merge(int arr[],int l,int m,int r) {
-		  // Find sizes of two subarrays to be merged 
+		  // Find sizes of two subarrays to be merged ex. 1 2 3 4 5 =>m=5/2=2, l=0,r=5 n1=
         int n1 = m - l + 1; 
         int n2 = r - m; 
   

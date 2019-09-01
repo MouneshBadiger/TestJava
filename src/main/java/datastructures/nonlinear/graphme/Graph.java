@@ -9,13 +9,15 @@ public class Graph {
 	
 		private int V;   // No. of vertices 
 	    private LinkedList<Integer> adj[]; //Adjacency Lists 
+	    boolean[] visited;//to keep track of visited nodes
 	  
 	    // Constructor 
 	    Graph(int v) 
 	    { 
 	        V = v; 
 	        visited=new boolean[V];
-	        adj = new LinkedList[v]; 
+	        adj = new LinkedList[v];
+	        
 	        for (int i=0; i<v; ++i) 
 	            adj[i] = new LinkedList(); 
 	    } 
@@ -26,7 +28,7 @@ public class Graph {
 	        adj[v].add(w); 
 	    } 
 	    
-	    void BFS(int s) {
+	    void BFS(int s) {//fallows Queue 
 	    	boolean[] visited=new boolean[V];
 	    	LinkedList<Integer> q=new LinkedList<Integer>();
 	    	q.add(s);
@@ -43,8 +45,8 @@ public class Graph {
 		    	}
 	    	}
 	    }
-	    boolean[] visited;
-	    void DFS(int s) {
+	   
+	    void DFS(int s) {//fallows Stack
 	    	visited[s]=true;
 			System.out.println(s);
 			

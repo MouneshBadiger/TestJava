@@ -1,4 +1,4 @@
-package test;
+package datastructures.linear.queue;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.Queue;
 public class QueueTests {
 	
 	public static void main(String[] args) {
-		//LinkedList as Queve is normal queue
+		//LinkedList as Queve is normal queue we can access elements from both the end as implements Deque also
 		Queue<String> myQueue=new LinkedList<String>(Arrays.asList("second","first","third"));
 		System.out.println("LinkedList as Queve");
 		myQueue.forEach(System.out::println);
@@ -19,7 +19,7 @@ public class QueueTests {
 		pQueue.add("abc");
 		System.out.println("PriorityQueue as Queve");
 		pQueue.forEach(System.out::println);
-		//ArrayDeque as queue we can access elements from both the end,rest is same as normal queve
+		//ArrayDeque as queue we can access elements from both the end as implements Deque also,rest is same as normal queve
 		ArrayDeque<String> dQueue=new ArrayDeque<String>(Arrays.asList("second","first","third"));
 		System.out.println();
 		dQueue.add("abc");

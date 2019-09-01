@@ -1,5 +1,14 @@
 package datastructures.sorting;
 
+
+//Max no of nodes of complete binary tree: 2^(h+1) -1
+//height of any tree: log(n) //floor n=no of nodes
+//index of leaf nodes of any tree: |n/2|+1 to n 
+//no of non leaf nodes in a binary tree: |n/2|-1
+//heafify alowys build heap from bottom to top 
+//heafify has O(nlogn)
+//removing large element from heap takes O(nlogn)
+//O(nlogn)+O(nlogn)= O(nlogn)
 public class HeapSort {
 	public void sort(int arr[]) 
     { 
@@ -7,10 +16,10 @@ public class HeapSort {
   
         // Build heap (rearrange array) 
         for (int i = n / 2 - 1; i >= 0; i--) {
-        	heapify(arr, n, i); 
+        	heapify(arr, i, n); 
         }
   
-        // One by one extract an element from heap 
+        // One by one extract an element from heap  in backword direction
         for (int i=n-1; i>=0; i--) 
         { 
             // Move current root to end 
@@ -18,36 +27,36 @@ public class HeapSort {
             arr[0] = arr[i]; 
             arr[i] = temp; 
   
-            // call max heapify on the reduced heap 
-            heapify(arr, i, 0); 
+            // call max heapify on the reduced heap //heapify function calls recursivly downwords on its children nodes
+            heapify(arr, 0,i); //its start from 0 because all other branch of tree are already heafied// only we need to place oth index in correct position
         } 
     } 
   
     // To heapify a subtree rooted with node i which is 
     // an index in arr[]. n is size of heap 
-    void heapify(int arr[], int n, int i) 
+    void heapify(int arr[], int i, int n) 
     { 
-        int largest = i; // Initialize largest as root 
+        int swapedIndex = i; // Initialize largest as root assume
         int l = 2*i + 1; // left = 2*i + 1 
         int r = 2*i + 2; // right = 2*i + 2 
   
         // If left child is larger than root 
-        if (l < n && arr[l] > arr[largest]) 
-            largest = l; 
+        if (l < n && arr[l] > arr[swapedIndex]) 
+        	swapedIndex = l; 
   
         // If right child is larger than largest so far 
-        if (r < n && arr[r] > arr[largest]) 
-            largest = r; 
+        if (r < n && arr[r] > arr[swapedIndex]) 
+        	swapedIndex = r; 
   
         // If largest is not root 
-        if (largest != i) 
+        if (swapedIndex != i) 
         { 
             int swap = arr[i]; 
-            arr[i] = arr[largest]; 
-            arr[largest] = swap; 
+            arr[i] = arr[swapedIndex]; 
+            arr[swapedIndex] = swap; 
   
             // Recursively heapify the affected sub-tree 
-            heapify(arr, n, largest); 
+            heapify(arr,swapedIndex, n ); 
         } 
     } 
   

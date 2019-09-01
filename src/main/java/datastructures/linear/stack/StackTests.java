@@ -1,4 +1,4 @@
-package test;
+package datastructures.linear.stack;
 
 import java.util.Stack;
 

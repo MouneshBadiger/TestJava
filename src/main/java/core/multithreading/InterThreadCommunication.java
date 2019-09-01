@@ -1,4 +1,4 @@
-package multithreading;
+package core.multithreading;
 
 public class InterThreadCommunication {
 	

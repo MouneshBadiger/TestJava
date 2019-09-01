@@ -1,6 +1,6 @@
 package datastructures.nonlinear.graphme;
 // A Java program for Floyd Warshall All Pairs Shortest 
-// Path algorithm. 
+//The Floyd Warshall Algorithm is for solving the All Pairs Shortest Path problem. The problem is to find shortest distances between every pair of vertices in a given edge weighted directed Graph.
 import java.util.*; 
 import java.lang.*; 
 import java.io.*; 
