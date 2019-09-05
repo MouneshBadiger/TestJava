@@ -59,7 +59,7 @@ class PrimesMST {
 		// picked as first vertex 
 		parent[0] = -1; // First node is always root of MST 
 
-		// The MST will have V vertices 
+		// The MST will have V vertices and V-1 edges
 		for (int count = 0; count < V - 1; count++) { 
 			// Pick thd minimum key vertex from the set of vertices 
 			// not yet included in MST 

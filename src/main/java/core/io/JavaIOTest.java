@@ -1,4 +1,4 @@
-package test;
+package core.io;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

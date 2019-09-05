@@ -46,7 +46,7 @@ public class GenericsTest {
 		}
 		System.out.println("Sum="+d);
 	}
-	//User <? super Number> for modfication 
+	//Use <? super Number> for modfication 
 	//it is rarly used
 	public static void addNumbersToList(List<? super String> numbers) {
 		numbers.add("mounesh");
