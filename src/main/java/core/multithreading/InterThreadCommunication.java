@@ -6,7 +6,7 @@ public class InterThreadCommunication {
 	
 	public static void main(String[] args) {
 		Customer c=new Customer();
-			
+			//withdraw thread
 			Runnable r1=new Runnable() {
 				@Override
 				public void run() {
@@ -19,7 +19,7 @@ public class InterThreadCommunication {
 					
 				}
 			};
-			
+			//deposit thread
 			Runnable r2=new Runnable() {
 				@Override
 				public void run() {
@@ -47,7 +47,7 @@ class Customer{
 			balanceAmount-=amount;
 		}else {
 			System.out.println("Insuffient Balance going to wait from:"+Thread.currentThread().getName());
-			wait();
+			this.wait();
 			System.out.println("got notification continuing withdraw");
 			if(balanceAmount>=amount) {
 				balanceAmount-=amount;
@@ -65,7 +65,7 @@ class Customer{
 			e.printStackTrace();
 		}
 		//notify();
-		//notifiyAll() this will wakes up all the threads that are waiting for this object lock
+		this.notifyAll();// this will wakes up all the threads that are waiting for this object lock
 	}
 	
 }

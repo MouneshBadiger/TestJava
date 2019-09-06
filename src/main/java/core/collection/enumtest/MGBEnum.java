@@ -1,10 +1,7 @@
 package core.collection.enumtest;
 
-public class MGBEnum {
-	
+public class MGBEnum {	
 	ClassAsEnum first=ClassAsEnum.FIRST;
-	
-	
 
 }
 //https://stackoverflow.com/questions/4709175/what-are-enums-and-why-are-they-useful
@@ -18,8 +15,5 @@ class ClassAsEnum{
 	private ClassAsEnum(int enumConstant) {
 		this.enumConstant=enumConstant;
 	}
-	
-	
-	
-	
+
 }

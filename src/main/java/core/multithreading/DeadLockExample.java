@@ -8,21 +8,21 @@ public class DeadLockExample {
 	    
 		Thread t1=new Thread() {
 			public void run() {
-				
-				synchronized(resource1){
-					
-					System.out.println("executed 1st block from "+Thread.currentThread().getName());
+
+				synchronized (resource1) {
+
+					System.out.println("executed 1st block from " + Thread.currentThread().getName());
 					try {
 						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					synchronized(resource2){
-						System.out.println("executed 2st block from "+Thread.currentThread().getName());
+					synchronized (resource2) {
+						System.out.println("executed 2st block from " + Thread.currentThread().getName());
 					}
 				}
-				
+
 			}; 
 		};
 		

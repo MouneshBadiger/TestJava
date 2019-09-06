@@ -3,6 +3,7 @@ package test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +19,8 @@ public class TempTest implements Cloneable{
 		Arrays a=null;
 		Integer r=0;
 		Float f=null;
+		Hashtable<String, String> hTable=null;
+		hTable.put("mounesh", "badgier");
 	}
 	
 }

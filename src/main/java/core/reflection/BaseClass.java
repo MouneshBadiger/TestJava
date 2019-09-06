@@ -1,5 +1,5 @@
 
-package core.collection.reflection;
+package core.reflection;
 
 public class BaseClass {
 

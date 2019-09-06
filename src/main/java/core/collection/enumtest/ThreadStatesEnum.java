@@ -6,10 +6,10 @@ import java.io.IOException;
 
 /**
  * This Enum example shows all the things we can do with Enum types
- *
+ *Enum class will always be public
  */
 public enum ThreadStatesEnum  implements Closeable{
-	
+	//Note: Compiler create .class files for all 4 anonymous inner classes
 	START(1){
 		@Override
 		public String toString(){
@@ -44,6 +44,7 @@ public enum ThreadStatesEnum  implements Closeable{
 	private int priority;
 	
 	//Enum constructors should always be private.
+	//public ThreadStatesEnum(int i){//Illegal modifier for the enum constructor; only private is permitted.
 	private ThreadStatesEnum(int i){
 		priority = i;
 	}

@@ -7,8 +7,8 @@ import java.util.List;
 public class EnumTest {
 	EnumTest test;
 	public static void main(String[] args) {
-		/*Directions directions[]=Directions.values();
-		Arrays.asList(directions).stream().forEach(System.out::println);*/
+		Directions directions[]=Directions.values();
+		Arrays.asList(directions).stream().forEach(System.out::println);
 		
 		
 		
@@ -21,5 +21,4 @@ enum Directions{
 	SOUTH,
 	EAST,
 	WEST
-	
 }

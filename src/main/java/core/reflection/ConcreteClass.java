@@ -1,5 +1,5 @@
 
-package core.collection.reflection;
+package core.reflection;
 
 @Deprecated
 public class ConcreteClass extends BaseClass implements BaseInterface {
