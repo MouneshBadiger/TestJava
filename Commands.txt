@@ -1,5 +1,5 @@
 java -jar [jarfile]
-java -cp [classpath_loc] [System_aguments] package.MainMethod [Program_arguments]
+java -cp [classpath_loc1]:[classpath_loc2] [System_aguments] package.MainMethod [Program_arguments]
 
 Linux Commands
 ---------------------------
@@ -9,14 +9,37 @@ Linux Commands
 4.kill -9 PID   ------Kill process with pid
 5.set environment variable: set NAME=VALUE
 6.print envrionment variable: echo %VARIABLE_NAME%
+7. touch fileName : create empty file
+8.cat fileName  : opens file
+9.vi fileName  : openes editer :wq and :q! to exit
+10.grep <searchElement> fileName  : to filter lines with matching expression 
+11. cut -d<delimeter> -f<columnNo> <fileName>  : Same as Java string spliting
+12.comm <file1> <file2> : The 'comm' command compares two files or streams. By default, 'comm' will always display three columns. First column indicates non-matching items of first file, second column indicates non-matching items of second file, and third column indicates matching items of both the files. Both the files has to be in sorted order for 'comm' command to be executed.
+   comm -23 <file1> <file2> (To display first column)
+13.cat <fileName> | sed 's/<oldWord>/<newWord>/'  stream editor.  editing is not permanent. It remains only in display, but in actual, file content remains same.
+14.cat or tac <fileName> | tee <newFile> |  cat or tac |.....  (The 'tee' command is similar to 'cat' command with only one difference. It puts stdin on stdout and also put them into a file.)
+15.command | tr <'old'> <'new'>  (translate)
+   cat <fileName> | tr  'a-z' 'ssadfasdf' (encrypts data)
+   cat <fileName> | tr -d 'a' (removes all occurence of a)
+  
+16.cat <fileName> | uniq  (uniq command you can form a sorted list in which every word will occur only once.)
+   cat <fileName> | uniq -c (count number of occurance)
+17.sort <fileName> (same as cat but gives sorted list)
+18.wc <fileName> (word count in file .. flags -l only line, -w only words, -c only chars)
+19.od <fileName> (od' term stands for octal dump, displays ASCII values of words)
+20.gzip <fileName> <fileName>(TO compress files to zip file, use tar for directories)
+   gunzip <ZipFile> (to unzip)
+
+
+
+
 
 GIT Commands
 ----------------------
-git init
-
+ git init
  git remote rm origin
  git remote add origin https://github.com/user/repo.git
- git branch --set-upstream-to=origin/<branch> master
+ git branch --set-upstream-to=origin/<branch>
  git remote -v
 
 git status
@@ -24,6 +47,7 @@ git add --all
 git commit -m "--comments--"
 git push origin master
 git diff
+git checkout <branch>
 
 
 Docker commands
@@ -68,17 +92,19 @@ docker volumen create --driver=local --name=volume1
 //swarm//
 docker swarm init
 
-docker stack deploy -c trendfly-compose.yml trendfly
+docker stack deploy -c trendfly-compose.yml <STACK_NAME>
 
 docker service ls/docker stack ps/
 
-docker stack rm getstartedlab
+docker stack rm <STACK_NAME>
 
 docker swarm leave --force
 
-docker container prune
+docker container prune (To remove all stopped containers)
 
 docker container run  -d -p 15672:15672 -p 5672:5672 rabbitmq:management
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.3.0
+docker run -p 5601:5601 docker.elastic.co/kibana/kibana:7.3.0
 Angular commands
 -----------------------------
 
@@ -100,7 +126,8 @@ mvn tomcat7:run -Dspring.profiles.active=dev
 ---------------------------------
 AWS Commands
 
-ssh -i mgb_aws1.pem ubuntu@13.59.194.156
+ssh -i mgb_aws1.pem ubuntu@18.222.24.150
+ssh -i mgb_aws1.pem ec2-user@18.221.236.250
 ---------------------------------------------
 Spring Conventions
 Spring property presidence
@@ -126,17 +153,15 @@ Majar Issues
 
 minikube start --vm-driver hyperv --hyperv-virtual-switch "Primary Virtual Switch"
 
-java -jar -Dcec.migration.flag=3 -Dencryptright.apikey=zlXCCgDIojUAKRQMPuvRyADXvcEADiJF -Dencryptright_log4j=C:\Users\BHN3JKC\Desktop\cpc_ext\encryptright_log4j.properties -Dencryptright_properties=C:\Users\BHN3JKC\Desktop\cpc_ext\er_config.properties CECERTest.jar KeyClass10 e Mounesh
-java -jar -Dcec.migration.flag=3 -Dencryptright.apikey=zlXCCgDIojUAKRQMPuvRyADXvcEADiJF -Dencryptright_log4j=encryptright_log4j.properties -Dencryptright_properties=er_config.properties CECERTest.jar KeyClass10 e teststring
 
 -------------------------------------------------------
 Kubernates
 gcloud config set project [PROJECT_ID]
 gcloud config set compute/zone us-central1-b
-gcloud container clusters create trendfly-cluster--num-nodes=2
+gcloud container clusters create trendfly-cluster --num-nodes=2 (Create a cluster with name trendfly-cluster with initial 2 nodes)
 gcloud container clusters list
 gcloud compute instances list
-gcloud container clusters describe guestbook
+gcloud container clusters describe <CLUSTER_NAME>
 kubectl create -f redis-master-deployment.yaml
 kubectl get pods
 kubectl logs -f [POD_NAME]
@@ -163,54 +188,7 @@ gsutil cp [file_name] gs://bucket-name/file-name
 
 
 
-What is the difference between checked and unchecked exceptions?
-What happens behind the code int data=50/0;?
-Why use multiple catch block?
-Is there any possibility when finally block is not executed?
-What is exception propagation?
-What is the difference between throw and throws keyword?
-What are the 4 rules for using exception handling with method overriding?
 
-What is the internal code generated by the compiler for member inner class ?
-What are the two ways to create annonymous inner class ?
-Can we access the non-final local variable inside the local inner class ?
-How to access the static nested class ?
-Can we define an interface within the class ?
-Can we define a class within the interface ?
-
-How to perform two tasks by two threads?
-How to perform multithreading by anonymous class?
-What is the Thread Scheduler and what is the difference between preemptive scheduling and time slicing?
-What happens if we start a thread twice?
-What happens if we call the run() method instead of start() method?
-What is the purpose of join method?
-Why JVM terminates the daemon thread if no user threads are remaining?
-What is the shutdown hook?
-What is garbage collection?
-What is the purpose of finalize() method?
-What does the gc() method?
-What is synchronization and why use synchronization?
-What is the difference between synchronized method and synchronized block?
-What are the two ways to perform static synchronization?
-What is deadlock and when it can occur?
-What is interthread-communication or cooperation?
-
-
-553-CPC-MOCUI
-NWQzOWNlMTBlNGIwMTg1Njk0NDM2OTNk
-NWQzOWQzOGJlNGIwZDYwNjY0ZWRhMzQ3
-IFD Environment: https://njrarltvmw03b0.linux.us.ams1907.com/ups-ent/ests-ifd
-IFT Environment: https://apiportest.ams1907.com/ups-ent/ests-ift/
-IFS Environment: https://apiporstg.ams1907.com/ups-ent/ests-ifs/ 
-IFP Environment: https://apiportali.ups.com/ups-ent/ests-ifp/
-
-
-ESTS API (End-Point URL to be invoked by Client Applications to get a JWT):
-
-IFD: https://apigwydev2.ams1907.com/ups-ent/ests-ifd/V1/jwtapi/token 
-IFT: https://apigwytest.ams1907.com/ups-ent/ests-ift/V1/jwtapi/token 
-IFS: https://apigwystg.ams1907.com/ups-ent/ests-ifs/V1/jwtapi/token 
-IFP: https://apigwyi.ups.com/ups-ent/ests-ifp/V1/jwtapi/token
 
 --------------
 sorna password: Karupa1#
