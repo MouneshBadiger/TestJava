@@ -48,6 +48,8 @@ class Customer{
 		}else {
 			System.out.println("Insuffient Balance going to wait from:"+Thread.currentThread().getName());
 			this.wait();
+			//If you call wait and notify without syncronization it will throw RuntimeException java.lang.IllegalMonitorStateException
+			//Thrown to indicate that a thread has attempted to wait on an object's monitor or to notify other threads waiting on an object's monitor without owning the specified monitor.
 			System.out.println("got notification continuing withdraw");
 			if(balanceAmount>=amount) {
 				balanceAmount-=amount;

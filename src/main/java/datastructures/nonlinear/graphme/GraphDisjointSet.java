@@ -24,15 +24,6 @@ class GraphDisjointSet
 			edge[i] = new Edge(); 
 	} 
 
-	// A utility function to find the subset of an element i 
-	int find(int parent[], int i) 
-	{ 
-		if (parent[i] == -1) 
-			return i; 
-		return find(parent, parent[i]); 
-	} 
-
-
 
 	// The main function to check whether a given graph 
 	// contains cycle or not 
@@ -65,6 +56,14 @@ class GraphDisjointSet
 		} 
 		return 0; 
 	} 
+	// A utility function to find the subset of an element i 
+		int find(int parent[], int i) 
+		{ 
+			if (parent[i] == -1) 
+				return i; 
+			return find(parent, parent[i]); 
+		} 
+
 
 	// Driver Method 
 	public static void main (String[] args) 

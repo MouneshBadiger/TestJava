@@ -13,12 +13,14 @@ public class QueueTests {
 		Queue<String> myQueue=new LinkedList<String>(Arrays.asList("second","first","third"));
 		System.out.println("LinkedList as Queve");
 		myQueue.forEach(System.out::println);
+		
 		//PriorityQueue as Queve is Sorted Queue
 		Queue<String> pQueue=new PriorityQueue<String>(Arrays.asList("second","first","third"));
 		System.out.println();
 		pQueue.add("abc");
 		System.out.println("PriorityQueue as Queve");
 		pQueue.forEach(System.out::println);
+		
 		//ArrayDeque as queue we can access elements from both the end as implements Deque also,rest is same as normal queve
 		ArrayDeque<String> dQueue=new ArrayDeque<String>(Arrays.asList("second","first","third"));
 		System.out.println();

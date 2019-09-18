@@ -28,17 +28,25 @@ public class Graph {
 	        adj[v].add(w); 
 	    } 
 	    
+	    /**
+	     * Step 1: Create a Queue to hold unvisited vertex
+	     * Step 2: Initiale Queue with given verted
+	     * Step 3: Take vertex from queue and mark is visited
+	     * step 4: Iterate over all vertex connected to polled vertex. If they are not visited add them to queue
+	     * step 5: Repeat Process untill queue is empty.  
+	     * @param s
+	     */
 	    void BFS(int s) {//fallows Queue 
 	    	boolean[] visited=new boolean[V];
 	    	LinkedList<Integer> q=new LinkedList<Integer>();
 	    	q.add(s);
 	    	
 	    	while(q.size()!=0) {
-	    		int e=q.poll();
-	    		System.out.println(e);
-	    		visited[e]=true;
+	    		int i=q.poll();
+	    		System.out.println(i);
+	    		visited[i]=true;
 	    		
-	    		for(Integer a:adj[e]) {
+	    		for(Integer a:adj[i]) {
 	    			if(visited[a]==false) {
 	    				q.add(a);
 	    			}
@@ -46,17 +54,19 @@ public class Graph {
 	    	}
 	    }
 	   
+	    /**
+	     * Step 1 : visit given vertex
+	     * step 2 : Iterate over all connected vertex and call DFS if node is not visited
+	     * @param s
+	     */
 	    void DFS(int s) {//fallows Stack
 	    	visited[s]=true;
 			System.out.println(s);
-			
-	    		Iterator<Integer> adList=adj[s].iterator();
-		    	while(adList.hasNext()) {
-		    		int i=adList.next();
-		    		if(visited[i]==false) {
-		    			DFS(i);
-		    		}
-		    	}
+	    	for(Integer i:adj[s]) {
+	    		if(visited[i]==false) {
+	    			DFS(i);
+	    		}
+	    	}
 	    }
 
 }

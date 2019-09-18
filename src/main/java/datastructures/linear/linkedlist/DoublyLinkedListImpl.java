@@ -11,11 +11,7 @@ public class DoublyLinkedListImpl<E> {
     public DoublyLinkedListImpl() {
         size = 0;
     }
-    /**
-     * this class keeps track of each element information
-     * @author java2novice
-     *
-     */
+   
     private class Node {
         E element;
         Node next;
@@ -48,7 +44,7 @@ public class DoublyLinkedListImpl<E> {
 		if (head != null) {
 			head.prev = tmp;
 		}
-		head = tmp;
+		head = tmp;//update new head value
 		if (tail == null) {
 			tail = tmp;
 		}
@@ -66,7 +62,7 @@ public class DoublyLinkedListImpl<E> {
 		if (tail != null) {
 			tail.next = tmp;
 		}
-		tail = tmp;
+		tail = tmp;//update new tail value
 		if (head == null) {
 			head = tmp;
 		}
@@ -127,7 +123,28 @@ public class DoublyLinkedListImpl<E> {
         System.out.println("deleted: "+tmp.element);
         return tmp.element;
     }
-     
+
+	/*
+	 * * If singly LinkedList contains Cycle then following would be true * 1) slow
+	 * and fast will point to same node i.e. they meet * On the other hand if fast
+	 * will point to null or next node of * fast will point to null then LinkedList
+	 * does not contains cycle.
+	 */ 
+
+	public boolean isCyclic() {
+		Node fast = head;
+		Node slow = head;
+		while (fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;
+		} 
+		// if fast and slow pointers are meeting then LinkedList is cyclic
+		if(fast ==slow ){ 
+			return true;
+		} 
+		return false;
+
+	}
     public static void main(String a[]){
          
         DoublyLinkedListImpl<Integer> dll = new DoublyLinkedListImpl<Integer>();

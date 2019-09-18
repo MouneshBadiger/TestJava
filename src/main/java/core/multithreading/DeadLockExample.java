@@ -3,8 +3,8 @@ package core.multithreading;
 public class DeadLockExample {
 	  
 	public static void main(String[] args) {
-		final String resource1 = "resource1 mouneh";  
-	    final String resource2 = "resource2 badiger";
+		final String resource1 = "resource1";  
+	    final String resource2 = "resource2";
 	    
 		Thread t1=new Thread() {
 			public void run() {
@@ -43,6 +43,8 @@ public class DeadLockExample {
 				
 			}; 
 		};
+		
+		
 		t1.setName("mgb-thread1");
 		t1.start();//when t1 started at line 12 it get lock on resouce1 and executes 1 block successfully 
 					//when moves to 2nd block tries to get lock on resouce2 to execute 2nd block. But since this lock has been taken by other thread it waits 

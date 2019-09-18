@@ -3,6 +3,7 @@ package test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,15 +13,10 @@ import java.util.TreeSet;
 public class TempTest implements Cloneable{
 	String name="Mounesh";
 	public static void main(String[] args) {
-		Iterable<String> list=new ArrayList<String>(Arrays.asList("mounesh","gurunath","badiger","kenganur"));
-		list.iterator();
-		list.spliterator();
-		Collections c=null;
-		Arrays a=null;
-		Integer r=0;
-		Float f=null;
-		Hashtable<String, String> hTable=null;
-		hTable.put("mounesh", "badgier");
+			Set<Integer> set=new HashSet<Integer>();
+			set.add(1);
+			set.add(3);
+			System.out.println(set.contains(2));
 	}
 	
 }

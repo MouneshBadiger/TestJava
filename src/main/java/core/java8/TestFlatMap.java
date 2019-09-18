@@ -54,5 +54,21 @@ public class TestFlatMap {
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
+	//Streams Implementation
+			
+			String str[][]= {{"This", "is", "a", "test", "file"},
+					{"This", "test", "file", "is"},
+					{"a", "demo", "of", "flatMap"}
+			        };
+			
+			Arrays.stream(str)
+			.flatMap(Arrays::stream) //Stream of stream  Stream(Stream<String>)
+			 //Stream(
+			 //	     Stream.of(["This", "is", "a", "test", "file"]),
+			 //	     Stream.of(["This", "test", "file", "is"]),
+			 //      Stream.of(["a", "demo", "of", "flatMap"])
+			 //      )
+			.distinct()
+			.forEach(System.out::println);
   }
 }

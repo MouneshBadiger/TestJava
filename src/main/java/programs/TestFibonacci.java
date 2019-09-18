@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class TestFibonacci {
 	//print fibbonacci series
 	//req- count
-	/*public static void main(String[] args) {
+	public static void printFibonacciWitoutRecursion() {
 		//0 1 1 2 3 5 8 13 21
 		System.out.println("how many numbers you need?");
 		Scanner sc=new Scanner(System.in);
@@ -14,13 +14,13 @@ public class TestFibonacci {
 		System.out.print("0,1");
 		int a=0;
 		int b=1;
-		for(int i=0;i<8;i++) {
-			int c=a+b
+		for(int i=0;i<count;i++) {
+			int c=a+b;
 			System.out.print(","+c);
 			a=b;
 			b=c;
 		}
-	}*/
+	}
 	
 	//Using recursion
 	static int n1=0,n2=1,n3=0;

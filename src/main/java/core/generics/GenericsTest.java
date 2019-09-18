@@ -39,6 +39,7 @@ public class GenericsTest {
 	//wild cards
 	//<? extends Number> --> Upper bound--> anything that is subclass of Number
 	//<? super Number> --> Lower bound--> anything that is parent of Number
+	//Use <? super Number> for modfication 
 	public static void sumOfNumbers(List<? extends Number> numbers) {
 		Double d=0.0;
 		for(Number n:numbers) {
@@ -46,7 +47,7 @@ public class GenericsTest {
 		}
 		System.out.println("Sum="+d);
 	}
-	//Use <? super Number> for modfication 
+
 	//it is rarly used
 	public static void addNumbersToList(List<? super String> numbers) {
 		numbers.add("mounesh");
