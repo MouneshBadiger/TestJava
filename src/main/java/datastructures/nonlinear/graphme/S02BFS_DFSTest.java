@@ -1,6 +1,6 @@
 package datastructures.nonlinear.graphme;
 
-public class BFS_DFSTest {
+public class S02BFS_DFSTest {
 	
 	public static void main(String[] args) {
 		System.out.println("----Main----");
@@ -13,7 +13,7 @@ public class BFS_DFSTest {
 		 */
 		
 		/* Test 2 */
-		Graph g = new Graph(4); 
+		S01Graph g = new S01Graph(4); 
 		  
         g.addEdge(0, 1); 
         g.addEdge(0, 2); 

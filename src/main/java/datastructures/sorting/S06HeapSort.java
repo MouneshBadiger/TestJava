@@ -14,7 +14,7 @@ public class S06HeapSort {
         int n = arr.length; 
   
         // Build heap (rearrange array) 
-        for (int i = n / 2 - 1; i >= 0; i--) {
+        for (int i = n/2-1; i >= 0; i--) {
         	heapify(arr, i, n); 
         }
   

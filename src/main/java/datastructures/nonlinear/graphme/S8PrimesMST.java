@@ -6,7 +6,7 @@ import java.util.*;
 import java.lang.*; 
 import java.io.*; 
 
-class PrimesMST { 
+class S8PrimesMST { 
 	// Number of vertices in the graph 
 	private static final int V = 5; 
 
@@ -96,7 +96,7 @@ class PrimesMST {
 		| /	 \ | 
 		(3)-------(4) 
 			9		 */
-		PrimesMST t = new PrimesMST(); 
+		S8PrimesMST t = new S8PrimesMST(); 
 		int graph[][] = new int[][] { { 0, 2, 0, 6, 0 }, 
 									{ 2, 0, 3, 8, 5 }, 
 									{ 0, 3, 0, 0, 7 }, 

@@ -2,7 +2,7 @@ package datastructures.nonlinear.graphme;
 //Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph, 
 //which may represent, for example, road networks
 //Dijkstra’s algorithm is very similar to Prim’s algorithm for minimum spanning tree. 
-public class DijkstrasSingleSouceShortestPath {
+public class S03DijkstrasSingleSouceShortestPath {
 	// A utility function to find the vertex with minimum distance value, 
     // from the set of vertices not yet included in shortest path tree 
     static final int V=9; 
@@ -96,7 +96,7 @@ public class DijkstrasSingleSouceShortestPath {
              {8, 11, 0, 0, 0, 0, 1, 0, 7}, 
              {0, 0, 2, 0, 0, 0, 6, 7, 0} 
             }; 
-            DijkstrasSingleSouceShortestPath t = new DijkstrasSingleSouceShortestPath(); 
+            S03DijkstrasSingleSouceShortestPath t = new S03DijkstrasSingleSouceShortestPath(); 
             System.out.println("------Distances from 0---------");
             t.dijkstra(graph, 0); 
             

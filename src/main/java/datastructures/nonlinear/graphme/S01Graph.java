@@ -5,14 +5,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Graph {
+public class S01Graph {
 	
 		private int V;   // No. of vertices 
 	    private LinkedList<Integer> adj[]; //Adjacency Lists 
 	    boolean[] visited;//to keep track of visited nodes
 	  
 	    // Constructor 
-	    Graph(int v) 
+	    S01Graph(int v) 
 	    { 
 	        V = v; 
 	        visited=new boolean[V];

@@ -2,7 +2,7 @@ package datastructures.nonlinear.graphme;
 
 import java.util.Scanner;
 
-public class Prim {
+public class S7Prim {
 
 	static Scanner scan;
 	

@@ -2,10 +2,9 @@ package datastructures.nonlinear.graphme;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
-
-import datastructures.nonlinear.graphme.Graph2.Edge;
-
-public class Graph2 {
+//Kruskal is used to find the minumum spanning tree, logic is same as Disjoint sets, additionaly it first sorts edges in ascending order.
+//Priority Queue is used to to sort elements in Incresing order.
+class Graph2 {
 	int V;
 	
 	PriorityQueue<Edge> queve=new PriorityQueue<Edge>();//Same like LinkedList[] to hold edges
@@ -73,4 +72,20 @@ public class Graph2 {
 			System.out.println(e.src+"----"+e.dest+"----:"+e.weight);
 		}
 	}	
+}
+
+public class S06KruskalMST {
+	
+	public static void main(String[] args) {
+		 Graph2 graph = new Graph2(6);
+         graph.addEgde(0, 1, 4);
+         graph.addEgde(0, 2, 3);
+         graph.addEgde(1, 2, 1);
+         graph.addEgde(1, 3, 2);
+         graph.addEgde(2, 3, 4);
+         graph.addEgde(3, 4, 2);
+         graph.addEgde(4, 5, 6);
+         graph.MST();
+         graph.printMSTEdges();
+	}
 }

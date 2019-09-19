@@ -4,7 +4,7 @@ import java.util.*;
 import java.lang.*; 
 import java.io.*; 
 
-class GraphDisjointSet 
+class S05GraphDisjointSet 
 { 
 	int V, E; // V-> no. of vertices & E->no.of edges 
 	Edge edge[]; // /collection of all edges 
@@ -15,7 +15,7 @@ class GraphDisjointSet
 	}; 
 
 	// Creates a graph with V vertices and E edges 
-	GraphDisjointSet(int v,int e) 
+	S05GraphDisjointSet(int v,int e) 
 	{ 
 		V = v; 
 		E = e; 
@@ -27,7 +27,7 @@ class GraphDisjointSet
 
 	// The main function to check whether a given graph 
 	// contains cycle or not 
-	int isCycle( GraphDisjointSet graph) 
+	int isCycle( S05GraphDisjointSet graph) 
 	{ 
 		// Allocate memory for creating V subsets 
 		int parent[] = new int[graph.V]; 
@@ -74,7 +74,7 @@ class GraphDisjointSet
 		|  \ 
 		1----2 */
 		int V = 3, E = 3; 
-		GraphDisjointSet graph = new GraphDisjointSet(V, E); 
+		S05GraphDisjointSet graph = new S05GraphDisjointSet(V, E); 
 
 		// add edge 0-1 
 		graph.edge[0].src = 0; 

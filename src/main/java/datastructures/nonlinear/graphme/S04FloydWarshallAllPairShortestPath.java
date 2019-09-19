@@ -6,7 +6,7 @@ import java.lang.*;
 import java.io.*; 
 
 
-class FloydWarshallAllPairShortestPath 
+class S04FloydWarshallAllPairShortestPath 
 { 
 	final static int INF = 99999, V = 4; 
 
@@ -87,7 +87,7 @@ class FloydWarshallAllPairShortestPath
 						{INF, INF, 0, 1}, 
 						{INF, INF, INF, 0} 
 						}; 
-		FloydWarshallAllPairShortestPath a = new FloydWarshallAllPairShortestPath(); 
+		S04FloydWarshallAllPairShortestPath a = new S04FloydWarshallAllPairShortestPath(); 
 
 		// Print the solution 
 		a.floydWarshall(graph); 
