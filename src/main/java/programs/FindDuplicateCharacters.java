@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class FindDuplicateCharacters {
 	 public static void main(String args[]) {
-	        printDuplicateCharacters("Programming");
+	        printDuplicateCharacters("Programmingg");
 	        printDuplicateCharacters("Combination");
 	        printDuplicateCharacters("Java");
 	    }
@@ -19,7 +19,7 @@ public class FindDuplicateCharacters {
 
 	        // build HashMap with character and number of times they appear in String
 	        Map<Character, Integer> charMap = new HashMap<Character, Integer>();
-	        for (Character ch : characters) {
+	        for (char ch : characters) {
 	            if (charMap.containsKey(ch)) {
 	                charMap.put(ch, charMap.get(ch) + 1);
 	            } else {

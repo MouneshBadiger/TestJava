@@ -42,7 +42,7 @@ public class S07QuickSort {
 	         } 
 	     } 
 	
-	     // swap arr[i+1] and arr[high] (or pivot) 
+	     // swap arr[PI] and arr[high] (or pivot) 
 	     int temp = arr[PI]; 
 	     arr[PI] = arr[high]; 
 	     arr[high] = temp; 

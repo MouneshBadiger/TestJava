@@ -15,6 +15,7 @@ public class OverloadingTest {
 		//add(1l, 1);
 		OverloadingTest a = new OverloadingTest();
 		a.method(10);
+		a.method1(null);
 	}
 
 	void method(Integer i) {
@@ -36,6 +37,13 @@ public class OverloadingTest {
 	static void add(long a, long b) {
 		System.out.println("method3");
 	}
+	 void method1(String s) {
+		System.out.println("String method called");
+	}
+	 void method1(Object s) {
+		System.out.println("Object method called");
+	}
+	
 
 }
 interface MyI{
