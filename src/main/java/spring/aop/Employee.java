@@ -1,4 +1,4 @@
-package frameworks.spring.aop;
+package spring.aop;
 
 public class Employee {
 	

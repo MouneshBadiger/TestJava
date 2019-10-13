@@ -9,7 +9,9 @@ public class Ambiguity {
 		System.out.println("--constr 2---");
 	}
 	
-	/* public Ambiguity(Integer i) { System.out.println("--constr 3---"); } */
+	//public Ambiguity(Integer i) {
+	//	System.out.println("--constr 3---");
+	//}
 	 
 	
 	public static void main(String[] args) {

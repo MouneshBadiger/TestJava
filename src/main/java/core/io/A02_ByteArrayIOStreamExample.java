@@ -9,7 +9,7 @@ import java.io.*;
 /**The ByteArrayInputStream is cmposed of two words: ByteArray and InputStream. As the name suggests, it can be used to read byte array as input stream.
 Java ByteArrayInputStream class contains an internal buffer which is used to read byte array as stream. In this stream, the data is read from a byte array.
 The buffer of ByteArrayInputStream automatically grows according to data.*/
-public class ByteArrayIOStreamExample {
+public class A02_ByteArrayIOStreamExample {
 	public static void main(String args[]) throws Exception {
 		FileOutputStream fout1 = new FileOutputStream("D:\\f1.txt");
 		FileOutputStream fout2 = new FileOutputStream("D:\\f2.txt");

@@ -8,8 +8,9 @@ public class Inheritance1 {
 		
 		B b=new B();
 		b.method(10);
-		//Compiler always checks for the presense of method based on the Parent type reference being used, even though its overrided later
-		//it alays checks for type int first, if not found then looks for Wrapper Class Integer
+		//Compiler always checks for the presense of method based on the Parent type reference being used,
+		//even though its overrided later
+		//it always checks for type int first, if not found then looks for Wrapper Class Integer
 		//Note: methods are not overrided with parameter type int and Integer.
 	}
 

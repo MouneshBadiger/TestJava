@@ -17,6 +17,7 @@ class Node
 	} 
 	boolean isLeaf() {
 	      return left == null ? right == null : false;
+	      //return (left==null && right==null) ? true : false;
 	 }
 } 
 public class BinaryTree 

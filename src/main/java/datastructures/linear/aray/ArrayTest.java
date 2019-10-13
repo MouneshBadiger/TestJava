@@ -33,7 +33,7 @@ public class ArrayTest {
 				
 				for(int k=0; k<3;k++) {
 					
-					c[i][j]=c[i][j]+a[i][j]*b[i][k];
+					c[i][j]=c[i][j]+a[i][k]*b[k][j];//in a we are incrementing column, in rows in b, K is just extra pinter
 					
 					
 				}

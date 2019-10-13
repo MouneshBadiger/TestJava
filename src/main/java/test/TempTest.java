@@ -1,14 +1,22 @@
 package test;
 
-import java.time.LocalDate;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 public class TempTest{
 	
-	public static void main(String[] args) throws CloneNotSupportedException{
-
-		
+	
+	static public  void main(String[] args){
+		TestMe t=new TestMe();
+		System.out.println(t.m(1));
 	}
+	
+
 }
+
+ class TestMe<T>{
+	  <K extends Number,U,L,M,N,O,P> U  m(K k) {
+		 System.out.println(k);
+		 Integer i=(Integer)k;
+		 i=i*100;
+		 U u=(U)i;
+		return u;
+	 }
+ }

@@ -12,7 +12,7 @@ public class FindMinimum {
 				min=a[i];
 			}
 		}
-		System.out.println("2nd Minimum Element in the array is "+min);
+		System.out.println("Minimum Element in the array is "+min);
 		
 	}
 

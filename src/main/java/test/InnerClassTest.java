@@ -13,9 +13,7 @@ public class InnerClassTest {
 		InnerClassTest.InnerLevel1 in1=new InnerClassTest().new InnerLevel1();
 		in1.msg();
 		int data1=10;
-		class LocalInner1{
-			
-			
+		class LocalInner1{//Local(Method) Inner Class
 			void locaInnerTestMethod() {
 				System.out.println("executing Method Local Inner class: data="+data1);
 			}

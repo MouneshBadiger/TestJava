@@ -38,8 +38,10 @@ public class ReaderWriterExample {
 		 * CharArrayReader reader = new CharArrayReader(ary);
 		 */ 
           int i;    
-          while((i=fr.read())!=-1)    
-          System.out.print((char)i);    
+          while((i=fr.read())!=-1) {
+        	  System.out.print((char)i); 
+          }
+            
           fr.close();   
      }    
 }  

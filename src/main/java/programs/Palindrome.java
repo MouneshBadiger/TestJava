@@ -11,7 +11,7 @@ public class Palindrome {
 		char[] ch=str.toCharArray();
 		int n=ch.length;
 		for(int i=0;i<ch.length;i++) {
-			if(ch[i]!=ch[n-i-1]) {
+			if(ch[i]!=ch[n-1-i]) {//compare both ends --->   <----
 				System.out.println("Its not a palindrome");
 				return;
 			}

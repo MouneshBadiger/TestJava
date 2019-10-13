@@ -1,5 +1,5 @@
 package datastructures.nonlinear.graphme;
-//Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph, 
+//Dijkstra's algorithm is an algorithm for finding the single shortest paths between nodes in a graph, 
 //which may represent, for example, road networks
 //Dijkstra’s algorithm is very similar to Prim’s algorithm for minimum spanning tree. 
 public class S03DijkstrasSingleSouceShortestPath {
@@ -11,8 +11,7 @@ public class S03DijkstrasSingleSouceShortestPath {
     // representation 
     void dijkstra(int graph[][], int src) 
     { 
-        int dist[] = new int[V]; // The output array. dist[i] will hold 
-                                 // the shortest distance from src to i 
+        int dist[] = new int[V]; // The output array. dist[i] will hold the shortest distance from src to i 
   
         // visited[i] will be true if vertex i is included in shortest 
         // path tree or shortest distance from src to i is finalized 

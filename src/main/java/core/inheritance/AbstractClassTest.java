@@ -14,6 +14,7 @@ interface Interface3{
 }
 abstract class  AbstSoap{
 	String name="soap-";
+	String creater="mounesh";
 	
 	public abstract String createProductId();
 	
@@ -25,6 +26,7 @@ class ConcClass extends AbstSoap implements Interface3{
 	
 	@Override
 	public String createProductId() {
+		System.out.println(creater);
 		return super.name+"-"+System.currentTimeMillis();
 		
 	}

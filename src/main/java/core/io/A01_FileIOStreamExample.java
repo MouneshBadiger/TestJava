@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class FileIOStreamExample {
+public class A01_FileIOStreamExample {
 	
 	public static void main(String[] args) {
 	    try{    

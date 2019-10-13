@@ -5,7 +5,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class BufferedIOStreamExample {
+public class A03_BufferedIOStreamExample {
 	public static void main(String args[]) throws Exception {
 		FileOutputStream fout = new FileOutputStream("C:\\Users\\MOUNESHBADIGERBadige\\Desktop\\io\\testout.txt");
 		BufferedOutputStream bout = new BufferedOutputStream(fout);

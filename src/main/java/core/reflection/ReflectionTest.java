@@ -87,7 +87,7 @@ public class ReflectionTest {
 		/* Get All Public Methods */
 
 		Method[] publicMethods = Class.forName("com.journaldev.reflection.ConcreteClass").getMethods();
-//prints public methods of ConcreteClass, BaseClass, Object
+		//prints public methods of ConcreteClass, BaseClass, Object
 		System.out.println(Arrays.toString(publicMethods));
 
 		/* Get All Public Constructors */
@@ -100,14 +100,14 @@ public class ReflectionTest {
 
 		/* Get All Public Fields */
 
-//Get All public fields
+		//Get All public fields
 		Field[] publicFields = Class.forName("com.journaldev.reflection.ConcreteClass").getFields();
-//prints public fields of ConcreteClass, it's superclass and super interfaces
+		//prints public fields of ConcreteClass, it's superclass and super interfaces
 		System.out.println(Arrays.toString(publicFields));
 
 		java.lang.annotation.Annotation[] annotations = Class.forName("com.journaldev.reflection.ConcreteClass")
 				.getAnnotations();
-//prints [@java.lang.Deprecated()]
+		//prints [@java.lang.Deprecated()]
 		System.out.println(Arrays.toString(annotations));
 
 		Field field = Class.forName("com.journaldev.reflection.ConcreteClass").getField("interfaceInt");
@@ -133,7 +133,7 @@ public class ReflectionTest {
 		/* Get/Set Private Field Value */
 
 		Field privateField = Class.forName("com.journaldev.reflection.ConcreteClass").getDeclaredField("privateString");
-//turning off access check with below method call
+		//turning off access check with below method call
 		privateField.setAccessible(true);
 		ConcreteClass objTest = new ConcreteClass(1);
 		System.out.println(privateField.get(objTest)); // prints "private string"
@@ -170,7 +170,7 @@ public class ReflectionTest {
 		
 		/* Instantiate Object using Constructor */
 		constructor = Class.forName("com.journaldev.reflection.ConcreteClass").getConstructor(int.class);
-//getting constructor parameters
+		//getting constructor parameters
 		System.out.println(Arrays.toString(constructor.getParameterTypes())); // prints "[int]"
 
 		Object myObj = constructor.newInstance(10);

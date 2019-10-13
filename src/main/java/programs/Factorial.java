@@ -20,10 +20,10 @@ public class Factorial {
 	
 	static int findFactorialRecursive(int n) {
 		
-		if(n>1) {
-			return n*findFactorialRecursive(n-1);
-		}else
+		if(n==1) {
 			return 1;
+		}else
+			return n*findFactorialRecursive(n-1);
 		
 	}
 

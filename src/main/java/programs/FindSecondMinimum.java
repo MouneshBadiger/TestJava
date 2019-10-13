@@ -18,7 +18,7 @@ public class FindSecondMinimum {
 					min=a[i];
 				}
 			
-			  if(a[i]>min && a[i]<secMin){ 
+			  if(a[i]>min && a[i]<secMin){ //condition for handling last number in array
 				  secMin=a[i]; 
 			  }
 			 

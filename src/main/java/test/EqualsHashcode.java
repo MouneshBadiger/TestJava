@@ -2,11 +2,13 @@ package test;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class EqualsHashcode {
 
 	public static void main(String[] args) {
 		Set<FullName> set=new HashSet<FullName>();
+		//Set<FullName> set=new TreeSet<FullName>(); //results in java.lang.ClassCastException: test.FullName cannot be cast to java.lang.Comparable
 		set.add(new FullName("mounesh","badiger"));
 		
 		System.out.println(set.contains(new FullName("mounesh","badiger")));

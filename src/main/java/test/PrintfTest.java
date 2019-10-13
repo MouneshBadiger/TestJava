@@ -24,7 +24,7 @@ public class PrintfTest {
 		
 		//%X.Ys X minimum characters Y is number characters to be displayed
 		System.out.printf("'%10s' %n", "mounesh");
-		System.out.printf("'%-10s' %n", "mounesh");
+		System.out.printf("'%-10s' %n", "mounesh");//-ve will add right padding
 		
 		System.out.printf("%10.6s %n", "Hi there!");
 		

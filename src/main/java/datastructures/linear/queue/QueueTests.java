@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class QueueTests {
 	
@@ -15,11 +18,16 @@ public class QueueTests {
 		myQueue.forEach(System.out::println);
 		
 		//PriorityQueue as Queve is Sorted Queue
-		Queue<String> pQueue=new PriorityQueue<String>(Arrays.asList("second","first","third"));
+		
+		Queue<Integer> pQueue=new PriorityQueue<>(Arrays.asList(4,2,1,5,8,1,22,7,67,24));
 		System.out.println();
-		pQueue.add("abc");
+		pQueue.add(10);
+		pQueue.add(-3);
 		System.out.println("PriorityQueue as Queve");
-		pQueue.forEach(System.out::println);
+		//pQueue.forEach(System.out::println);
+		while(pQueue.size()>0) {
+			System.out.println(pQueue.poll());
+		}
 		
 		//ArrayDeque as queue we can access elements from both the end as implements Deque also,rest is same as normal queve
 		ArrayDeque<String> dQueue=new ArrayDeque<String>(Arrays.asList("second","first","third"));

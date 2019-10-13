@@ -16,7 +16,7 @@ public class FindSecondHighest {
 				secMax=max;
 				max=a[i];
 			}
-			if(a[i]>secMax && a[i]<max) {
+			if(a[i]>secMax && a[i]<max) {//condition for handling last number in array
 				secMax=a[i];
 			}
 		}
