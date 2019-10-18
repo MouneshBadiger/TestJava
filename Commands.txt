@@ -1,6 +1,8 @@
 java -jar [jarfile]
 java -cp [classpath_loc1]:[classpath_loc2] [System_aguments] package.MainMethod [Program_arguments]
 
+netstat -ano | find "8080"
+taskkill /pid <PID>/f
 Linux Commands
 ---------------------------
 1.top-------> memory usage
@@ -54,6 +56,7 @@ Docker commands
 --------------------
 
 apk add curl
+wget
 1.docker pull quay.io/python-devs/ci-image
 2.docker image ls
 3.docker container ls --all
@@ -117,11 +120,13 @@ Angular commands
 7.Create build:ng build --prod
 8.Genereate component: ng g c ComponentName <path optional >
 9.Genereate service: ng g s Service <path optional >
+10. ng generate directive highlight
 --------------------------------------------
 Maven Commands
 
 mvn dependency:tree
 mvn tomcat7:run -Dspring.profiles.active=dev
+mvn clean package -DskipTests
 
 ---------------------------------
 AWS Commands
@@ -189,6 +194,93 @@ gsutil cp [file_name] gs://bucket-name/file-name
 
 
 
+Hi 
 
+Thanks for your reply, I am interested in this position. Please find my resume attached.
+
+
+Thanks & Regards,
+Mounesh
 --------------
 sorna password: Karupa1#
+fDU3hQT
+
+Karupa1#
+
+fDU3hQT
+
+Version Control Software Tools
+
+
+
+
+My Materials
+Javascript:https://www.w3schools.com/js/default.asp
+Angular:
+
+
+Thanks, 
+Mounesh
+IBM India Private Ltd
+for UPS Account, CPC
+91-7353207901
+bmounesh@ups.com
+
+-----------------------------------
+[‎10/‎11/‎2019 6:09 PM]  
+Hi
+ 
+[‎10/‎11/‎2019 6:10 PM]  D'Antonio Carl J. (SYS1CJD):  
+Good morning.  
+ 
+[‎10/‎11/‎2019 6:10 PM]  
+We need to change CPC_User, my team wanted to check what would be the convenient time for you?
+ 
+[‎10/‎11/‎2019 6:11 PM]  
+We can do it on weekdays
+ 
+[‎10/‎11/‎2019 6:11 PM]  
+12AM
+ 
+[‎10/‎11/‎2019 6:12 PM]  D'Antonio Carl J. (SYS1CJD):  
+I am off work until Tuesday.  I am on vacation. Just cleaning up.  Please reach out to Bob Bonhard. The schedule is full. You may have to wait until next week.  Please send an email to Bob.  No IM's for changes, we want emails and APPIANS. Please schedule with at least 3 business day lead time.
+ 
+[‎10/‎11/‎2019 6:13 PM]  
+Ya sure,
+ 
+[‎10/‎11/‎2019 6:13 PM]  
+we want it next week
+ 
+[‎10/‎11/‎2019 6:13 PM]  D'Antonio Carl J. (SYS1CJD):  
+TSP/WAS supports dozens of applications.... Please keep that in consideration.....
+ 
+[‎10/‎11/‎2019 6:13 PM]  
+Okay
+ 
+[‎10/‎14/‎2019 9:52 PM]  
+Below activities need to performed on 10/21 12:00 AM
+
+1.Update CPC_User password in WAS console data source.
+2.Change to CPC_User from CPC_User1  in WAS console.
+
+
+Production -RR	njrarlpapp0039a.linux.us.ups.com	9443
+Production -RR	njrarlpapp0039a.linux.us.ups.com 	9444
+Production -RR	njrarlpapp0039b.linux.us.ups.com 	9443
+Production -RR	njrarlpapp0039b.linux.us.ups.com 	9444
+Production - WW	gaalplpapp003d4.linux.us.ups.com	9443
+Production - WW	gaalplpapp003d4.linux.us.ups.com	9444
+Production - WW	gaalplpapp003d5.linux.us.ups.com	9443
+Production - WW	gaalplpapp003d5.linux.us.ups.com	9444
+
+
+----------------------------------------------------------------------------
+
+ 
+
+
+
+ 
+
+
+
