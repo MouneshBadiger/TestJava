@@ -108,9 +108,18 @@ docker container prune (To remove all stopped containers)
 docker container run  -d -p 15672:15672 -p 5672:5672 rabbitmq:management
 docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.3.0
 docker run -p 5601:5601 docker.elastic.co/kibana/kibana:7.3.0
+
+ELK Stack
+(refer docker compose)
+
+kibana dashboard:http://localhost:5601/
+all index:http://localhost:9200/_cat/indices?v
+single index pretty:http://localhost:9200/trendfly-logs*/_search?q=*&pretty
+
+
+
 Angular commands
 -----------------------------
-
 1.Install node.js
 2.Install npm
 3.Install angular cli: npm i -g @angular/cli
@@ -163,7 +172,9 @@ minikube start --vm-driver hyperv --hyperv-virtual-switch "Primary Virtual Switc
 Kubernates
 gcloud config set project [PROJECT_ID]
 gcloud config set compute/zone us-central1-b
-gcloud container clusters create trendfly-cluster --num-nodes=2 (Create a cluster with name trendfly-cluster with initial 2 nodes)
+(Create a cluster with name trendfly-cluster with initial 2 nodes)
+gcloud container clusters create trendfly-cluster --num-nodes=2 --enable-autoscaling --min-nodes 15 --max-nodes 50
+
 gcloud container clusters list
 gcloud compute instances list
 gcloud container clusters describe <CLUSTER_NAME>
@@ -191,7 +202,8 @@ wget -qO- <endpoint> (equivalent to curl)
 
 gsutil cp [file_name] gs://bucket-name/file-name
 
-
+the mongo port is 1021.
+the IP is 9.193.197.31
 
 
 Hi 
@@ -227,55 +239,13 @@ for UPS Account, CPC
 bmounesh@ups.com
 
 -----------------------------------
-[‎10/‎11/‎2019 6:09 PM]  
-Hi
- 
-[‎10/‎11/‎2019 6:10 PM]  D'Antonio Carl J. (SYS1CJD):  
-Good morning.  
- 
-[‎10/‎11/‎2019 6:10 PM]  
-We need to change CPC_User, my team wanted to check what would be the convenient time for you?
- 
-[‎10/‎11/‎2019 6:11 PM]  
-We can do it on weekdays
- 
-[‎10/‎11/‎2019 6:11 PM]  
-12AM
- 
-[‎10/‎11/‎2019 6:12 PM]  D'Antonio Carl J. (SYS1CJD):  
-I am off work until Tuesday.  I am on vacation. Just cleaning up.  Please reach out to Bob Bonhard. The schedule is full. You may have to wait until next week.  Please send an email to Bob.  No IM's for changes, we want emails and APPIANS. Please schedule with at least 3 business day lead time.
- 
-[‎10/‎11/‎2019 6:13 PM]  
-Ya sure,
- 
-[‎10/‎11/‎2019 6:13 PM]  
-we want it next week
- 
-[‎10/‎11/‎2019 6:13 PM]  D'Antonio Carl J. (SYS1CJD):  
-TSP/WAS supports dozens of applications.... Please keep that in consideration.....
- 
-[‎10/‎11/‎2019 6:13 PM]  
-Okay
- 
-[‎10/‎14/‎2019 9:52 PM]  
-Below activities need to performed on 10/21 12:00 AM
-
-1.Update CPC_User password in WAS console data source.
-2.Change to CPC_User from CPC_User1  in WAS console.
+1-888-UPS-TECH / 0001-888-877-8324#45688328.
+000
 
 
-Production -RR	njrarlpapp0039a.linux.us.ups.com	9443
-Production -RR	njrarlpapp0039a.linux.us.ups.com 	9444
-Production -RR	njrarlpapp0039b.linux.us.ups.com 	9443
-Production -RR	njrarlpapp0039b.linux.us.ups.com 	9444
-Production - WW	gaalplpapp003d4.linux.us.ups.com	9443
-Production - WW	gaalplpapp003d4.linux.us.ups.com	9444
-Production - WW	gaalplpapp003d5.linux.us.ups.com	9443
-Production - WW	gaalplpapp003d5.linux.us.ups.com	9444
+I will go through the TPEWS code, let me know if you want to check anything from code.
 
-
-----------------------------------------------------------------------------
-
+57687365
  
 
 
