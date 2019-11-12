@@ -36,7 +36,8 @@ public class BinaryTree
 		root = null; 
 	} 
 	public int height(Node node) {
-        if (node == null) return -1;
+        if (node == null) 
+        	return -1;
         //return 0 if you consider nodes to count height
 
         return Math.max(height(node.left), height(node.right)) + 1;
@@ -228,6 +229,8 @@ public class BinaryTree
   
         System.out.println("\nPostorder traversal of binary tree is "); 
         tree.printPostorder(tree.root); 
+        System.out.println("\nPre order traversal without recursion "); 
+        tree.preOrderWithoutRecursion(); 
         System.out.println();
         if (tree.isBalanced(tree.root)) 
             System.out.println("Tree is balanced"); 

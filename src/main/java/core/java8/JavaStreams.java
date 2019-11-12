@@ -13,6 +13,16 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+/**
+ * @author MOUNESHBADIGERBadige
+ *Ways to create Stream
+ *1.Files.lines(Paths.get("bands.txt"));
+ *2.
+ *3.
+ *4.
+ *5.
+ *6.
+ */
 public class JavaStreams {
 	
 	public static void main(String[] args) throws IOException {

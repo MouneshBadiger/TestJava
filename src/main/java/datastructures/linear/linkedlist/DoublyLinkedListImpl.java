@@ -125,25 +125,26 @@ public class DoublyLinkedListImpl<E> {
     }
 
 	/*
-	 * * If singly LinkedList contains Cycle then following would be true * 1) slow
+	 * * If singly LinkedList contains Cycle then following would be true  1) slow
 	 * and fast will point to same node i.e. they meet * On the other hand if fast
 	 * will point to null or next node of * fast will point to null then LinkedList
 	 * does not contains cycle.
 	 */ 
 
-	public boolean isCyclic() {
-		Node fast = head;
-		Node slow = head;
-		while (fast != null && fast.next != null) {
-			fast = fast.next.next;
-			slow = slow.next;
-		} 
-		// if fast and slow pointers are meeting then LinkedList is cyclic
-		if(fast ==slow ){ 
+    public boolean isCyclic() {
+		Node temp=head;//slow moving variable
+		Node temp1=head;//fast moving variable
+		while(temp1!=null && temp1.next!=null) {
+			temp=temp.next;
+			temp1=temp1.next.next;
+			if(temp==temp1) {
+				return true;
+			}
+		}
+		if(temp ==temp1 ){ 
 			return true;
 		} 
 		return false;
-
 	}
     public static void main(String a[]){
          

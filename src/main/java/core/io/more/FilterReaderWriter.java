@@ -1,4 +1,4 @@
-package core.io;
+package core.io.more;
 
 import java.io.*;
 /**Java FilterReader is used to perform filtering operation on reader stream. It is an abstract class for reading filtered character streams.

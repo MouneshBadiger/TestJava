@@ -2,6 +2,9 @@ package core.collection.enumtest;
 
 public class S6MGBEnum {	
 	ClassAsEnum first=ClassAsEnum.FIRST;
+	public static void main(String[] args) {
+		ClassAsEnum t=ClassAsEnum.FIRST;
+	}
 
 }
 //https://stackoverflow.com/questions/4709175/what-are-enums-and-why-are-they-useful
@@ -14,7 +17,9 @@ class ClassAsEnum{
 	//if you have abstract methods use anonymous class to implemnt it
 	
 	private ClassAsEnum(int enumConstant) {
+		System.out.println("--cons--");
 		this.enumConstant=enumConstant;
 	}
+	
 
 }

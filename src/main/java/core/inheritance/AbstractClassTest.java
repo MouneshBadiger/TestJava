@@ -1,6 +1,6 @@
 package core.inheritance;
 /**Senario:
-A ChildClass class extending Super Class and also implementing some interfaces
+A Child Class class extending Super Class and also implementing some interfaces
 * If there are same state and behavior i,e properties and Methods
 1.In case of methods it compiles fine and the Implementation is used based on Object invocation at runtime.
 2.Compiler fail to compile if there are same property in both super class and Interface

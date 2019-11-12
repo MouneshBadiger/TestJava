@@ -22,9 +22,9 @@ public class FindSubset {
 		if(i==main.length) {
 			print(subset);
 		}else {
-			subset[i]='\u0000';
+			subset[i]='\u0000';//not including subset
 			findSubset(main,subset,i+1);
-			subset[i]=main[i];
+			subset[i]=main[i];//including in subset
 			findSubset(main,subset,i+1);
 		}
 		

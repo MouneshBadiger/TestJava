@@ -24,7 +24,7 @@ public class QueueTests {
 		pQueue.add(10);
 		pQueue.add(-3);
 		System.out.println("PriorityQueue as Queve");
-		//pQueue.forEach(System.out::println);
+		pQueue.forEach(System.out::println);
 		while(pQueue.size()>0) {
 			System.out.println(pQueue.poll());
 		}

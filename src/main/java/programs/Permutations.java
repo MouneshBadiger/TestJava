@@ -1,7 +1,7 @@
 package programs;
 // Java program to print all the permutations 
 // of the given string 
-public class GFG { 
+public class Permutations { 
 
 	// Function to print all the permutations of str 
 	static void printPermutn(String str, String ans) 
@@ -20,8 +20,7 @@ public class GFG {
 
 			// Rest of the string after excluding 
 			// the ith character 
-			String ros = str.substring(0, i) + 
-						str.substring(i + 1); 
+			String ros = str.substring(0, i) +str.substring(i + 1); 
 
 			// Recurvise call 
 			printPermutn(ros, ans + ch); 

@@ -2,6 +2,10 @@ package programs.array;
 
 import java.util.Arrays;
 
+/**
+ * Same as reverse a string
+ *
+ */
 public class ReverseArray {
 	
 	public static void main(String[] args) {

@@ -50,7 +50,8 @@ public class S2ThreadStatesTestClass {
 
 }
 /*
- * 1.We can pass any int constant to the simpleConstantsExample method but we can pass only fixed values to simpleEnumExample, so it provides type safety.
-2. We can change the int constants value in ThreadStatesConstant class but the above program will not throw any 
+ * 
+1.We can pass any int constant to the simpleConstantsExample method but we can pass only fixed values to simpleEnumExample, so it provides type safety.
+2.We can change the int constants value in ThreadStatesConstant class but the above program will not throw any 
 exception. Our program might not work as expected but if we change the enum constants, we will get compile time error that removes any possibility of runtime issues.
 */

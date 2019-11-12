@@ -1,6 +1,5 @@
 package programs.array;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,9 +8,10 @@ public class FindDuplicate {
 	
 	public static void main(String[] args) {
 		int a[]= {9,2,5,1,6,3,2,1,1,8,3};
-		int b[]= {1,2,3,3,4,5,6,7};
 		System.out.println("Duplicate Elements using collections:"+Arrays.toString(duplicatesBySet(a)));
 		System.out.println("Duplicate Elements using bruteforce:"+Arrays.toString(bruteforce(a)));
+		System.out.println("Duplicate Elements using single Pass:");singlePass(a);
+		int b[]= {1,2,3,3,4,5,6,7};
 		System.out.println("single Duplicate in series:"+findSingleDuplicate(b));
 		
 	}
@@ -43,6 +43,17 @@ public class FindDuplicate {
     	Integer ret[]= {};
 		return list.toArray(ret);
     }
+    public static void singlePass(int numRay[]) { 
+        for (int i = 0; i < numRay.length; i++) { 
+            numRay[numRay[i] % 10] = numRay[numRay[i] % 10] + 10; 
+        } 
+        System.out.println("The repeating elements are : "); 
+        for (int i = 0; i < numRay.length; i++) { 
+            if (numRay[i] > 19) { 
+                System.out.println(i + " "); 
+            } 
+        } 
+    } 
     public static int findSingleDuplicate(int[] a) {
     	//Since there is one extra element lets assume expected sum for n-1 elements
 		int n=a.length-1;

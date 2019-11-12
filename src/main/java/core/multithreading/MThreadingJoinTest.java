@@ -2,10 +2,6 @@ package core.multithreading;
 
 public class MThreadingJoinTest {
 	
-	
-	
-	
-	
 	public static void main(String[] args) throws InterruptedException {
 		
 		Runnable r1=()->{

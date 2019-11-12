@@ -24,6 +24,10 @@ public class BigDecimalTest {
 	    assertEquals("42",bdlFromInt.toString());
 	    assertEquals("123412345678901",bdFromLong.toString());
 	    assertEquals(bigInteger.toString(),bdFromBigInteger.toString());
+	    
+	    
+	    BigDecimal added=bdFromString.add(bdlFromInt);
+	    
 	}
 
 }

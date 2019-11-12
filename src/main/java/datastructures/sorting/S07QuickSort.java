@@ -2,6 +2,10 @@ package datastructures.sorting;
 
 import java.util.Arrays;
 
+/**
+ * @author MOUNESHBADIGERBadige
+ *Follows Divide and Conquer strategy.
+ */
 public class S07QuickSort {
 	public static void main(String[] args) {
 		int arr[]= {23,5,0,10,12,2,6,44,6,1,7,11,6,2,61,9,1,10};

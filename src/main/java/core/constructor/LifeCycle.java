@@ -37,7 +37,7 @@ public class LifeCycle {
 	
 	public static void main(String[] args) {
 		LifeCycle bo=new LifeCycle();
-		LifeCycle boq=new LifeCycle();
+		//LifeCycle boq=new LifeCycle();
 		bo=null;
 		System.gc();
 		System.out.println("--exiting--");

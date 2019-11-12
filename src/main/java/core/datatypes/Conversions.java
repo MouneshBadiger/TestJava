@@ -23,6 +23,7 @@ public class Conversions {
 		List<Integer> list1=Arrays.stream(b).boxed().collect(Collectors.toList());
 
 		/* Object[] to List<Object> */
+		//best example for variable arguments in java
 		Object[] obj=new Object[10];
 		List<Object> list2=Arrays.asList(obj);
 		

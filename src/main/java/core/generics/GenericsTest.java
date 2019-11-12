@@ -16,7 +16,7 @@ public class GenericsTest {
 		
 		//genericExtendsTest();
 		sumOfNumbers(Arrays.asList(1.3,14,18));
-		List<Object> list=new ArrayList<>(Arrays.asList("mgb","mounesh"));
+		List<Object> list=new ArrayList<>(Arrays.asList("mgb","mounesh",new StringBuilder()));
 		addNumbersToList(list);
 		
 	}

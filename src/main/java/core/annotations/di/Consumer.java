@@ -13,12 +13,4 @@ public class Consumer {
 		System.out.println("order placed");
 		notificationService.sendNotification();
 	}
-
-
-
-	
-	
-	
-	
-
 }

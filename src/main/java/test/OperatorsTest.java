@@ -25,11 +25,8 @@ public class OperatorsTest {
 	    System.out.println("20>>>2 "+(20>>>2)+"   "+Integer.toBinaryString(20)+"   "+Integer.toBinaryString(20>>>2));  
 	    //For negative number, >>> changes parity bit (MSB) to 0  
 	    //>>> unsigned shift 
-	    System.out.println(Integer.toBinaryString(-20));
-	    System.out.println(Integer.toBinaryString(-20>>1));
-	    System.out.println();
-	    System.out.println(Integer.toBinaryString(-20)); 
-		System.out.println(Integer.toBinaryString(-20>>>1));
+	    System.out.println("-2>>1  "+Integer.toBinaryString(-20)+" "+Integer.toBinaryString(-20>>1));
+		System.out.println("-2>>>1 "+Integer.toBinaryString(-20)+" "+Integer.toBinaryString(-20>>>1));
 		
 		
 		short a=10;

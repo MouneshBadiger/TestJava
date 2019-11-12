@@ -6,8 +6,10 @@ import java.io.*;
 *The ByteArrayOutputStream holds a copy of data and forwards it to multiple streams.
 *The buffer of ByteArrayOutputStream automatically grows according to data*/
 
-/**The ByteArrayInputStream is cmposed of two words: ByteArray and InputStream. As the name suggests, it can be used to read byte array as input stream.
-Java ByteArrayInputStream class contains an internal buffer which is used to read byte array as stream. In this stream, the data is read from a byte array.
+/**The ByteArrayInputStream is cmposed of two words: ByteArray and InputStream.
+As the name suggests, it can be used to read byte array as input stream.
+Java ByteArrayInputStream class contains an internal buffer which is used to read byte array as stream.
+ In this stream, the data is read from a byte array.
 The buffer of ByteArrayInputStream automatically grows according to data.*/
 public class A02_ByteArrayIOStreamExample {
 	public static void main(String args[]) throws Exception {
