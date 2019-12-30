@@ -138,6 +138,15 @@ mvn tomcat7:run -Dspring.profiles.active=dev
 mvn clean package -DskipTests
 
 ---------------------------------
+SuperUsers
+accountId:758554344234
+user:Mounesh
+password:mgbKng123@
+access-id:AKIA3BHK4XMVL7R7WPTT
+secret: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
+Users with AWS Management Console access can sign-in at: https://758554344234.signin.aws.amazon.com/console
+
+
 AWS Commands
 
 ssh -i mgb_aws1.pem ubuntu@18.222.24.150
@@ -205,6 +214,12 @@ gsutil cp [file_name] gs://bucket-name/file-name
 the mongo port is 1021.
 the IP is 9.193.197.31
 
+-------------------------------------------
+MAJAR ENDPOINTS
+http://localhost:8082/actuator/?
+http://localhost:8082/swagger-ui.html
+
+--------------------------
 
 Hi 
 
@@ -243,14 +258,14 @@ bmounesh@ups.com
 000
 
 
-I will go through the TPEWS code, let me know if you want to check anything from code.
+ 
+---------------------------------------------
 
-57687365
+Before the interview:
+Share data b/w compoents:  https://angularfirebase.com/lessons/sharing-data-between-angular-components-four-methods/
  
 
 
 
- 
-
-
-
+GD000006036
+GD000006036
