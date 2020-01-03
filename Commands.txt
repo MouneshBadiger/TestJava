@@ -221,15 +221,7 @@ http://localhost:8082/swagger-ui.html
 
 --------------------------
 
-Hi 
 
-Thanks for your reply, I am interested in this position. Please find my resume attached.
-
-
-Thanks & Regards,
-Mounesh
---------------
-sorna password: Karupa1#
 fDU3hQT
 
 Karupa1#
@@ -260,12 +252,23 @@ bmounesh@ups.com
 
  
 ---------------------------------------------
+KAFKA
+zookeeper-server-start ../../config/zookeeper.properties
+kafka-server-start ../../config/server.properties
 
-Before the interview:
-Share data b/w compoents:  https://angularfirebase.com/lessons/sharing-data-between-angular-components-four-methods/
- 
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic streams-plaintext-input
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic streams-wordcount-output --config cleanup.policy=compact
+kafka-topics --list --bootstrap-server localhost:9092
+kafka-topics --bootstrap-server localhost:9092 --describe
+kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo
+kafka-console-producer --broker-list localhost:9092 --topic streams-plaintext-input
 
-
-
-GD000006036
-GD000006036
+kafka-console-consumer --bootstrap-server localhost:9092 --topic streams-wordcount-output --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+    --topic streams-wordcount-output \
+    --from-beginning \
+    --formatter kafka.tools.DefaultMessageFormatter \
+    --property print.key=true \
+    --property print.value=true \
+    --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+    --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
