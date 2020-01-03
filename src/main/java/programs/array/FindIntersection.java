@@ -12,15 +12,15 @@ class FindIntersection
 	int i = 0, j = 0; 
 	while (i < m && j < n) 
 	{ 
+		if(arr1[i] == arr2[j]) {
+			System.out.print(arr2[j]+" ");
+			i++;
+			j++;
+		}else
 		if (arr1[i] < arr2[j]) 
-		i++; 
+			i++; 
 		else if (arr2[j] < arr1[i]) 
-		j++; 
-		else
-		{ 
-		System.out.print(arr2[j++]+" "); 
-		i++; 
-		} 
+			j++; 
 	} 
 	} 
 	

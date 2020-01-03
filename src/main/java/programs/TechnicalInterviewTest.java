@@ -35,7 +35,7 @@ public class TechnicalInterviewTest {
     public static int[] removeDuplicates(int[] numbersWithDuplicates) {
 
         // Sorting array to bring duplicates together      
-        Arrays.sort(numbersWithDuplicates);     
+        Arrays.sort(numbersWithDuplicates);   //nlogn  
       
         int[] result = new int[numbersWithDuplicates.length];
         int previous = numbersWithDuplicates[0];

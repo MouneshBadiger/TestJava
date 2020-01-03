@@ -10,6 +10,9 @@ import test.CharectorTest;
  * @author MOUNESHBADIGERBadige
  *Panagram: A sentence containing all the letters of English Alphabets
  */
+
+//logic
+//1.
 public class Panagram {
 	
 	public static void main(String[] args) {

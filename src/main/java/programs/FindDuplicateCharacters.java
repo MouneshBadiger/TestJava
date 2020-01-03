@@ -9,6 +9,8 @@ public class FindDuplicateCharacters {
 	        printDuplicateCharacters("Programmingg");
 	        printDuplicateCharacters("Combination");
 	        printDuplicateCharacters("Java");
+	        int arr[] = {1, 2, 3, 1, 3, 6, 6}; 
+	        printRepeating(arr);
 	    }
 
 	    /*
@@ -36,4 +38,31 @@ public class FindDuplicateCharacters {
 	            }
 	        }
 	    }
+	 // Function to print duplicates 
+	    static void printRepeating(int arr[]) 
+	    { 
+	        int i;   
+	        System.out.println("The repeating elements are : "); 
+	     
+	        for (i = 0; i < arr.length; i++) 
+	        { 
+	            if (arr[ Math.abs(arr[i])] >= 0) 
+	                arr[ Math.abs(arr[i])] = -arr[ Math.abs(arr[i])]; 
+	            else
+	                System.out.print(Math.abs(arr[i]) + " "); 
+	        }          
+	    }  
+	    public static void printRepeatingHandling0() { 
+	        int numRay[] = {0, 4, 3, 2, 7, 8, 2, 3, 1}; 
+	  
+	        for (int i = 0; i < numRay.length; i++) { 
+	            numRay[numRay[i] % 10] = numRay[numRay[i] % 10] + 10; 
+	        } 
+	        System.out.println("The repeating elements are : "); 
+	        for (int i = 0; i < numRay.length; i++) { 
+	            if (numRay[i] > 19) { 
+	                System.out.println(i + " "); 
+	            } 
+	        } 
+	    } 
 }

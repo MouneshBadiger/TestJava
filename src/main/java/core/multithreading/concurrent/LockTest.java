@@ -1,4 +1,4 @@
-package core.multithreading;
+package core.multithreading.concurrent;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -35,3 +35,7 @@ public class LockTest {
 	}
 
 }
+//disadvantage:
+//lock has to be released manually in finally block
+//if developer forget prone to error
+//code become more unreadable

@@ -13,13 +13,14 @@ class FindUnion
 	while (i < m && j < n) 
 	{ 
 		if (arr1[i] < arr2[j]) 
-		System.out.print(arr1[i++]+" "); 
+			System.out.print(arr1[i++]+" "); 
 		else if (arr2[j] < arr1[i]) 
-		System.out.print(arr2[j++]+" "); 
+			System.out.print(arr2[j++]+" "); 
 		else
 		{ 
-		System.out.print(arr2[j++]+" "); 
-		i++; 
+			System.out.print(arr2[j]+" "); 
+			i++; 
+			j++;
 		} 
 	} 
 	

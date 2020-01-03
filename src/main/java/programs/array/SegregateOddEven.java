@@ -21,7 +21,7 @@ public class SegregateOddEven
 			while (arr[right]%2 == 1 && left < right) 
 				right--; 
 
-			if (left < right) 
+			//if (left < right) 
 			{ 
 				/* Swap arr[left] and arr[right]*/
 				int temp = arr[left]; 
@@ -36,7 +36,7 @@ public class SegregateOddEven
 	/* Driver program to test above functions */
 	public static void main (String[] args) 
 	{ 
-		int arr[] = {12, 34, 45, 9, 8, 90, 3}; 
+		int arr[] = {12, 34,43,11, 45, 9, 8, 90, 3,2,36,16,32}; 
 
 		segregateEvenOdd(arr); 
 

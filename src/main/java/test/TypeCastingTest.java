@@ -2,29 +2,20 @@ package test;
 
 public class TypeCastingTest implements MyInterface{
 
-	/*1
-	 * public static void main(String[] args) {
+	//1
+	public static void main1(String[] args) {
 		double i=10.0;
 		double j=10.0f;
 		double k=i+j;
 		//types below int and int when added result will be int
 		//when you operate on float and float or below result will be float
 		//when add double and double or below double result will double
-	}*/
-	
-	 
-	/*2
-	 * public static void main(String[] args) {
-		TestClass test=new TestClass();
-		test.makeSound();
 	}
-	 * When A default method is overriden implementation class method is used:same as inheritance, nothing special
-	 * public void makeSound() {
-		System.out.print("bow  bow"); 
-	}*/
 	
-	/*3 Type Casting
-	public static void main(String[] args) {
+	
+	
+	//3 Type Casting
+	public static void main3(String[] args) {
 		//downcasting
 		int k=10;
 		//byte b=k;//Type mismatch: cannot convert from int to byte
@@ -40,16 +31,17 @@ public class TypeCastingTest implements MyInterface{
 		
 		Byte b1=10;
 		int i2=b1.intValue();
-	}*/
+	}
 	
-	/*
-	public static void main(String[] args) {
+	
+	public static void main4(String[] args) {
 		
 		int k=10+5*2/(12-4);
 		//10+10/8
 		//10+1
 		//11
-		//it fallows java operator precedence table where *,/ comes before +,- (parenthese takes highest precedence)
+		//it fallows java operator precedence table where  
+		//(parenthese takes highest precedence) then *,/ then +,- 
 		//http://www.cs.bilkent.edu.tr/~guvenir/courses/CS101/op_precedence.html
 		System.out.println("Result="+k);
 		int i=14;
@@ -77,19 +69,20 @@ public class TypeCastingTest implements MyInterface{
 		System.out.println("after -2>>1="+Integer.toBinaryString(a>>1)+"="+(a>>1));
 		System.out.println("after -2>>>1="+Integer.toBinaryString(a>>>1)+"="+(a>>>1));
 		
-	}*/
+	}
 	
-	/*public static void main(String[] args) {
+	public static void main5(String[] args) {
 		int a=10;  
 		int b=5;  
-		int c=20;  
+		int c=20; 
+		//Difference between && and &
 		System.out.println(a<b&&a++<c);//false && true = false  
 		System.out.println(a);//10 because second condition is not checked  
 		System.out.println(a<b&a++<c);//false && true = false  
 		System.out.println(a);//11 because second condition is checked  
-	}*/
+	}
 	
-	public static void main(String[] args) {
+	public static void main6(String[] args) {
 		float x=0.0f;
 		long i=0l;
 		//Cannot switch on a value of type Long. Only convertible int values, strings or enum variables are permitted

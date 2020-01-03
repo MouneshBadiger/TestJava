@@ -1,7 +1,7 @@
 package datastructures.sorting;
 
 import java.util.Arrays;
-//In merge sort two arrays sorted and merged back.. resuting array is sorted it is done recursiviely
+//In merge sort two arrays sorted and merged back.. resulting array is sorted it is done recursiviely
 //step 1: divide array into two parts based on m
 //step 2: sort left and right array recursively.
 //step 3 : Since it is recursive merge method will start when sort recursion exits(l>=r)
