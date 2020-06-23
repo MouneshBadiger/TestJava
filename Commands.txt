@@ -359,120 +359,28 @@ kafka-console-consumer.sh --bootstrap-server localhost:9092 \
     --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
     --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
 
-
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-ORACLE
-
-No provider found for: requires oracle.dbtools.http.filters.Filters-------Restart tomcat solves problem
-The request could not be mapped to any database. Check the request URL is correct, and that URL to database mappings have been correctly configured----caused by port in use
-Struck in launching IntegratedWeblogicServer ---Restart the com-
-puter and run a Resource class in sample project
-------------------------------------------------------------------------
--- Create OAUTH client
-BEGIN
-  OAUTH.create_client(
-    p_name            => 'rco_client1',
-    p_grant_type      => 'client_credentials',
-    p_owner           => 'rco_client1',
-    p_description     => 'A client for Rest Demo',
-    p_support_email   => 'mounesh.badiger@oracle.com',
-    p_privilege_names => 'rco-priv'
-  );
- 
-  COMMIT;
-END;
-----------------------------------------
--- Grant OAUTH client role
-BEGIN
-  OAUTH.grant_client_role(
-    p_client_name => 'rco_client1',
-    p_role_name   => 'RESTful Services'
-  );
- 
-  COMMIT;
-END;
--------------------------------------------------
-SELECT * FROM   user_ords_clients;
---------------------------------------------
-DECLARE
-JSON_DATA CLOB;
-tt varchar2(100);
-BEGIN
-
-SELECT JSON_CLOB INTO JSON_DATA FROM DEPT where deptno=54;
-APEX_JSON.parse(JSON_DATA);
---tt:=APEX_JSON.get_varchar2(p_path => 'schedules[%d].currentInstance.activeCycles[%d].cycleNumber', p0 => 1,p1=>1);
---tt:=APEX_JSON.get_varchar2(p_path => 'environment');
-dbms_output.put_line(tt);
-END;
------------------------------------------------------
-declare
-i integer;
-REC_COUNT integer;
-JSON_CLOB1 clob;
-begin
-select JSON_CLOB INTO JSON_CLOB1 FROM DEPT WHERE deptno=54;
---APEX_JSON.parse(JSON_CLOB1);
-
-i:=pack1.test('');
-end;
-------------------------------------------------------------
-DECLARE
-    j apex_json.t_values; 
-    v apex_json.t_value; 
-BEGIN 
-    apex_json.parse('{ "foo": 3, "bar": [{"key":"val"}, 2, 3, 4] }'); 
-    v := apex_json.get_value(p_path=>'bar[%d].key',p0=> 1); -- returns the t_value for bar[2] 
-    if(v.kind is null) then
-    dbms_output.put_line('nulllllllllll'); -- 2 
-    end if;
-    
-    dbms_output.put_line(v.varchar2_value); -- 2 
-   
-END;
--------------------------------------------------------------------
-SELECT CUSTOMER_NAME,ENV_NAME,CPP_INST_NAME,(ERROR+LONG_RUNNING+WAITING+RUNNING+COMPLETED) TOTAL,ERROR,LONG_RUNNING LONG_RUNNING,WAITING,RUNNING,COMPLETED,'50' PROGRESS FROM (
-
-
-SELECT * from
-( select CUSTOMER_NAME,ENV_NAME,CPP_INST_NAME,'50' TOTAL,JOB_STATUS  FROM RCO_BATCH_SUMMARY BS 
- INNER JOIN RCO_BATCH_SUMMARY_DETAILS BSD ON BSD.BATCH_SUMMARY_ID=BS.ID
-)
-
-pivot ( 
- count(* )  for JOB_STATUS in ( 'FAILED' ERROR,'LONG_RUNNING'  LONG_RUNNING,'WAITING'  WAITING,'RUNNING' RUNNING,'COMPLETED' COMPLETED  )
-)
-)
---------------------------------------------------
-
--------------------------------------------------------
-SELECT CUSTOMER_NAME,ENV_NAME,CPP_INST_NAME,(ERROR+LONG_RUNNING+WAITING+RUNNING+COMPLETED) TOTAL,ERROR,LONG_RUNNING LONG_RUNNING,WAITING,RUNNING,COMPLETED,'50' PROGRESS  FROM (
-SELECT * FROM (
-SELECT BS.CUSTOMER_NAME,BS.ENV_NAME,BS.CPP_INST_NAME,BCS.STATUS JOB_STATUS,BCS.COUNT CNT FROM RCO_BATCH_SUMMARY BS 
-INNER JOIN RCO_BATCH_SCHEDULE BSH ON BSH.BATCH_SUMMARY_ID=BS.ID
-INNER JOIN RCO_BATCH_SCHEDULE_INSTANCE BSI ON BSI.SCHEDULER_ID=BSH.ID
-INNER JOIN RCO_BATCH_ACTIVE_CYCLES BAC ON BAC.SCHEDULER_INSTANCE_ID=BSI.ID
-INNER JOIN RCO_BATCH_CYCLE_STATUS BCS ON BCS.RCO_BATCH_CYCLE_ID=BAC.ID
-)
-pivot ( 
- SUM(CNT)  for JOB_STATUS in ( 'ERROR' ERROR,'LONG_RUNNING'  LONG_RUNNING,'WAITING'  WAITING,'RUNNING' RUNNING,'COMPLETED' COMPLETED  )
-)
-)
- ORDER BY CUSTOMER_NAME
-------------------------------------------------------------------------------------
-"ng2-image-compress": "^7.0.7",
-    "ng2-img-max": "^2.1.18",
-    "ngx-image-cropper": "^1.2.5",
-    "ngx-infinite-scroll": "^6.0.1",
-6.5.3
+---------------------------------------------------------------------------------------------------------------
 
 kubectl create secret generic database-cred --from-literal=username=root --from-literal=password=admin -n demo
 
 
 
-minikube start --cpus=3 --memory=4192 --extra-config=apiserver.runtime-config=settings.k8s.io/v1alpha1=true --extra-config=apiserver.enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,PodPreset
+minikube start --cpus=2 --memory=4192 --extra-config=apiserver.runtime-config=settings.k8s.io/v1alpha1=true --extra-config=apiserver.enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,PodPreset
 
+
+10.0.2.2 -(to access host machine from minikube)
+minikube ssh 
+sudo passwd docker
+scp -r /media/myuser/sourceFolder docker@192.168.99.100:/home/docker
+
+scp -r RetailAppsPlatformServices.war docker@192.168.99.102:/home/docker/win10/docker-tomcat-tutorial
+docker container run -p 8081:8081 --name psraf psraf:1.7
+
+
+
+
+
+https://stackoverflow.com/questions/52037957/kubernetes-share-a-directory-from-your-local-system-to-kubernetes-container
 kubectl exec pod-using-configmap cat /etc/config/database -n demo
 
 https://portworx.com/
