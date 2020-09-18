@@ -1,13 +1,27 @@
-gZ4!Fw2N
-17/3
-Bili gudi basaveshwara
-anigoal road,
+ssh -Y mbadiger@burhw0304.us.oracle.com
 
-Bailhongal
-aws-conf ip: 3.135.226.28 (mounesh381@gmail.com)
-aws service ip: 13.58.106.45()
+eval "$(ssh-agent -s)"
+ssh-add ~/o_cloud_lab_rsa_ssh
+
+cd /u00/projects/mounesh_ws/cloudlab/rgbu-platform-services/
+
+/u00/projects/mounesh_ws/trunk
+/u00/projects/mounesh_ws/retail_home
+/scratch/oraweb/retail_home
+sudo -u oraweb bash
+/u00/projects/mounesh_ws/trunk/buildInfrastructure/dist/rgbuplatformservices/installer/
+sudo cat /scratch/u00/product/FMW_12.2.1.4/user_projects/domains/RAFDomain/servers/AdminServer/logs/AdminServer.log
+/scratch/u00/product/FMW_12.2.1.4/user_projects/domains/RAFDomain/config/jdbc/RetailPlatformDBDS-2563-jdbc.xml (Permission denied)
+nohup ./startWebLogic.sh
+
+jdbc:oracle:thin:@burhw0304.us.oracle.com:1521/fmid03
+
+
+
+aws-conf ip: 3.135.226.28 (anand-aws.pem   mounesh381@gmail.com)
+aws service ip: 3.23.89.205(mgb-new-aws.pem mounesh.gb@gmail.com)
 ssh -i C:\Users\mbadiger\Downloads\anand-aws.pem ec2-user@3.135.226.28
-ssh -i C:\Users\mbadiger\Downloads\mgb-new-aws.pem ec2-user@13.58.106.45
+ssh -i C:\Users\mbadiger\Downloads\mgb-new-aws.pem ec2-user@3.23.89.205
 
 aws-user1
 userId: AKIAWR5VA5SLQKHGOD7X
@@ -44,8 +58,10 @@ java -cp [classpath_loc1]:[classpath_loc2] [System_aguments] package.MainMethod 
 #Check open opers
 netstat -ano | find "8080"
 taskkill /pid <PID>/f
+
 Linux Commands
 ---------------------------
+use windows dir on git bash: cd c/
 1.top-------> memory usage
 2.ps    process details
 3.ps -A |grep java    ----java processes running
@@ -74,7 +90,15 @@ Linux Commands
    gunzip <ZipFile> (to unzip)
 
 
+21. remove directory: rm -rf <dir>
 
+22. find /path option filename (https://www.linux.com/topic/desktop/how-search-files-linux-command-line/)
+
+23.change ownership of single file: sudo chown <owner>:<group> filename
+change ownership of direcotry file: sudo chown <owner>:<group> -R filename
+change group :sudo chgrp <group> file/direcotry
+sudo chown oraweb:dba RetailPlatformDBDS-2563-jdbc.xml
+sudo chmod 777 RetailPlatformDBDS-2563-jdbc.xml
 
 
 GIT Commands
@@ -90,7 +114,15 @@ git add --all
 git commit -m "--comments--"
 git push origin master
 git diff
+git diff master origin/master 
+git branch -d localBranchName
+git branch <branch>
 git checkout <branch>
+
+GIT RESET(
+git fetch origin
+git reset --hard origin/<mybranch>
+)
 
 
 Docker commands
@@ -115,7 +147,7 @@ sudo amazon-linux-extras install docker
 sudo service docker start
 sudo usermod -a -G docker ec2-user       (close and open ssh)
 
-
+ docker run hello-world
 1.docker pull quay.io/python-devs/ci-image
 2.docker image ls
 3.docker container ls --all
@@ -141,6 +173,8 @@ docker container run -d -p 8080:8082 -e GOOGLE_APPLICATION_CREDENTIALS=/app/smar
 11.docker container rm --force linux_tweet_app
   docker rm -f a4b176be9e36
   docker rm -f $(docker ps -aq) ---------(remove all containers)
+   docker rmi -f $(docker images -a -q) ---------(remove all containers)
+  docker system prune(REMOVE EVERTHING image/containers/nws/volumes)
 
 docker volume create --name [volume name]
 usage: docker run -v <vol_name>:<path_in_container> my_image:1.0
@@ -367,6 +401,7 @@ kubectl create secret generic database-cred --from-literal=username=root --from-
 
 minikube start --cpus=2 --memory=4192 --extra-config=apiserver.runtime-config=settings.k8s.io/v1alpha1=true --extra-config=apiserver.enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,PodPreset
 
+If issues(minikube delete and minikube should work fine with docker images)
 
 10.0.2.2 -(to access host machine from minikube)
 minikube ssh 
@@ -389,3 +424,80 @@ metrics-server
 pramthius and kibana
 OKE
 Weblogic Operator
+
+
+cn-onboard-support
+
+docker run --rm -p 8080:8080  --privileged=false --security-opt="no-new-privileges:true" --cap-drop=ALL ${CS_IMAGE_ABS_PATH}
+
+-------------------------------------------------------------------------------------------------------------------------------
+Sorry , I completed Cheeseshop tutorial. Can you send me any documents related to orapatch so that I can get some basics?
+
+Nitin Chand  8:26 PM
+this link has orpatch details
+8:26
+https://gbuconfluence.us.oracle.com/display/RGBUBuildTools/Orpatch
+
+Mounesh Badiger  8:27 PM
+Thank you
+
+Nitin Chand  8:27 PM
+orpatch workspace is this
+8:27
+https://rgbusvn.us.oracle.com/svn/rgbuprod/orpatch/trunk
+8:28
+its being pulled as svn externals in buildInfrastructure project
+8:28
+and then packaged in our installer
+8:28
+the installer internally runs orpatch to deploy DB objects to the database
+
+Mounesh Badiger  8:30 PM
+Okay got it, Is there any document for PSRAF installer  ?
+8:30
+like what all steps installer does?
+
+Nitin Chand  8:31 PM
+yes
+---------------------------------------------------------------------------------------------------------------------------
+ ./startWLS.sh 
+sudo chown -R oraweb:dba *
+sudo chmod -R 777 *
+./stopManagedWebLogic.sh AdminServer
+./stopManagedWebLogic.sh RAFServer
+-----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------ORPATCH CODE--------ALWAYS RUN ORPATCH WITH oraweb USER------------------------------------------------------------------
+
+
+artstore -p rgbu-common-shared image list
+artstore -p rgbu-common-shared -k ~/.cne_s3.dat image list
+artstore -p rgbu-common -k ~/.cne_s3.dat image list
+phx.ocir.io/oraclegbudevcorp/cn-rgbu-common-shared/base-images/rgbu-tomcat:9.0.31-8u251-7-slim-20200709190812
+phx.ocir.io/oraclegbudevcorp/cn-rgbu-common-shared/oraclejre:8
+
+sudo -u oraweb bash
+export RETAIL_HOME=/u00/projects/mounesh_ws/retail_home
+export PATH=$RETAIL_HOME/orpatch/bin:$PATH
+orpatch analyze -s /u00/projects/mounesh_ws/trunk/buildInfrastructure/dist/rgbuplatformservices/installer/application/
+
+
+ssh -i o_cloud_lab_rsa_ssh  -o ServerAliveInterval=60 -o ServerAliveCountMax=300 mbadiger@ocna-devcorp-lb.gbucnss.oci.oraclecloud.com
+ssh -m hmac-sha2-256 -i o_cloud_lab_rsa_ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=300 mbadiger@ocna-devcorp-lb.gbucnss.oci.oraclecloud.com
+
+setupKubeEnv -n rgbu-common
+kubectl get secrets replicated-service-access-token -o json | jq -r '.data.sat' | base64 -d > .secure/sat
+export SAT="$(cat .secure/sat)"
+echo $SAT
+
+curl -4 --insecure -X "PUT" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:application/json" -d '{"ds_partition_name":"DEFAULT_KEY_PARTITION_NAME","ds_alias_name":"dsPlatformServicesAlias","ds_username":"PSRAF_ADMIN","ds_password":"PSRAF_Welcome1","raf_wallet_partition":"DEFAULT_KEY_PARTITION_NAME", "raf_wallet_alias": "rafDbWallet","raf_wallet_user": "dummy","raf_wallet_pass": "Welcome1"}' https://ss.cne-security-ss.oraclecne:30080/store/v4/secret/rgbu.rgbu-common/rgbu-common-psraf/credentials/dbCredentials
+{"msg": "Secret stored."}
+
+curl -4 --insecure -X "PUT" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:application/json" -d '{"clientId":"3e1240db8a03496588f4bc21f830724d","clientSecret":"5513c6b2-a2a8-474b-ae32-dd78be387ff1","idcs_alias_name":"idcsClientAlias","partition_name":"DEFAULT_KEY_PARTITION_NAME"}' https://ss.cne-security-ss.oraclecne:30080/store/v4/secret/rgbu.rgbu-common/rgbu-common-psraf/credentials/oauthCredentials
+
+curl -4 --insecure -X "GET" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:application/json" https://ss.cne-security-ss.oraclecne:30080/store/v4/secret/rgbu.rgbu-common/rgbu-common-psraf/credentials/dbCredentials
+
+curl -4 --insecure -X "GET" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:application/json" https://ss.cne-security-ss.oraclecne:30080/store/v4/secret/rgbu.rgbu-common/rgbu-common-psraf/credentials/oauthCredentials
+
+
+http://nsh00jrs.us.oracle.com:8003/RetailAppsPlatformServices/swagger-ui/
+curl http://localhost:8081/RetailAppsPlatformServices/services/public/health_check
