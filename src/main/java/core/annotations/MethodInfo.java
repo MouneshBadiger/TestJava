@@ -17,4 +17,5 @@ public @interface MethodInfo{
 	String date();
 	int revision() default 1;
 	String comments();
+  Long ssdf = null;
 }

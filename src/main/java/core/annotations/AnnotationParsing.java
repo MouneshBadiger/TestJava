@@ -3,7 +3,6 @@ package core.annotations;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-
 public class AnnotationParsing {
 
 	public static void main(String[] args) {

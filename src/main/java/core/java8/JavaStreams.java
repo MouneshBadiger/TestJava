@@ -85,6 +85,7 @@ public class JavaStreams {
 		map = rows3.map(x -> x.split(",")).filter(x -> x.length == 3).filter(x -> Integer.parseInt(x[1]) > 15)
 				.collect(Collectors.toMap(x -> x[0], x -> Integer.parseInt(x[1])));
 		rows3.close();
+		
 		for (String key : map.keySet()) {
 			System.out.println(key + "  " + map.get(key));
 		}

@@ -10,8 +10,13 @@ public class TempTest{
 	
 	static public  void main(String[] args){
 		try {
-			Stream<String> str=Files.lines(Paths.get("C:\\Users\\MOUNESHBADIGERBadige\\Desktop\\io\\env_file.env"));
-			str.forEach(System.out::println);
+			Files.list(Paths.get("C:\\Users\\mbadiger\\JDEV_USER_HOME\\DiagnosticsClients"))
+	        .forEach(p->{
+	        	System.out.println(p);
+	        });
+			
+			//Stream<String> str=Files.lines(Paths.get("C:\\Users\\MOUNESHBADIGERBadige\\Desktop\\io\\env_file.env"));
+			//str.forEach(System.out::println);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

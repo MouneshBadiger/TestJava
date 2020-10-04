@@ -10,23 +10,28 @@ import java.lang.reflect.TypeVariable;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class ReflectionTest {
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchFieldException {
 
+		
+		
+		 
+		 
 		// Get Class using reflection
-		Class<?> MyClass = MyClass.class;
-		MyClass = new MyClass().getClass();
+		Class<?> myClass = MyClass.class;
+		myClass = new MyClass().getClass();
 		try {
 			// below method is used most of the times in frameworks like JUnit
 			// Spring dependency injection, Tomcat web container
 			// Eclipse auto completion of method names, hibernate, Struts2 etc.
 			// because MyClass is not available at compile time
-			MyClass = Class.forName("com.journaldev.reflection.MyClass");
+			myClass = Class.forName("core.reflection.ConcreteClass");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println(MyClass.getCanonicalName()); // prints com.journaldev.reflection.MyClass
+		System.out.println(myClass.getCanonicalName()); // prints com.journaldev.reflection.MyClass
 
 		// for primitive types, wrapper classes and arrays
 		Class<?> booleanClass = boolean.class;
