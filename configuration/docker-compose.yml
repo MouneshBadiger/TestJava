@@ -1,0 +1,102 @@
+version: "3"
+services:
+  eureka:
+    env_file:
+      - env_file.env
+    image: 7353207901/eureka-service:1.0
+    container_name: eureka
+    ports:
+      - 8761:8761
+    networks:
+      - webnet
+      
+  config1:
+    env_file:
+      - env_file.env
+    image: 7353207901/config-service:1.0
+    container_name: config
+    ports:
+      - 9999:9999
+    networks:
+      - webnet
+    depends_on:
+      - "eureka"
+
+  zipkin:
+    env_file:
+      - env_file.env
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - 9411:9411
+    networks:
+      - webnet
+      
+  cable:
+    env_file:
+      - env_file.env
+    image: 7353207901/cable-service:1.1
+    container_name: cable
+    ports:
+      - 8082:8082
+    networks:
+      - webnet
+    depends_on:
+      - "config1"
+    command: ["app/my_wait-for-it.sh"]
+ 
+    
+  user:
+    env_file:
+      - env_file.env
+    image: 7353207901/user-service:1.0
+    container_name: user
+    ports:
+      - 8083:8081
+    networks:
+      - webnet
+    depends_on:
+      - "config1"
+    command: 
+        - ""
+  
+  zuul:
+    env_file:
+      - env_file.env
+    image: 7353207901/zuul-service:1.0
+    container_name: zuul
+    ports:
+      - 8000:8000
+    networks:
+      - webnet
+    depends_on:
+      - "config1"
+      
+  oauth:
+    env_file:
+      - env_file.env
+    image: 7353207901/oauth-service:1.0
+    container_name: oauth
+    ports:
+      - 8088:8088
+    networks:
+      - webnet
+    depends_on:
+      - "config1" 
+
+  smartangapp:
+    env_file:
+      - env_file.env
+    image: 7353207901/smart-ang-app:1.1
+    container_name: smartangapp
+    ports:
+      - 8080:80
+    networks:
+      - webnet
+    depends_on:
+      - "config1"   
+      
+  
+    
+networks:
+  webnet:

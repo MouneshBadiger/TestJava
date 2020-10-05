@@ -1,0 +1,503 @@
+ssh -Y mbadiger@burhw0304.us.oracle.com
+
+eval "$(ssh-agent -s)"
+ssh-add ~/o_cloud_lab_rsa_ssh
+
+cd /u00/projects/mounesh_ws/cloudlab/rgbu-platform-services/
+
+/u00/projects/mounesh_ws/trunk
+/u00/projects/mounesh_ws/retail_home
+/scratch/oraweb/retail_home
+sudo -u oraweb bash
+/u00/projects/mounesh_ws/trunk/buildInfrastructure/dist/rgbuplatformservices/installer/
+sudo cat /scratch/u00/product/FMW_12.2.1.4/user_projects/domains/RAFDomain/servers/AdminServer/logs/AdminServer.log
+/scratch/u00/product/FMW_12.2.1.4/user_projects/domains/RAFDomain/config/jdbc/RetailPlatformDBDS-2563-jdbc.xml (Permission denied)
+nohup ./startWebLogic.sh
+
+jdbc:oracle:thin:@burhw0304.us.oracle.com:1521/fmid03
+
+
+
+aws-conf ip: 3.135.226.28 (anand-aws.pem   mounesh381@gmail.com)
+aws service ip: 3.23.89.205(mgb-new-aws.pem mounesh.gb@gmail.com)
+ssh -i C:\Users\mbadiger\Downloads\anand-aws.pem ec2-user@3.135.226.28
+ssh -i C:\Users\mbadiger\Downloads\mgb-new-aws.pem ec2-user@3.23.89.205
+
+aws-user1
+userId: AKIAWR5VA5SLQKHGOD7X
+secret: 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
+
+
+JAVA_HOME='/opt/jdk-13.0.1'
+PATH="$JAVA_HOME/bin:$PATH"
+export PATH
+
+M2_HOME='/opt/apache-maven-3.6.3'
+PATH="$M2_HOME/bin:$PATH"
+export PATH
+ 
+sudo docker container run -d -p 9999:9999  --name config -e eureka.client.enabled=false  7353207901/config-service:1.0  
+sudo docker container run -d -p 8082:8082 -e eureka.client.enabled=false -e spring.profiles.active=dev,mongo -d -e spring.cloud.config.uri=http://3.135.226.28:9999 --name cable 7353207901/cable-service:1.3
+sudo docker container run -d -p 8083:8083 -e eureka.client.enabled=false -e spring.profiles.active=dev,mongo -d -e spring.cloud.config.uri=http://3.135.226.28:9999 --name user 7353207901/user-service:1.3
+sudo docker container run -d -p 8088:8088 -e eureka.client.enabled=false -e spring.profiles.active=dev -d -e spring.cloud.config.uri=http://3.135.226.28:9999 --name oauth 7353207901/oauth-service:1.0
+sudo docker container run -d -p 80:80  --name ui 7353207901/ui:1.0
+
+http://cs-metrocast.in:8937/dashboard
+userName: BGM1732
+PASS: 1992
+
+Mom details
+8310378973
+01/06/1969
+voterId: WQJ2404887
+PAN: CNLPB1308L
+ADAR: 936218687663
+
+java -jar [jarfile]
+java -cp [classpath_loc1]:[classpath_loc2] [System_aguments] package.MainMethod [Program_arguments]
+#Check open opers
+netstat -ano | find "8080"
+taskkill /pid <PID>/f
+
+Linux Commands
+---------------------------
+use windows dir on git bash: cd c/
+1.top-------> memory usage
+2.ps    process details
+3.ps -A |grep java    ----java processes running
+4.kill -9 PID   ------Kill process with pid
+5.set environment variable: set NAME=VALUE
+6.print envrionment variable: echo %VARIABLE_NAME%
+7. touch fileName : create empty file
+8.cat fileName  : opens file
+9.vi fileName  : openes editer :wq and :q! to exit
+10.grep <searchElement> fileName  : to filter lines with matching expression 
+11. cut -d<delimeter> -f<columnNo> <fileName>  : Same as Java string spliting
+12.comm <file1> <file2> : The 'comm' command compares two files or streams. By default, 'comm' will always display three columns. First column indicates non-matching items of first file, second column indicates non-matching items of second file, and third column indicates matching items of both the files. Both the files has to be in sorted order for 'comm' command to be executed.
+   comm -23 <file1> <file2> (To display first column)
+13.cat <fileName> | sed 's/<oldWord>/<newWord>/'  stream editor.  editing is not permanent. It remains only in display, but in actual, file content remains same.
+14.cat or tac <fileName> | tee <newFile> |  cat or tac |.....  (The 'tee' command is similar to 'cat' command with only one difference. It puts stdin on stdout and also put them into a file.)
+15.command | tr <'old'> <'new'>  (translate)
+   cat <fileName> | tr  'a-z' 'ssadfasdf' (encrypts data)
+   cat <fileName> | tr -d 'a' (removes all occurence of a)
+  
+16.cat <fileName> | uniq  (uniq command you can form a sorted list in which every word will occur only once.)
+   cat <fileName> | uniq -c (count number of occurance)
+17.sort <fileName> (same as cat but gives sorted list)
+18.wc <fileName> (word count in file .. flags -l only line, -w only words, -c only chars)
+19.od <fileName> (od' term stands for octal dump, displays ASCII values of words)
+20.gzip <fileName> <fileName>(TO compress files to zip file, use tar for directories)
+   gunzip <ZipFile> (to unzip)
+
+
+21. remove directory: rm -rf <dir>
+
+22. find /path option filename (https://www.linux.com/topic/desktop/how-search-files-linux-command-line/)
+
+23.change ownership of single file: sudo chown <owner>:<group> filename
+change ownership of direcotry file: sudo chown <owner>:<group> -R filename
+change group :sudo chgrp <group> file/direcotry
+sudo chown oraweb:dba RetailPlatformDBDS-2563-jdbc.xml
+sudo chmod 777 RetailPlatformDBDS-2563-jdbc.xml
+
+
+GIT Commands
+----------------------
+ git init
+ git remote rm origin
+ git remote add origin https://github.com/user/repo.git
+ git branch --set-upstream-to=origin/<branch>
+ git remote -v
+
+git status
+git add --all
+git commit -m "--comments--"
+git push origin master
+git diff
+git diff master origin/master 
+git branch -d localBranchName
+git branch <branch>
+git checkout <branch>
+
+GIT RESET(
+git fetch origin
+git reset --hard origin/<mybranch>
+)
+
+
+Docker commands
+--------------------
+curl -i http://mmmmm.mfbsdf.com
+
+getting token using client_credentials
+curl -i -H 'X-USER-IDENTITY-DOMAIN-NAME: OAuthTestTenant125' -H 'Authorization: Basic MzAzYTI0OTItZDY0Zi00ZTA0LWI3OGYtYjQzMzAwNDczMTJiOll5Sk5NSkdFc0ZqUkxWZVZsdVMz' 
+-H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8'
+--request POST https://<idm-domain>.identity.<data-center>.oraclecloud.com/oauth/tokens 
+-d 'grant_type=client_credentials
+&scope=http://www.example.com'
+
+apk add curl
+wget
+--------------------------------------------------
+USE GIT-BASH to avoid issues
+
+Installation on linux
+sudo yum update -y
+sudo amazon-linux-extras install docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user       (close and open ssh)
+
+ docker run hello-world
+1.docker pull quay.io/python-devs/ci-image
+2.docker image ls
+3.docker container ls --all
+4.docker container run --detach --name mydb -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:latest
+
+docker container run -d -p 8080:8082 -e GOOGLE_APPLICATION_CREDENTIALS=/app/smartcableapp-211915-af70f90f4962.json -e SPRING_PROFILES_ACTIVE=dev,jpa -it 7353207901/cable-service:1.1 sh
+
+5.docker container logs mydb
+
+6.docker exec -it [CONTAINER_NAME] mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+7.docker exec -it a4b176be9e36 sh
+
+8.docker image build --tag $DOCKERID/linux_tweet_app:1.0 .
+ (Build using Maven plugin)Make sure Docker settting is changed to allow insecure TCP
+  1.mvn package -Dmaven.test.skip=true
+  2.mvn install dockerfile:build -Dmaven.test.skip=true
+
+9.docker login
+10.docker image push $DOCKERID/linux_tweet_app:1.0
+  (Using Maven Plugin) 
+   mvn dockerfile:push .
+
+11.docker container rm --force linux_tweet_app
+  docker rm -f a4b176be9e36
+  docker rm -f $(docker ps -aq) ---------(remove all containers)
+   docker rmi -f $(docker images -a -q) ---------(remove all containers)
+  docker system prune(REMOVE EVERTHING image/containers/nws/volumes)
+
+docker volume create --name [volume name]
+usage: docker run -v <vol_name>:<path_in_container> my_image:1.0
+docker volume ls
+
+docker network ls
+
+docker network create <nameof nw>
+
+docker volume ls
+
+docker volumen create --driver=local --name=volume1
+
+
+//swarm//
+docker swarm init
+
+docker stack deploy -c trendfly-compose.yml <STACK_NAME>
+
+docker service ls/docker stack ps/
+
+docker stack rm <STACK_NAME>
+
+docker swarm leave --force  
+
+docker container prune (To remove all stopped containers)
+
+docker container run  -d -p 15672:15672 -p 5672:5672 rabbitmq:management
+docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.3.0
+docker run -p 5601:5601 docker.elastic.co/kibana/kibana:7.3.0
+
+ELK Stack
+(refer docker compose)
+
+kibana dashboard:http://localhost:5601/
+all index:http://localhost:9200/_cat/indices?v
+single index pretty:http://localhost:9200/trendfly-logs*/_search?q=*&pretty
+
+
+
+Angular commands
+-----------------------------
+1.Install node.js
+2.Install npm
+3.Install angular cli: npm i -g @angular/cli
+npm install --save-dev @angular-devkit/build-angular
+4.Start dev server:ng serve
+5.new project: ng new PROJECT_NAME
+6.npm update
+7.Create build: ng build --prod
+8.Genereate component: ng g c ComponentName <path optional >
+9.Genereate service: ng g s Service <path optional >
+10. ng generate directive highlight
+
+Troubleshooting
+npm uninstall -g @angular/cli
+npm cache clean --force
+npm install -g @angular/cli@latest
+delete node_modules and run $ npm install
+C:\Users\USERNAME\AppData\Roaming\npm-cache and delet
+--------------------------------------------
+Maven Commands
+
+mvn package -Dmaven.test.skip=true 
+mvn dependency:tree
+
+mvn dependency:tree -Dincludes=com.fasterxml.jackson.core
+
+mvn tomcat7:run -Dspring.profiles.active=dev
+mvn clean package -DskipTests
+
+mvn install:install-file -Dfile=C:\Users\mbadiger\Downloads\PaytmChecksum.jar -DgroupId=paytm -DartifactId=checksum -Dversion=2.0.1 -Dpackaging=jar
+---------------------------------
+SuperUsers
+accountId:758554344234
+user:Mounesh
+password:mgbKng123@
+access-id:AKIA3BHK4XMVL7R7WPTT
+secret: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
+Users with AWS Management Console access can sign-in at: https://758554344234.signin.aws.amazon.com/console
+
+
+AWS Commands
+
+ssh -i mgb_aws1.pem ubuntu@18.222.24.150
+ssh -i mgb_aws1.pem ec2-user@18.221.236.250
+---------------------------------------------
+Spring Conventions
+Spring property presidence
+1.application.properties
+2.application-dev.properties
+3.Environemnt variables
+4.System variable(-D)
+5.Program variables (--)
+
+------------------------------------
+Majar Issues
+1.Eureka client not registering with eureka only inside docker container, works fine outside
+	-Configured eureka connection only in bootstrap
+	-Do not use localhost, use docker compose service name
+2.Zuul not forwording requests (only docker clustor)
+  Solved by adding ribbon timeout configuration(configuration file may show warning, which is safe to be ignored)
+3.Zipkin not working inside docker-compose
+  Solved by giving service name and overrding by below evnironment variable
+  1.spring.zipkin.base-url=http://zipkin:9411/
+  2.spring.sleuth.sampler.probability=1
+4.Config server issue
+
+
+minikube start --vm-driver hyperv --hyperv-virtual-switch "Primary Virtual Switch"
+
+
+-------------------------------------------------------
+Kubernates
+gcloud config set project [PROJECT_ID]
+gcloud config set compute/zone us-central1-b
+(Create a cluster with name trendfly-cluster with initial 2 nodes)
+gcloud container clusters create trendfly-cluster --num-nodes=2 --enable-autoscaling --min-nodes 15 --max-nodes 50
+
+gcloud container clusters list
+gcloud compute instances list
+gcloud container clusters describe <CLUSTER_NAME>
+kubectl create -f redis-master-deployment.yaml
+kubectl get pods
+kubectl logs -f [POD_NAME]
+kubectl exec -it [POD_NAME] sh
+kubectl create -f redis-master-service.yaml
+kubectl get service
+
+kubectl scale deployment frontend --replicas=5
+
+kubectl delete service frontend
+gcloud compute forwarding-rules list
+gcloud container clusters delete guestbook
+
+//debuging
+kubectl exec -it [POD_NAME] sh
+nslookup <Serivice_name>  (works in pod and kubectl)
+nslookup  kubernetes.default (should always work)
+kubectl get endpoints [SERVICE-NAME]
+wget -qO- <endpoint> (equivalent to curl)
+
+---------------------------------
+
+gsutil cp [file_name] gs://bucket-name/file-name
+
+the mongo port is 1021.
+the IP is 9.193.197.31
+
+-------------------------------------------
+MAJAR ENDPOINTS
+http://localhost:8082/actuator/?
+http://localhost:8082/swagger-ui.html
+
+--------------------------
+
+
+fDU3hQT
+
+Karupa1#
+
+fDU3hQT
+
+Version Control Software Tools
+
+
+
+
+My Materials
+Javascript:https://www.w3schools.com/js/default.asp
+Angular:
+
+
+Thanks, 
+Mounesh
+IBM India Private Ltd
+for UPS Account, CPC
+91-7353207901
+bmounesh@ups.com
+
+-----------------------------------
+1-888-UPS-TECH / 0001-888-877-8324#45688328.
+000
+
+
+ 
+---------------------------------------------
+KAFKA
+zookeeper-server-start ../../config/zookeeper.properties
+kafka-server-start ../../config/server.properties
+
+DATA SECURITY SERVICES api REFER EXAMPLE
+SIMPLE 
+
+aLERT MANAGER REFER IT
+
+
+C:\Work\RetailAppsFramework\rgbutechcomponents2\RetailAppsDataPrivServices\RetailAppsDataPrivServicesRESTApp\src\oracle\retail\apps\framework\datapriv\DataPrivResource.java
+8:56
+C:\Work\RetailAppsFramework\rgbutechcomponents2\RetailAppsAlertManager\RetailAppsAlertViewController\src\oracle\retail\apps\framework\alerts\view\init\AlertManagerInitializer.java
+
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic streams-plaintext-input
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic streams-wordcount-output --config cleanup.policy=compact
+kafka-topics --list --bootstrap-server localhost:9092
+kafka-topics --bootstrap-server localhost:9092 --describe
+kafka-run-class.sh org.apache.kafka.streams.examples.wordcount.WordCountDemo
+kafka-console-producer --broker-list localhost:9092 --topic streams-plaintext-input
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic streams-wordcount-output --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+    --topic streams-wordcount-output \
+    --from-beginning \
+    --formatter kafka.tools.DefaultMessageFormatter \
+    --property print.key=true \
+    --property print.value=true \
+    --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+    --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+
+---------------------------------------------------------------------------------------------------------------
+
+kubectl create secret generic database-cred --from-literal=username=root --from-literal=password=admin -n demo
+
+
+
+minikube start --cpus=2 --memory=4192 --extra-config=apiserver.runtime-config=settings.k8s.io/v1alpha1=true --extra-config=apiserver.enable-admission-plugins=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,PodPreset
+
+If issues(minikube delete and minikube should work fine with docker images)
+
+10.0.2.2 -(to access host machine from minikube)
+minikube ssh 
+sudo passwd docker
+scp -r /media/myuser/sourceFolder docker@192.168.99.100:/home/docker
+
+scp -r RetailAppsPlatformServices.war docker@192.168.99.102:/home/docker/win10/docker-tomcat-tutorial
+docker container run -p 8081:8081 --name psraf psraf:1.7
+
+
+
+
+
+https://stackoverflow.com/questions/52037957/kubernetes-share-a-directory-from-your-local-system-to-kubernetes-container
+kubectl exec pod-using-configmap cat /etc/config/database -n demo
+
+https://portworx.com/
+datadog
+metrics-server
+pramthius and kibana
+OKE
+Weblogic Operator
+
+
+cn-onboard-support
+
+docker run --rm -p 8080:8080  --privileged=false --security-opt="no-new-privileges:true" --cap-drop=ALL ${CS_IMAGE_ABS_PATH}
+
+-------------------------------------------------------------------------------------------------------------------------------
+Sorry , I completed Cheeseshop tutorial. Can you send me any documents related to orapatch so that I can get some basics?
+
+Nitin Chand  8:26 PM
+this link has orpatch details
+8:26
+https://gbuconfluence.us.oracle.com/display/RGBUBuildTools/Orpatch
+
+Mounesh Badiger  8:27 PM
+Thank you
+
+Nitin Chand  8:27 PM
+orpatch workspace is this
+8:27
+https://rgbusvn.us.oracle.com/svn/rgbuprod/orpatch/trunk
+8:28
+its being pulled as svn externals in buildInfrastructure project
+8:28
+and then packaged in our installer
+8:28
+the installer internally runs orpatch to deploy DB objects to the database
+
+Mounesh Badiger  8:30 PM
+Okay got it, Is there any document for PSRAF installer  ?
+8:30
+like what all steps installer does?
+
+Nitin Chand  8:31 PM
+yes
+---------------------------------------------------------------------------------------------------------------------------
+ ./startWLS.sh 
+sudo chown -R oraweb:dba *
+sudo chmod -R 777 *
+./stopManagedWebLogic.sh AdminServer
+./stopManagedWebLogic.sh RAFServer
+-----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------ORPATCH CODE--------ALWAYS RUN ORPATCH WITH oraweb USER------------------------------------------------------------------
+
+
+artstore -p rgbu-common-shared image list
+artstore -p rgbu-common-shared -k ~/.cne_s3.dat image list
+artstore -p rgbu-common -k ~/.cne_s3.dat image list
+phx.ocir.io/oraclegbudevcorp/cn-rgbu-common-shared/base-images/rgbu-tomcat:9.0.31-8u251-7-slim-20200709190812
+phx.ocir.io/oraclegbudevcorp/cn-rgbu-common-shared/oraclejre:8
+
+sudo -u oraweb bash
+export RETAIL_HOME=/u00/projects/mounesh_ws/retail_home
+export PATH=$RETAIL_HOME/orpatch/bin:$PATH
+orpatch analyze -s /u00/projects/mounesh_ws/trunk/buildInfrastructure/dist/rgbuplatformservices/installer/application/
+
+
+ssh -i o_cloud_lab_rsa_ssh  -o ServerAliveInterval=60 -o ServerAliveCountMax=300 mbadiger@ocna-devcorp-lb.gbucnss.oci.oraclecloud.com
+ssh -m hmac-sha2-256 -i o_cloud_lab_rsa_ssh -o ServerAliveInterval=60 -o ServerAliveCountMax=300 mbadiger@ocna-devcorp-lb.gbucnss.oci.oraclecloud.com
+
+setupKubeEnv -n rgbu-common
+kubectl get secrets replicated-service-access-token -o json | jq -r '.data.sat' | base64 -d > .secure/sat
+export SAT="$(cat .secure/sat)"
+echo $SAT
+
+curl -4 --insecure -X "PUT" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:application/json" -d '{"ds_partition_name":"DEFAULT_KEY_PARTITION_NAME","ds_alias_name":"dsPlatformServicesAlias","ds_username":"PSRAF_ADMIN","ds_password":"PSRAF_Welcome1","raf_wallet_partition":"DEFAULT_KEY_PARTITION_NAME", "raf_wallet_alias": "rafDbWallet","raf_wallet_user": "dummy","raf_wallet_pass": "Welcome1"}' https://ss.cne-security-ss.oraclecne:30080/store/v4/secret/rgbu.rgbu-common/rgbu-common-psraf/credentials/dbCredentials
+{"msg": "Secret stored."}
+
+curl -4 --insecure -X "PUT" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:application/json" -d '{"clientId":"3e1240db8a03496588f4bc21f830724d","clientSecret":"5513c6b2-a2a8-474b-ae32-dd78be387ff1","idcs_alias_name":"idcsClientAlias","partition_name":"DEFAULT_KEY_PARTITION_NAME"}' https://ss.cne-security-ss.oraclecne:30080/store/v4/secret/rgbu.rgbu-common/rgbu-common-psraf/credentials/oauthCredentials
+
+curl -4 --insecure -X "GET" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:application/json" https://ss.cne-security-ss.oraclecne:30080/store/v4/secret/rgbu.rgbu-common/rgbu-common-psraf/credentials/dbCredentials
+
+curl -4 --insecure -X "GET" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:application/json" https://ss.cne-security-ss.oraclecne:30080/store/v4/secret/rgbu.rgbu-common/rgbu-common-psraf/credentials/oauthCredentials
+
+
+http://nsh00jrs.us.oracle.com:8003/RetailAppsPlatformServices/swagger-ui/
+curl http://localhost:8081/RetailAppsPlatformServices/services/public/health_check

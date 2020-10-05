@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: eureka-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eureka-service
+        role: discovery
+        tier: backend
+    spec:
+      containers:
+      - name: master
+        image: docker.io/7353207901/eureka-service:1.0  # or just image: redis
+        ports:
+        - containerPort: 8761

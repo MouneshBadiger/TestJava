@@ -1,0 +1,44 @@
+version: "3"
+services:     
+  cable:
+    env_file:
+      - env_file.env
+    image: 7353207901/cable-service:1.1
+    container_name: cable
+    ports:
+      - 8082:8082
+    networks:
+      - webnet
+    depends_on:
+      - "config1"
+    command: ["app/my_wait-for-it.sh"]   
+  user:
+    env_file:
+      - env_file.env
+    image: 7353207901/user-service:1.0
+    container_name: user
+    ports:
+      - 8083:8081
+    networks:
+      - webnet
+    depends_on:
+      - "config1"
+    command: 
+        - ""
+
+  smartangapp:
+    env_file:
+      - env_file.env
+    image: 7353207901/smart-ang-app:1.1
+    container_name: smartangapp
+    ports:
+      - 8080:80
+    networks:
+      - webnet
+    depends_on:
+      - "config1"   
+      
+  
+    
+networks:
+  webnet:

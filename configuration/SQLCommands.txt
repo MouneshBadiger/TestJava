@@ -1,0 +1,10 @@
+CommanSQL Commands
+----------------------------------
+SELECT tablespace_name FROM dba_tablespaces;
+
+	
+SELECT * FROM all_users;
+
+/*CURRENT USER INFO*/
+SELECT * FROM user_users;
+
