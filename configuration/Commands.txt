@@ -1,17 +1,29 @@
 ssh -Y mbadiger@burhw0304.us.oracle.com
 
+
+
+sudo -u oraweb bash
+sudo chown -R oraweb:dba *
+sudo chmod -R 777 *
+
 eval "$(ssh-agent -s)"
 ssh-add ~/o_cloud_lab_rsa_ssh
+
+svn propget svn:externals <path>
+
+svn revert -R .
+svn up
 
 cd /u00/projects/mounesh_ws/cloudlab/rgbu-platform-services/
 
 /u00/projects/mounesh_ws/trunk
 /u00/projects/mounesh_ws/retail_home
 /scratch/oraweb/retail_home
-sudo -u oraweb bash
+
 /u00/projects/mounesh_ws/trunk/buildInfrastructure/dist/rgbuplatformservices/installer/
 sudo cat /scratch/u00/product/FMW_12.2.1.4/user_projects/domains/RAFDomain/servers/AdminServer/logs/AdminServer.log
 /scratch/u00/product/FMW_12.2.1.4/user_projects/domains/RAFDomain/config/jdbc/RetailPlatformDBDS-2563-jdbc.xml (Permission denied)
+
 nohup ./startWebLogic.sh
 
 jdbc:oracle:thin:@burhw0304.us.oracle.com:1521/fmid03
@@ -122,9 +134,11 @@ git checkout <branch>
 GIT RESET(
 git fetch origin
 git reset --hard origin/<mybranch>
+ex: git reset --hard origin/master (remove all local changes, and replicate master)
 )
 
-
+git ls-tree -r master --full-name (-----list all tracked files in master branch-----)
+git diff HEAD^ HEAD  (compare with previous commit)
 Docker commands
 --------------------
 curl -i http://mmmmm.mfbsdf.com
@@ -460,13 +474,13 @@ like what all steps installer does?
 Nitin Chand  8:31 PM
 yes
 ---------------------------------------------------------------------------------------------------------------------------
- ./startWLS.sh 
+sudo -u oraweb bash 
+./startWLS.sh 
 sudo chown -R oraweb:dba *
 sudo chmod -R 777 *
+scratch/u00/product/FMW_12.2.1.4/user_projects/domains/RAFDomain/servers/AdminServer/upload
 ./stopManagedWebLogic.sh AdminServer
 ./stopManagedWebLogic.sh RAFServer
------------------------------------------------------------------------------------------------------------------------------
----------------------------------------ORPATCH CODE--------ALWAYS RUN ORPATCH WITH oraweb USER------------------------------------------------------------------
 
 
 artstore -p rgbu-common-shared image list
@@ -474,6 +488,9 @@ artstore -p rgbu-common-shared -k ~/.cne_s3.dat image list
 artstore -p rgbu-common -k ~/.cne_s3.dat image list
 phx.ocir.io/oraclegbudevcorp/cn-rgbu-common-shared/base-images/rgbu-tomcat:9.0.31-8u251-7-slim-20200709190812
 phx.ocir.io/oraclegbudevcorp/cn-rgbu-common-shared/oraclejre:8
+-----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------ORPATCH CODE--------ALWAYS RUN ORPATCH WITH oraweb USER------------------------------------------------------------------
+
 
 sudo -u oraweb bash
 export RETAIL_HOME=/u00/projects/mounesh_ws/retail_home
@@ -501,3 +518,37 @@ curl -4 --insecure -X "GET" -H "Authorization:Bearer ${SAT}"  -H "Content-Type:a
 
 http://nsh00jrs.us.oracle.com:8003/RetailAppsPlatformServices/swagger-ui/
 curl http://localhost:8081/RetailAppsPlatformServices/services/public/health_check
+
+
+INSERT INTO RAF_PROP_KEY_DEF_B (PROP_DEF_ID, KEY, DEFAULT_VALUE, VALUE_TYPE, EDITABLE) VALUES (l_prop_def_id, 'platform.services.user.roles', NULL, 'TEXT', 'Y' ); 
+0066_PropDefs_PlatformServicesSecurityProperties.sql
+
+
+] svn status row************************ ,  , T, r, e, e,  , c, onflicts: 1
+     [exec] external_dir:buildInfrastructure
+     [exec] output line:-^/orpatch/trunk orpatch
+     [exec] splited parts :=^/orpatch/trunk,orpatch
+     [exec] Recursing svn:externals buildInfrastructure/orpatch
+     [exec]
+     [exec] output line:-^/../rgbuinternal/target-envs/raf/19_0_x target-envs
+     [exec] splited parts :=^/../rgbuinternal/target-envs/raf/19_0_x,target-envs
+     [exec] Recursing svn:externals buildInfrastructure/target-envs
+     [exec]
+     [exec] output line:-
+     [exec] external_dir:.
+     [exec] output line:-^/rgbutechcomponents/releases/rgbutechcomponents_9_0_3_1_RC1/RetailAppsFrameworkDatabase/DatabaseScripts/src/common RetailAppsFrameworkDatabase/DatabaseScripts/src/common
+     [exec] splited parts :=^/rgbutechcomponents/releases/rgbutechcomponents_9_0_3_1_RC1/RetailAppsFrameworkDatabase/DatabaseScripts/src/common,RetailAppsFrameworkDatabase/DatabaseScripts/src/common
+     [exec] Recursing svn:externals ./RetailAppsFrameworkDatabase/DatabaseScripts/src/common
+     [exec]
+     [exec] output line:-
+     [exec] external_dir:buildInfrastructure/conf
+     [exec] output line:-^/../rgbuinternal/target-envs/raf/19_0_x target-env
+     [exec] splited parts :=^/../rgbuinternal/target-envs/raf/19_0_x,target-env
+     [exec] Recursing svn:externals buildInfrastructure/conf/target-env
+     [exec]
+     [exec] output line:-Filtering manifest contents:
+     [exec]    Including only typed lines
+     [exec] Cleaning Build/orpatch
+
+100644 blob 337d47817143c8eed4ff7565e9a690a264d8d2be    pom.xml
+100644 blob fc34f462feadba37fac21efc8abb70df89d17445    pom.xml
